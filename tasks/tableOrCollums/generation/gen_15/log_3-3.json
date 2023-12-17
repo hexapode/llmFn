@@ -1,0 +1,21 @@
+{
+  "llm": [
+    {
+      "role": "system",
+      "content": "You are a programmer, and you need to build a javascript funtion to solve the following task:\nDetermine if the input text contain table or collumns. The input text is the output of an OCR render to a textfile while preserving layout.\nTo solve this task you need to create a javascript function that take into parameters Text to be classified and return Either TABLE, COLUMNS, TABLE_AND_COLUMNS or NORMAL.\nOutput the code between ```javascript and ``` tags.\nDo not add usage sample code, only output the functions.\nYour are not allow to use any external library or call any external service/library/function.\nThe function should be named doesItContainTableOrColumns.\n"
+    },
+    {
+      "role": "assistant",
+      "content": "```javascript\nfunction doesItContainTableOrColumns(inputText) {\n  // Check if the input text contains common table or column related keywords\n  const containsTable = /(table|thead|tbody|th|tr|td)/i.test(inputText);\n  const containsColumns = /(column|col|row|cell)/i.test(inputText);\n\n  if (containsTable && containsColumns) {\n    return \"TABLE_AND_COLUMNS\";\n  } else if (containsTable) {\n    return \"TABLE\";\n  } else if (containsColumns) {\n    return \"COLUMNS\";\n  } else {\n    return \"NORMAL\";\n  }\n}\n```"
+    },
+    {
+      "role": "user",
+      "content": "I try on the following input and it returned \"TABLE_AND_COLUMNS\" instead of \"TABLE\",Reflect on what went wrong the correct the function. \nHere is the input used, input:\nServices et prestations supplémentaires                              counter 0 setzen\n                                                     Prestations                      Franchis           Prime nette\n                                                                                                en CH                en CHF\nFaute grave                                          assurés                                                                23.30\nEn cas de dommage causé par une faute grave (p.\nex. franchissement d'un feu rouge), il n'y a pas de\nréduction des prestations.\nProtection du bonus                                  assurés                                                                77.41\nVotre prime n'est pas majorée en cas de sinistre.    1 sinistre / an\nVotre degré de prime pour non-sinistre est donc\nprotégé.\nDépannage, poursuite du voyage incluse               assurés                                                                41.37\nSi le véhicule assuré est défaillant en raison d'un  Europe\npanne, d'une collision ou d'un autre dommage\ncausé par des événements naturels, des animaux\nou des inconnus (casco partielle), nous organisons\net remboursons le dépannage ainsi que le retour\ndirect à votre domicile ou la poursuite de votre\nvoyage.\nPrestation maximale par événement                    10'000 CHF\nSont compris :\n- Frais suppl. de transport (poursuite du voyage)    500 CHF/pers.\n- Frais suppl. d'hébergement et de repas             500 CHF/pers.\nVéhicule de remplacement                             non assurés\nNous prenons en charge les frais liés au véhicule de\nremplacement jusqu'à concurrence du montant\nassuré.\n- En cas de dommage total\n- Pendant la réparation\nProtection juridique véhicule                        non assurés\nSoutien juridique en cas de litiges en lien avec un\nvéhicule assuré, p. ex. retrait de permis de\nconduire, litiges contractuels, prétentions en\ndommages-intérêts et dommages corporels lors\nd'un accident."
+    },
+    {
+      "role": "assistant",
+      "content": "```javascript\nfunction doesItContainTableOrColumns(inputText) {\n  // Check if the input text contains common table or column related keywords\n  const containsTable = /(\\btable\\b|thead|tbody|th|tr|td)/i.test(inputText);\n  const containsColumns = /(\\bcolumn\\b|\\bcol\\b|\\brow\\b|\\bcell\\b)/i.test(inputText);\n\n  if (containsTable && containsColumns) {\n    return \"TABLE_AND_COLUMNS\";\n  } else if (containsTable) {\n    return \"TABLE\";\n  } else if (containsColumns) {\n    return \"COLUMNS\";\n  } else {\n    return \"NORMAL\";\n  }\n}\n```"
+    }
+  ],
+  "perf": 8
+}

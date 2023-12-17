@@ -1,0 +1,49 @@
+An energy-efficient facility is good, but a 100 percent
+renewable energy facility is better.
+As of 2014, 100 percent of our U.S. operations and 87 percent of our operations world-
+wide are powered by renewable energy—which results in fewer carbon emissions.
+These worldwide operations include a lot of facilities—all our data centers; all our
+corporate offices, which house nearly 50,000 employees; and over 450 Apple Retail
+Stores around the world—but our goal is to power all of them with 100 percent
+renewable energy. So we’re tapping into energy from solar, wind, micro-hydro, biogas
+fuel cells, and geothermal sources. We’re designing new buildings and updating existing
+ones to use as little electricity as possible. And we’re investing in our own Apple onsite
+
+energy production as well as establishing relationships with third-party energy suppliers
+to source renewable energy. For more details, read the Renewable Resources section
+of this report.
+Our environmental commitment starts in the places where we work—from our
+corporate campuses to our data centers. Although our facilities now represent only
+1 percent of our carbon footprint, they refl      ect our values, and we want them to act
+as models for others to follow. This is why we are constantly making our facilities
+more energy effi   cient and aggressively investing in renewable energy. In just three
+years, we’ve reduced our eff     ective Scope 1 and 2 CO2 equivalent (CO2e) emissions
+by 48 percent, even while our overall energy consumption greatly increased.
+Scope 1 and 2 Effective Carbon Emissions
+(metric tons CO2e)
+500,000
+450,000                                                                     Default Emissions
+400,000                                                                     Total emissions if Apple
+350,000                                                                     did not use renewable
+300,000                                                                     energy
+250,000
+200,000
+150,000                                                                         Effective Emissions
+100,000                                                                         Net emissions after
+ 50,000                                                                         accounting for Apple’s
+       0                                                                        use of renewable energy
+              FY 2011      FY 2012       FY 2013       FY 2014
+Scope 1 and Scope 2 CO    2e emissions capture the emissions from our natural gas use and
+electricity use at our facilities—worldwide corporate offi
+as our fl                                                 ces, data centers, and retail—as well
+        eet vehicle fuel use. Detailed Scope 1, 2, and 3 emissions data is provided in Appendix C.
+Our approach to renewable energy is based on three principles:
+Displacement. We seek to displace more polluting forms of energy in the same
+electric grid region in which we operate—by putting into the grid an amount of
+renewable energy equal to the amount of energy taken from the grid by our facilities.
+Additionality. We strive to create new clean energy that adds to the energy already
+being supplied to the grid. This generally means participating in renewable energy
+projects that would not have been built without Apple’s involvement. And we make
+sure that the energy we count toward our goals is not counted toward the goals that
+utilities must already meet to comply with state standards, such as the Renewable
+Portfolio Standard.

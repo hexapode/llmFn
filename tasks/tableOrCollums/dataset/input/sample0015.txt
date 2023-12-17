@@ -1,0 +1,47 @@
+We spent four years on research and                          We’ve been actively working on safer
+       Innovating alternatives                                     development to create an alternative                  products since the late 1990s. Our
+       to harmful substances                                       to PVC and phthalates, which are used                 efforts have steadily identified and
+       We’re not only evaluating the chemicals                     in the manufacture of power cords and                 removed harmful chemicals: PVC
+       that go into our products and those                         headphone cables. Apple worked with                   and phthalates used in power cords
+       used to manufacture them, but also                          multiple material suppliers and tested                and data cables, lead used in display
+       developing alternatives that help                           dozens of different formulations until                glass and solder, mercury in displays
+       reduce and remove substances we’ve                          the right combination of performance                  and arsenic in glass, and brominated
+       determined to be potentially harmful.                       and safety was achieved with lower                    flame retardants.20       We’ve done so by
+       Sometimes this requires innovation.                         toxicological and ecological risk than                developing alternatives from energy-
+       If a safer alternative doesn’t exist, we                    PVC. Apple then worked with dozens                    efficient and mercury-free LEDs and
+       work with our suppliers to create one.                      of safety agencies around the world                   OLEDs, to safer metal hydroxides and
+       Developing chemistries that meet both                       to create new pathways to certify the                 phosphorus compounds on enclosures,
+       our rigorous performance and safety                         alternative materials. This innovation,               cables, circuit boards, and connectors.
+       standards takes time and effort.                            and others we’re currently working                    Or, as we did with beryllium-copper
+                                                                   toward, exemplify Apple’s commitment.                 connectors and springs, we designed
+        Inventing ways to replace bad substances with good ones                                                          them out of our products.
+                              Replaced with                                                 Eliminated from thousands                             Eliminated in 2009.
+         PVC and                                                       Brominated                                           Mercury
+                              safer thermoplastic                                           of parts such as enclosures                           We use energy-efficient,
+         phthalates                                                    flame                cables, circuit boards,                               mercury-free LEDs
+                              elastomers.21   Both are still           retardants           and connectors in 2008.                               and OLEDs instead
+                              used by other companies                  (BFRs)               We use safer metal                                    of mercury-based
+                              in power cords and                                            hydroxides and phosphorus                             fluorescent lamps in
+                              headphone cables.                                             compounds in their place.22                           all our displays.
+                                                                                            Eliminated from display
+                              Phased out of display                                                                                               Eliminated from all new
+         Lead                                                          Arsenic                                              Beryllium
+                                                                                            glass since 2008.
+                              glass and solder                                                                                                    product designs. Beryllium
+                              in 2006.23                                                    Arsenic was traditionally                             is found in copper alloys
+                                                                                            used in glass.24                                      used to make connectors
+                                                                                                                                                  and springs.
+       Keeping circular                                            minimizing the strain on natural                      market, the chemical composition is not
+       supply chains free                                          resources. There is a tremendous risk                 only unknown but also difficult to trace.
+       of harmful chemicals                                        of introducing harmful chemicals into                 So we take the extra step to analyze the
+       As Apple and other manufacturers                            this loop. And in some cases, materials               chemical composition of these materials
+       transition to circular material supply                      cannot be recycled because of their                   to evaluate whether they comply with
+       chains, the role of green chemistry                         history of containing harmful chemicals.              Apple’s RSS. Through our work, we want
+       has taken on new importance. It’s                           When we source recycled materials                     to ensure that materials can be recycled
+       becoming even more essential to                             from our own products, we know the                    at end-of-life, without posing a threat to
+       make sure that materials returning to                       chemical composition of the materials                 the health of people or the environment.
+       the supply chain do so free of harmful                      used. And we have the assurance that
+       substances. A circular material supply                      the materials are safe for use in our
+       chain means that materials from                             products. In instances where we source
+       products are recovered and reused,                          content from the recycled materials
+       2020 Environmental Progress Report                                            

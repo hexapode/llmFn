@@ -1,0 +1,33 @@
+                                                                     UBER TECHNOLOGIES, INC.
+                                                        CONSOLIDATED STATEMENTS OF CASH FLOWS
+                                                                                (In millions)                                         Year Ended December 31,
+                                                                                                                              2019               2020           2021
+Proceeds from issuance and sale of subsidiary preferred stock units                                                               1,000                247            675
+Proceeds from the issuance of common stock under the Employee Stock Purchase Plan                                                     49               125            107
+Issuance of term loan and notes, net of issuance costs                                                                            1,189              2,628          1,484
+Principal repayment on term loan and notes                                                                                          (27)              (527)           (27)
+Principal repayment on Careem Notes                                                                                                   —               (891)         (307)
+Principal payments on finance leases                                                                                               (138)              (224)         (226)
+Other financing activities                                                                                                          (34)                38            101
+             Net cash provided by financing activities                                                                            8,939              1,379          1,780
+Effect of exchange rate changes on cash and cash equivalents, and restricted cash and cash equivalents                                (4)              (92)           (69)
+             Net increase (decrease) in cash and cash equivalents, and restricted cash and cash equivalents                       3,824             (4,327)            65
+Cash and cash equivalents, and restricted cash and cash equivalents
+Beginning of period                                                                                                               8,209            12,067           7,391
+Reclassification from (to) assets held for sale during the period                                                                     34              (349)           349
+End of period, excluding cash classified within assets held for sale                                                    $        12,067    $         7,391          7,805
+Supplemental disclosures of cash flow information
+       Cash paid for:
+             Interest, net of amount capitalized                                                                        $           332    $           412            449
+             Income taxes, net of refunds                                                                                           133                 82             87
+       Non-cash investing and financing activities:
+             Conversion of redeemable convertible preferred stock to common stock upon initial public
+             offering                                                                                                            14,224                 —              —
+             Conversion of convertible notes to common stock upon initial public offering                                         4,229                 —              —
+             Conversion of convertible notes to common stock related to Careem                                                        —                 —             232
+             Finance lease obligations                                                                                              251                196            184
+             Common stock issued in connection with acquisitions                                                                       9             3,898          1,868
+             Ownership interest received in exchange for divestitures                                                                 —                171          1,018
+             Issuance of Careem Notes including the holdback amount                                                                   —              1,634             —
+                                        The accompanying notes are an integral part of these consolidated financial statements.
+                                                                                      81

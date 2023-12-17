@@ -1,0 +1,32 @@
+                                                             Comprehensive Carbon Footprint
+                                                             We measure more. So we can do more.
+                                                             When we measure our carbon footprint, we don’t stop with ourselves.
+                                                             We include hundreds of suppliers, millions of customers, and hundreds of
+                                                             millions of devices. And we’re always looking for ways to make the biggest
+                                                             difference in five major areas: corporate facilities, manufacturing, product
+                                                             use, transportation, and end-of-life processing. In 2017, we once again
+                                                             reduced our overall carbon footprint to 27.5 million metric tons of greenhous
+                                                             gases (CO₂e). That‘s down from 29.5 million metric tons in 2016.
+                                                             Our environmental programs contributed to this decline in our comprehensive
+                                                             carbon footprint, including reduced emissions from aluminum manufacturing,
+                                                             energy efficiency, and increasing use of clean energy at our facilities and
+                                                             in our supply chain. We also refine our product life cycle analysis each year
+                                                             moving from industry-average data to our own data whenever possible.
+Apple’s carbon footprint                                     (See Appendix A to read more about our life cycle carbon analysis.)
+ 27.5 million metric tons of carbon emissions
+  77%                                                                                                         17%                           <1%
+
+  Manufacturing                                                                                               Product use                   End of life
+  39%    Integrated circuits1                                                                                 69%
+                                                                                                                      Active5               1%
+  24%    Aluminum                                                                                             19%
+                                                                                                                      Idle6                 Corporate facilities
+  16%    Boards and flexes2                                                                                   11%
+                                                                                                                      Sleep7
+  12%    Other3                                                                                               1%
+                                                                                                                      Off
+  5%     Displays                                                                                                                           4%
+  4%     Onboard electronics4                                                                                                               Product transportation
+Our carbon footprint tells us a lot about how we’re doing and where there are opportunities to go further. For example,
+because aluminum represents almost a quarter of our manufacturing emissions, we developed a program to reduce emissions
+associated with aluminum enclosures.

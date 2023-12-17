@@ -1,0 +1,33 @@
+
+function doesItContainTableOrColumns(text) {
+  // Split the text into lines
+  const lines = text.split('\n').map(line => line.trim());
+
+  // Check if the text represents a table
+  let isTable = false;
+  if (lines.length >= 3) {
+    const headerRow = lines[1].split(/\s{2,}/); // Split the second line by multiple spaces
+    const dataRow = lines[2].split(/\s{2,}/); // Split the third line by multiple spaces
+    if (headerRow.length === dataRow.length) {
+      isTable = true;
+    }
+  }
+
+  // Check if the text represents columns
+  let isColumns = false;
+  const columnHeaders = lines[0].split(/\s{2,}/); // Split the first line by multiple spaces
+  if (columnHeaders.length > 1) {
+    isColumns = true;
+  }
+
+  // Determine the output based on the analysis
+  if (isTable && isColumns) {
+    return "TABLE_AND_COLUMNS";
+  } else if (isTable) {
+    return "TABLE";
+  } else if (isColumns) {
+    return "COLUMNS";
+  } else {
+    return "NORMAL";
+  }
+}

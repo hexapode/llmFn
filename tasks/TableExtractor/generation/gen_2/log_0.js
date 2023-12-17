@@ -1,0 +1,13 @@
+{
+  "llm": [
+    {
+      "role": "system",
+      "content": "You are a programmer, and you need to build a javascript funtion to solve the following task:\nYou will be provided with raw text comming from an OCR, that is not represented in markdown, just the characters as they originaly appear in the document. Determine if the input text contain tables if yes output them in Markdown format, separated by \n\n between table. If no table are found, output NO_TABLE\nTo solve this task you need to create a javascript function that take into parameters Text to be transform and return a Markdown table.\nOutput the code between ```javascript and ``` tags.\nDo not add usage sample code, only output the functions.\nYour are not allow to use any external library or call any external service/library/function.\nThe function should be named transformToMarkdownTable.\n"
+    },
+    {
+      "role": "assistant",
+      "content": "```javascript\nfunction transformToMarkdownTable(text) {\n  // Step 1: Detect if there are tables in the text\n  const lines = text.split('\\n');\n  let tableFound = false;\n  let tables = [];\n\n  for (let i = 0; i < lines.length; i++) {\n    if (lines[i].includes('|')) {\n      // Step 2: Extracting the table content\n      let tableContent = extractTableContent(lines, i);\n      tables.push(tableContent);\n      tableFound = true;\n    }\n  }\n\n  if (tableFound) {\n    // Step 3: Generating the Markdown tables\n    let markdownTables = '';\n    tables.forEach((table, index) => {\n      if (index > 0) {\n        markdownTables += '\\n\\n'; // Add a separator between tables\n      }\n      markdownTables += generateMarkdownTable(table);\n    });\n    return markdownTables;\n  } else {\n    return \"NO_TABLE\";\n  }\n}\n\nfunction extractTableContent(lines, startingLineIndex) {\n  let tableContent = [];\n  let i = startingLineIndex;\n\n  while (i < lines.length && lines[i].includes('|')) {\n    tableContent.push(lines[i]);\n    i++;\n  }\n\n  return tableContent;\n}\n\nfunction generateMarkdownTable(tableContent) {\n  let markdownTable = '';\n\n  // The header row\n  markdownTable += '|';\n  for (let i = 0; i < tableContent[0].split('|').length - 1; i++) {\n    markdownTable += '---|';\n  }\n  markdownTable += '\\n';\n\n  // The content rows\n  tableContent.forEach((row) => {\n    markdownTable += row + '\\n';\n  });\n\n  return markdownTable;\n}\n```"
+    }
+  ],
+  "perf": 1
+}

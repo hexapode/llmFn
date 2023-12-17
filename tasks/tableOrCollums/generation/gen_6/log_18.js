@@ -1,0 +1,21 @@
+{
+  "llm": [
+    {
+      "role": "system",
+      "content": "You are a programmer, and you need to build a javascript funtion to solve the following task:\nDetermine if the input text contain table or collumns. The input text is the output of an OCR render to a textfile while preserving layout.\nTo solve this task you need to create a javascript function that take into parameters Text to be classified and return Either TABLE, COLUMNS, TABLE_AND_COLUMNS or NORMAL.\nOutput the code between ```javascript and ``` tags.\nDo not add usage sample code, only output the functions.\nYour are not allow to use any external library or call any external service/library/function.\nThe function should be named doesItContainTableOrColumns.\n"
+    },
+    {
+      "role": "assistant",
+      "content": "```javascript\nfunction doesItContainTableOrColumns(text) {\n  // Check if the text contains typical table features such as rows and columns\n  if (text.includes('|') || text.includes('+') || text.includes('-')) {\n    return \"TABLE\";\n  }\n\n  // Check if the text contains typical columnar structure\n  if (text.split('\\n').every(row => row.trim().split(/\\s{2,}/).length > 1)) {\n    return \"COLUMNS\";\n  }\n\n  // Check if the text contains both table and columnar structure\n  if (text.includes('|') && text.split('\\n').every(row => row.trim().split(/\\s{2,}/).length > 1)) {\n    return \"TABLE_AND_COLUMNS\";\n  }\n\n  // If none of the above conditions is met, classify as normal text\n  return \"NORMAL\";\n}\n```\n"
+    },
+    {
+      "role": "user",
+      "content": "Try to think outside the box, and find novel a way to solve the problem. First describe it and why you think it make sense, then implement it in the function."
+    },
+    {
+      "role": "assistant",
+      "content": "One novel way to determine if the input text contains a table or columns is to use the Levenshtein distance to compare the similarity of each line in the text. If the lines are all similar to each other, it might indicate a tabular structure. On the other hand, if the lines vary significantly from each other, it might indicate a columnar structure.\n\nThis approach makes sense because in a typical table, the rows are often similar to each other as they represent different entries in the same table, while in a columnar structure, each line may contain different information and therefore can vary significantly.\n\nHere's how we can implement this approach in the function:\n\n```javascript\nfunction levenshteinDistance(a, b){\n  if(a.length == 0) return b.length; \n  if(b.length == 0) return a.length;\n  \n  var matrix = [];\n\n  // Increment along the first column of each row\n  var i;\n  for(i = 0; i <= b.length; i++){\n    matrix[i] = [i];\n  }\n\n  // Increment each column in the first row\n  var j;\n  for(j = 0; j <= a.length; j++){\n    matrix[0][j] = j;\n  }\n\n  // Fill in the rest of the matrix\n  for(i = 1; i <= b.length; i++){\n    for(j = 1; j <= a.length; j++){\n      if(b.charAt(i-1) == a.charAt(j-1)){\n        matrix[i][j] = matrix[i-1][j-1];\n      } else {\n        matrix[i][j] = Math.min(matrix[i-1][j-1] + 1, // Substitution\n                               Math.min(matrix[i][j-1] + 1, // Insertion\n                                        matrix[i-1][j] + 1)); // Deletion\n      }\n    }\n  }\n\n  return matrix[b.length][a.length];\n};\n\nfunction doesItContainTableOrColumns(text) {\n  var lines = text.split('\\n');\n  var distanceSum = 0;\n  for (var i = 1; i < lines.length; i++) {\n    distanceSum += levenshteinDistance(lines[i - 1], lines[i]);\n  }\n\n  var averageDistance = distanceSum / (lines.length - 1);\n\n  // If the lines are similar, consider it as a table\n  if (averageDistance < 10) {\n    return \"TABLE\";\n  }\n\n  // If the lines are different, consider it as a columnar structure\n  if (averageDistance > 30) {\n    return \"COLUMNS\";\n  }\n\n  // If the lines vary within a certain range, consider it as a mix of table and columns\n  return \"TABLE_AND_COLUMNS\";\n}\n```"
+    }
+  ],
+  "perf": 8
+}
