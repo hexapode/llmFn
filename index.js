@@ -1,5 +1,11 @@
 const fs = require('fs/promises');
+
 const OpenAI = require('openai');
+
+const {loadTask} = require('./src/loader.js');
+const {execQueue} = require('./src/queue.js');
+
+const evaluate = require('./src/evaluate.js');
 
 const openai = new OpenAI({
   apiKey: process.env['OPENAI_API_KEY'], // This is the default and can be omitted
@@ -9,117 +15,20 @@ const openai = new OpenAI({
 
 let MODEL = 'gpt-3.5-turbo-1106';
 
-async function loadTask(TASK) { 
-    if (TASK.dataset.type == "fileBased") {
-        TASK.dataSet = [];
-
-        let files = await fs.readdir(`${TASK.taskDir}/dataset/input`);
-        for (let file of files) {
-            if (file.endsWith('.txt')) {
-                let input = await fs.readFile(`${TASK.taskDir}/dataset/input/${file}`, 'utf8');
-                let output = await fs.readFile(`${TASK.taskDir}/dataset/output/${file}`, 'utf8');
-                TASK.dataSet.push({ input, output });
-            }
-        }
-    }
-}
-
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-async function execQueue(queue, concurrency) {
-    let result = [];
-    let running = 0;
-    
-    let succeded = 0;
-    let current = 0;
-    while (succeded < queue.length) { 
-        if (running < concurrency && current < queue.length) { 
-            running++;
-            let worker = async function() {
-                let fn = queue[current].task;
-                let args = queue[current].args;
-                try {
-                    let res = await fn(...args);
-
-                    result[current] = res;
-                    running--;
-                    succeded++;
-                }
-                catch (e) {
-                    console.log(e);
-                    console.log("WITH", args)
-                    // requeue
-                     queue.push({
-                        task: fn,
-                        args: args
-                    })
-                    running--;
-                    succeded++;
-                }
-                
-            }
-            worker();
-            current++;
-        }
-        else {
-            await sleep(100);
-        }
-    }
-    return result;
-}
 
 
-async function evaluate(code, TASK) { 
-    console.log("Evaluating code")
-    console.log(code);
-    let fn = null;
-    try {
-        fn = eval(code + ";" + TASK.functionName);
-    }
-    catch (e) {
-        console.log(e);
-        return {
-            input : "undefined",
-            output : "undefined",
-            result : e.toString()   
-        };
-    }
-    console.log(fn);
-    let results = [];
-    for (let[index, data] of TASK.dataSet.entries()) {
-        let input = data.input;
-        let output = data.output;
-        let result = fn(input);
-       
-        if (!result) {
-             results.push ({
-                input : input,
-                output : output,
-                result : "undefined"
-            });
-        }
-        else if (result.trim() != output.trim()) {
-            results.push ({
-                input : input,
-                output : output.trim(),
-                result : result
-            });
-        }
-    }
-    console.log(results.length, '...failed');
-    return results;
-}
+
+
 
 function mutateCodeAccordingToPerf(results) { 
-    let sample = results[Math.random() * results.length | 0];
+    if (!results) {debugger}
+    let sample = results.results[Math.random() * results.results.length | 0];
 
     return {
     role: 'user',
-    content: `I try on the following input and it returned "${sample.result}" instead of "${sample.output}",Reflect on what went wrong the correct the function. 
+    content: `I try on the following input and it returned ${JSON.stringify(sample.result)}" when the correct class was "${sample.output}",Reflect on what went wrong the correct the function. 
 Here is the input used, input:
-${sample.input}`
+${JSON.stringify(sample.input).slice(1, -1)}`
     };
 }
 
@@ -132,9 +41,12 @@ function beCreative(results) {
 }
 
 function useAnotherMethod(results) { 
+    let sample = results.results[Math.random() * results.results.length | 0];
+
     return {
         role: 'user',
-        content: `Try to implement another way of doing this, why trying to stay somehow similar to previously generated function.`
+        content: `Try to implement another way of doing this, while trying to stay somehow similar to previously generated function. Maybe make use of some other variable. here is a sample input:
+${JSON.stringify(sample.input).slice(1, -1)}`
     };
 }
 
@@ -146,17 +58,20 @@ async function nextGeneration(iteration, individu, TASK, ticksSinceLastImproveme
         correctionMessage = beCreative(bestResults);
     }
     else if (Math.random() < 0.1) {
-        useAnotherMethod(bestResults);
+        correctionMessage = useAnotherMethod(bestResults);
     } else {
         correctionMessage = mutateCodeAccordingToPerf(bestResults);
     }
 
     let modelPrompt = [...seedMessage, bestMessage, correctionMessage];
 
-    let chatCompletion = await openai.chat.completions.create({
+    let chatCompletion = null;
+
+
+       chatCompletion =  await openai.chat.completions.create({
             messages: modelPrompt,
             model: MODEL,
-    });
+        });
 
 
     // extract the code from the response with a regexp, it's contain between ```javascript and ``` blocks
@@ -170,39 +85,16 @@ async function nextGeneration(iteration, individu, TASK, ticksSinceLastImproveme
     results = await evaluate(code, TASK);
     fs.writeFile(`${outDir}/log_${iteration}-${individu}.json`, JSON.stringify({
         llm:[...modelPrompt, chatCompletion.choices[0].message],
-        perf: results.length
+        perf: results.score
     },null, 2));
 
-    if (results.length < bestScore) {
-        bestMessage = chatCompletion.choices[0].message;
-        bestResults = results;
-        bestScore = results.length;
-        return {
-            bestMessage,
-            bestResults,
-            bestScore,
-            code,
-            individu
-        }
-    }
-    return false;
+    results.code = code;
+    results.individu = individu;
+    results.message = chatCompletion.choices[0].message;
+    return results;
 }
 
 
-
-
-/**
-      let jobQueue = [];
-        for (let page of pages) { 
-            jobQueue.push({
-                task: partialLlmCleanup,
-                args: [outdir, page]
-            });
-        }
-
-        await execQueue(jobQueue, 10);
-
- */
 async function runTask(taskDir) {
 
     let TASK = require(`${taskDir}/task.json`);
@@ -224,8 +116,10 @@ ${TASK.goal}
 To solve this task you need to create a javascript function that take into parameters ${TASK.input} and return ${TASK.output}.
 Output the code between \`\`\`javascript and \`\`\` tags.
 Do not add usage sample code, only output the functions.
+Try to compute the probability to the best of your ability based on the parameters inputs! DO NOT Output Placeholder CODE! Actually implement the function!
 Your are not allow to use any external library or call any external service/library/function.
-The function should be named ${TASK.functionName}.
+Your output function should NOT contain ANY Comment. Do not add inline comments in the code.
+The function should be named ${TASK.functionName}  and its signature should be ${TASK.functionnSignature}.
 `;
 
     let seedMessage = [{ role: 'system', content: MainPrompt }];
@@ -235,8 +129,6 @@ The function should be named ${TASK.functionName}.
         model: MODEL,
      });
     console.log(chatCompletion.choices[0].message);
-
-    // extract the code from the response with a regexp, it's contain between ```javascript and ``` blocks
 
     // extract the code from the response with a regexp, it's contain between ```javascript and ``` blocks
     let codeBlocks = [...chatCompletion.choices[0].message.content.matchAll(/```javascript([\s\S]*?)```/g)];
@@ -250,16 +142,16 @@ The function should be named ${TASK.functionName}.
     let results = await evaluate(code, TASK);
     fs.writeFile(`${outDir}/log_${iteration}.js`, JSON.stringify({
         llm: [...seedMessage, chatCompletion.choices[0].message],
-        perf: results.length
+        perf: results.score
     }, null, 2));
 
     let bestMessage = chatCompletion.choices[0].message;
     let bestResults = results;
-    let bestScore = results.length;
+    let bestScore = results.score;
     let ticksSinceLastImprovement = 0;
     while (true) {
         iteration++;
-        if (iteration == 20) {
+        if (iteration == 1000) {
             break;
         }
         let jobQueue = [];
@@ -283,17 +175,21 @@ The function should be named ${TASK.functionName}.
         }
 
         let results = await execQueue(jobQueue, 10);
+
         // remove failed results (false)
         results = results.filter(r => r);
+
+        // remove NaN and undefined results
+        results = results.filter(r => r.score);
         // sort results by perf (asc)
-        results.sort((a, b) => a.bestScore - b.bestScore);
+        results.sort((a, b) => a.score - b.score);
         // take the best result
-        if (results.length) {
+        if (results.length > 0) {
             let best = results[0]; 
-            if (best.bestScore < bestScore) {
-                bestScore = best.bestScore;
-                bestResults = best.bestResults;
-                bestMessage = best.bestMessage;
+            if (best.score < bestScore) {
+                bestScore = best.score;
+                bestResults = results;
+                bestMessage = best.message;
                 ticksSinceLastImprovement = 0;
                 fs.writeFile(`${outDir}/_improvement_${iteration}.js`, `/* Best score: ${bestScore} */\n\n` +  best.code);
             }
@@ -302,6 +198,6 @@ The function should be named ${TASK.functionName}.
 }
 
 
-let taskDir = `./tasks/TableExtractor`;
+let taskDir = `./sample_tasks/KaggleS3e25`;
 
 runTask(taskDir);

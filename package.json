@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "csv": "^6.3.6",
     "openai": "^4.23.0"
   }
 }
