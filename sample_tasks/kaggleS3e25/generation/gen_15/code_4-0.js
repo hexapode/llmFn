@@ -1,11 +1,37 @@
 
 function PredictCirrhosisOutcomes(N_Days, Drug, Age, Sex, Ascites, Hepatomegaly, Spiders, Edema, Bilirubin, Cholesterol, Albumin, Copper, Alk_Phos, SGOT, Tryglicerides, Platelets, Prothrombin, Stage) {
-  // Your prediction code here
-  // Calculate probabilities for each outcome (C, CL, D)
-  // Return hashmap with specific values for each outcome
+  var Status_C, Status_CL, Status_D;
+
+  // Using Bilirubin, Albumin, and Stage as factors to predict the probabilities for each status
+  if (Bilirubin < 1.0 && Albumin > 3.5 && Stage < 2.0) {
+    Status_C = 0.9;
+    Status_CL = 0.05;
+    Status_D = 0.05;
+  } else if (Bilirubin < 2.0 && Albumin > 3.0 && Stage < 3.0) {
+    // Introducing an impact based on Drug and Age
+    var impactFactor = 0;
+    if (Drug === "Placebo") {
+      impactFactor += 0.2;
+    } else {
+      impactFactor -= 0.1;
+    }
+    if (Age > 15000) {
+      impactFactor += 0.1;
+    } else {
+      impactFactor -= 0.05;
+    }
+    Status_C = 0.5 + impactFactor;
+    Status_CL = 0.3 - impactFactor;
+    Status_D = 0.2;
+  } else {
+    Status_C = 0.1;
+    Status_CL = 0.3;
+    Status_D = 0.6;
+  }
+
   return {
-    C: 0.5,
-    CL: 0.3,
-    D: 0.2
+    Status_C: Status_C,
+    Status_CL: Status_CL,
+    Status_D: Status_D
   };
 }

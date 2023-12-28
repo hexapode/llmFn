@@ -2,7 +2,7 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-async function execQueue(queue, concurrency) {
+async function execQueue(queue, concurrency, requeue=false) {
     let result = [];
     let running = 0;
     
@@ -26,10 +26,12 @@ async function execQueue(queue, concurrency) {
                     console.log(e);
                     console.log("WITH", args)
                     // requeue
-                     queue.push({
-                        task: fn,
-                        args: args
-                    })
+                    if (requeue) {
+                        queue.push({
+                            task: fn,
+                            args: args
+                        });
+                    }
                     running--;
                     succeded++;
                 }

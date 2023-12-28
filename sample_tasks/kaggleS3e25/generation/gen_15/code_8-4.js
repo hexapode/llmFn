@@ -1,15 +1,33 @@
 
 function PredictCirrhosisOutcomes(N_Days, Drug, Age, Sex, Ascites, Hepatomegaly, Spiders, Edema, Bilirubin, Cholesterol, Albumin, Copper, Alk_Phos, SGOT, Tryglicerides, Platelets, Prothrombin, Stage) {
-  // Your prediction code here
-  // Calculate probabilities for each outcome (C, CL, D)
-  // Return hashmap with probabilities
+  var Status_C, Status_CL, Status_D;
+
+  // Decision tree algorithm to predict the probabilities for each status
+  if (Number(N_Days) > 1000) {
+    if (Albumin > 3.25) {
+      Status_C = 0.8;
+      Status_CL = 0.1;
+      Status_D = 0.1;
+    } else {
+      Status_C = 0.2;
+      Status_CL = 0.4;
+      Status_D = 0.4;
+    }
+  } else {
+    if (Bilirubin < 0.7) {
+      Status_C = 0.9;
+      Status_CL = 0.05;
+      Status_D = 0.05;
+    } else {
+      Status_C = 0.3;
+      Status_CL = 0.3;
+      Status_D = 0.4;
+    }
+  }
+
   return {
-    C: 0.5,
-    CL: 0.3,
-    D: 0.2
+    Status_C: Status_C,
+    Status_CL: Status_CL,
+    Status_D: Status_D
   };
 }
-
-// Example usage
-const prediction = PredictCirrhosisOutcomes(1536, "Placebo", 15105, "F", "N", "N", "N", "N", 0.9, 302.0, 4.3, 58.0, 758.0, 52.7, 104.0, 227.0, 10.3, 2.0);
-console.log(prediction);

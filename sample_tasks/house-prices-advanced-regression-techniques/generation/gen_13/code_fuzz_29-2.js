@@ -1,0 +1,30 @@
+
+    /* Try to improve the prediction accuracy, what could be a smart way?     */
+    
+    
+function predictHousePrice(Id, MSSubClass, MSZoning, LotFrontage, LotArea, Street, Alley, LotShape, LandContour, Utilities, LotConfig, LandSlope, Neighborhood, Condition1, Condition2, BldgType, HouseStyle, OverallQual, OverallCond, YearBuilt, YearRemodAdd, RoofStyle, RoofMatl, Exterior1st, Exterior2nd, MasVnrType, MasVnrArea, ExterQual, ExterCond, Foundation, BsmtQual, BsmtCond, BsmtExposure, BsmtFinType1, BsmtFinSF1, BsmtFinType2, BsmtFinSF2, BsmtUnfSF, TotalBsmtSF, Heating, HeatingQC, CentralAir, Electrical, 1stFlrSF, 2ndFlrSF, LowQualFinSF, GrLivArea, BsmtFullBath, BsmtHalfBath, FullBath, HalfBath, BedroomAbvGr, KitchenAbvGr, KitchenQual, TotRmsAbvGrd, Functional, Fireplaces, FireplaceQu, GarageType, GarageYrBlt, GarageFinish, GarageCars, GarageArea, GarageQual, GarageCond, PavedDrive, WoodDeckSF, OpenPorchSF, EnclosedPorch, 3SsnPorch, ScreenPorch, PoolArea, PoolQC, Fence, MiscFeature, MiscVal, MoSold, YrSold, SaleType, SaleCondition) {
+  // Perform more complex calculations and predictions based on the input parameters
+  
+  let predictedPrice = 180000;
+  
+  // Example of more complex calculations
+  predictedPrice += (OverallQual * 15000);
+  predictedPrice += (TotalBsmtSF * 70);
+  predictedPrice += (GrLivArea * 100);
+  predictedPrice += (GarageArea * 50);
+  predictedPrice += (YearBuilt * 100);
+  
+  if (Neighborhood === "NridgHt") {
+    predictedPrice += 20000;
+  } else if (Neighborhood === "StoneBr") {
+    predictedPrice += 25000;
+  }
+  
+  if (GarageType === "Attchd") {
+    predictedPrice += 10000;
+  } else if (GarageType === "BuiltIn") {
+    predictedPrice += 15000;
+  }
+  
+  return predictedPrice;
+}

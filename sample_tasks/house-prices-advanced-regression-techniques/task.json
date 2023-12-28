@@ -1,0 +1,18 @@
+{
+    "goal" : "It is your job to predict the sales price for an house given the input characteristics",
+    "output" : "The predicted sales price for an house. a good starting value is 180000",
+    "input" : "A set of information about a house",
+    "functionName": "predictHousePrice",
+    "dataset" : {
+        "type" : "kaggleTabular",
+        "folder" : "dataset",
+        "evaluator" : "LogRMSE",
+        "revaluatorOrder": "lowerIsBetter",
+        "output": "SalePrice",
+        "outputSchema" : {
+            "type" : "number",
+            "minimum" : 0
+        }
+    },
+    "useFuzzer" : true
+}

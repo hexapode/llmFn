@@ -1,0 +1,9 @@
+
+    /* Try to implement another way of doing this, while trying to stay somehow similar to previously generated function. Maybe make use of some other variable. here is a sample input:
+Id="423", MSSubClass="20", MSZoning="RL", LotFrontage="100", LotArea="21750", Street="Pave", Alley="NA", LotShape="Reg", LandContour="HLS", Utilities="AllPub", LotConfig="Inside", LandSlope="Mod", Neighborhood="Mitchel", Condition1="Artery", Condition2="Norm", BldgType="1Fam", HouseStyle="1Story", OverallQual="5", OverallCond="5", YearBuilt="1954", YearRemodAdd="1954", RoofStyle="Hip", RoofMatl="CompShg", Exterior1st="HdBoard", Exterior2nd="HdBoard", MasVnrType="None", MasVnrArea="0", ExterQual="TA", ExterCond="TA", Foundation="CBlock", BsmtQual="TA", BsmtCond="TA", BsmtExposure="No", BsmtFinType1="Unf", BsmtFinSF1="0", BsmtFinType2="Unf", BsmtFinSF2="0", BsmtUnfSF="988", TotalBsmtSF="988", Heating="GasA", HeatingQC="Ex", CentralAir="Y", Electrical="FuseA", _1stFlrSF=undefined, _2ndFlrSF=undefined, LowQualFinSF="0", GrLivArea="988", BsmtFullBath="0", BsmtHalfBath="0", FullBath="1", HalfBath="0", BedroomAbvGr="2", KitchenAbvGr="1", KitchenQual="TA", TotRmsAbvGrd="4", Functional="Typ", Fireplaces="0", FireplaceQu="NA", GarageType="Attchd", GarageYrBlt="1954", GarageFinish="RFn", GarageCars="2", GarageArea="520", GarageQual="TA", GarageCond="TA", PavedDrive="N", WoodDeckSF="0", OpenPorchSF="0", EnclosedPorch="0", _3SsnPorch=undefined, ScreenPorch="0", PoolArea="0", PoolQC="NA", Fence="NA", MiscFeature="NA", MiscVal="0", MoSold="2", YrSold="2008", SaleType="WD", SaleCondition="Normal" */
+    
+    
+function predictHousePrice(OverallQual, YearBuilt, TotalBsmtSF, GrLivArea, FullBath, GarageCars, GarageArea, LotArea) {
+  // Add your calculation here using LotArea as an additional variable
+  return 180000 + (OverallQual * 5000) + (YearBuilt * 150) + (TotalBsmtSF * 50) + (GrLivArea * 60) + (FullBath * 5000) + (GarageCars * 8000) + (GarageArea * 100) + (LotArea * 2);
+}

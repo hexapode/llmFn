@@ -1,0 +1,21 @@
+{
+  "llm": [
+    {
+      "role": "system",
+      "content": "You are a programmer, and you need to build a javascript funtion to solve the following task:\n Prediction of Cirrhosis Outcomes. Each id in the test set had a single true class label, Status. For each id, you must submit a set of predicted probabilities for each of the three possible outcomes, e.g., Status_C, Status_CL, and Status_D.\nTo solve this task you need to create a javascript function that take into parameters A set of information about a patient and return An hashmap with 3 keys: Status_C, Status_CL and Status_D. Each key has a value between 0 and 1 representing the probability of the patient to have the corresponding outcome..\nOutput the code between ```javascript and ``` tags.\nDo not add usage sample code, only output the functions.\nTry to compute the probability to the best of your ability based on the parameters inputs! DO NOT Output Placeholder CODE! Actually implement the function!\nYour are not allow to use any external library or call any external service/library/function.\nYour output function should NOT contain ANY Comment. Do not add inline comments in the code. Do the calculations in the function, do not put a comment saying what to do instead.\nThe function should be named PredictCirrhosisOutcomes  and its signature should be PredictCirrhosisOutcomes(N_Days, Drug, Age, Sex, Ascites, Hepatomegaly, Spiders, Edema, Bilirubin, Cholesterol, Albumin, Copper, Alk_Phos, SGOT, Tryglicerides, Platelets, Prothrombin, Stage).\n"
+    },
+    {
+      "role": "assistant",
+      "content": "```javascript\nfunction PredictCirrhosisOutcomes(N_Days, Drug, Age, Sex, Ascites, Hepatomegaly, Spiders, Edema, Bilirubin, Cholesterol, Albumin, Copper, Alk_Phos, SGOT, Tryglicerides, Platelets, Prothrombin, Stage) {\n    const Status_C = 0.2 * (Age / 100) + 0.2 * (Bilirubin / 10) + 0.1 * (Cholesterol / 300) + 0.1 * (Albumin / 5) - 0.1 * (Platelets / 500) + 0.1 * Stage;\n    const Status_CL = 0.3 * (Age / 100) + 0.15 * (Bilirubin / 10) + 0.1 * (Cholesterol / 300) + 0.1 * (Albumin / 5) + 0.1 * (Prothrombin / 100) + 0.05 * Stage;\n    const Status_D = 0.25 * (Age / 100) + 0.1 * (Bilirubin / 10) + 0.1 * (Cholesterol / 300) + 0.2 * (Albumin / 5) + 0.15 * (Prothrombin / 100) + 0.1 * Stage;\n    \n    return {\n        Status_C: Math.max(0, Math.min(1, Status_C)),\n        Status_CL: Math.max(0, Math.min(1, Status_CL)),\n        Status_D: Math.max(0, Math.min(1, Status_D))\n    };\n}\n```"
+    },
+    {
+      "role": "user",
+      "content": "Try to add a step in the computation using unused variable, this stpe should impact the prediction. here is a sample input:\nN_Days=\"934\", Drug=\"Placebo\", Age=\"22388\", Sex=\"F\", Ascites=\"N\", Hepatomegaly=\"Y\", Spiders=\"N\", Edema=\"N\", Bilirubin=\"2.4\", Cholesterol=\"372.0\", Albumin=\"3.2\", Copper=\"57.0\", Alk_Phos=\"1440.0\", SGOT=\"153.45\", Tryglicerides=\"131.0\", Platelets=\"156.0\", Prothrombin=\"10.0\", Stage=\"4.0\""
+    },
+    {
+      "role": "assistant",
+      "content": "```javascript\nfunction PredictCirrhosisOutcomes(N_Days, Drug, Age, Sex, Ascites, Hepatomegaly, Spiders, Edema, Bilirubin, Cholesterol, Albumin, Copper, Alk_Phos, SGOT, Tryglicerides, Platelets, Prothrombin, Stage) {\n    const Status_C = 0.2 * (Age / 100) + 0.2 * (Bilirubin / 10) + 0.1 * (Cholesterol / 300) + 0.1 * (Albumin / 5) - 0.1 * (Platelets / 500) + 0.1 * Stage - 0.05 * (Copper / 100);\n    const Status_CL = 0.3 * (Age / 100) + 0.15 * (Bilirubin / 10) + 0.1 * (Cholesterol / 300) + 0.1 * (Albumin / 5) + 0.1 * (Prothrombin / 100) + 0.05 * Stage - 0.05 * (Copper / 100);\n    const Status_D = 0.25 * (Age / 100) + 0.1 * (Bilirubin / 10) + 0.1 * (Cholesterol / 300) + 0.2 * (Albumin / 5) + 0.15 * (Prothrombin / 100) + 0.1 * Stage - 0.05 * (Copper / 100);\n    \n    return {\n        Status_C: Math.max(0, Math.min(1, Status_C)),\n        Status_CL: Math.max(0, Math.min(1, Status_CL)),\n        Status_D: Math.max(0, Math.min(1, Status_D))\n    };\n}\n```"
+    }
+  ],
+  "perf": null
+}

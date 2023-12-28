@@ -1,17 +1,25 @@
 
 function PredictCirrhosisOutcomes(N_Days, Drug, Age, Sex, Ascites, Hepatomegaly, Spiders, Edema, Bilirubin, Cholesterol, Albumin, Copper, Alk_Phos, SGOT, Tryglicerides, Platelets, Prothrombin, Stage) {
-  // Your prediction code here
-  // Calculate probabilities for each outcome (C, CL, D)
-  // Return hashmap with probabilities
+  var Status_C, Status_CL, Status_D;
+
+  // Using Bilirubin, Albumin, and Stage as factors to predict the probabilities for each status
+  if (Bilirubin < 1.5 && Albumin > 3.5 && Stage < 2.5 && Copper < 15.0) {
+    Status_C = 0.9;
+    Status_CL = 0.05;
+    Status_D = 0.05;
+  } else if (Bilirubin < 3.0 && Albumin > 2.5 && Stage < 4.0 && Copper < 30.0) {
+    Status_C = 0.5;
+    Status_CL = 0.3;
+    Status_D = 0.2;
+  } else {
+    Status_C = 0.1;
+    Status_CL = 0.3;
+    Status_D = 0.6;
+  }
+
   return {
-    C: 0.5,
-    CL: 0.3,
-    D: 0.2
+    Status_C: Status_C,
+    Status_CL: Status_CL,
+    Status_D: Status_D
   };
 }
-
-// Call the function and display the individual probabilities
-const result = PredictCirrhosisOutcomes(2563, "Placebo", 12738, "F", "N", "Y", "Y", "S", 0.4, 432.0, 3.57, 44.0, 1406.0, 190.0, 76.0, 248.0, 11.5, 3.0);
-console.log("Probability of C:", result.C);
-console.log("Probability of CL:", result.CL);
-console.log("Probability of D:", result.D);

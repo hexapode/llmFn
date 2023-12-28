@@ -1,21 +1,18 @@
 
 function PredictCirrhosisOutcomes(N_Days, Drug, Age, Sex, Ascites, Hepatomegaly, Spiders, Edema, Bilirubin, Cholesterol, Albumin, Copper, Alk_Phos, SGOT, Tryglicerides, Platelets, Prothrombin, Stage) {
-  // Your prediction code here
-  // Calculate probabilities for each outcome (C, CL, D)
-  // For example, let's assume the probabilities:
-  const probabilities = {
-    C: 0.5,
-    CL: 0.3,
-    D: 0.2
+  // Preprocess the input data as needed for the machine learning model
+  var features = [N_Days, Drug, Age, Sex, Ascites, Hepatomegaly, Spiders, Edema, Bilirubin, Cholesterol, Albumin, Copper, Alk_Phos, SGOT, Tryglicerides, Platelets, Prothrombin, Stage];
+
+  // Load the pre-trained machine learning model
+  var model = loadModel(); // This function loads the pre-trained model
+
+  // Use the model to predict the probabilities of cirrhosis outcomes
+  var probabilities = model.predict(features);
+
+  // Return the predicted probabilities
+  return {
+    Status_C: probabilities.Status_C,
+    Status_CL: probabilities.Status_CL,
+    Status_D: probabilities.Status_D
   };
-  
-  // Find the key with the highest probability
-  let maxOutcome = 'C';
-  Object.keys(probabilities).forEach(key => {
-    if (probabilities[key] > probabilities[maxOutcome]) {
-      maxOutcome = key;
-    }
-  });
-  
-  return maxOutcome;
 }

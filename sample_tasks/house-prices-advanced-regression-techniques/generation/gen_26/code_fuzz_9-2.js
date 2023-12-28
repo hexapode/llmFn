@@ -1,0 +1,9 @@
+
+    /* Try to add a step in the computation using unused variable, this stpe should impact the prediction. here is a sample input:
+Id="179", MSSubClass="20", MSZoning="RL", LotFrontage="63", LotArea="17423", Street="Pave", Alley="NA", LotShape="IR1", LandContour="Lvl", Utilities="AllPub", LotConfig="CulDSac", LandSlope="Gtl", Neighborhood="StoneBr", Condition1="Norm", Condition2="Norm", BldgType="1Fam", HouseStyle="1Story", OverallQual="9", OverallCond="5", YearBuilt="2008", YearRemodAdd="2009", RoofStyle="Hip", RoofMatl="CompShg", Exterior1st="VinylSd", Exterior2nd="VinylSd", MasVnrType="Stone", MasVnrArea="748", ExterQual="Ex", ExterCond="TA", Foundation="PConc", BsmtQual="Ex", BsmtCond="TA", BsmtExposure="No", BsmtFinType1="GLQ", BsmtFinSF1="1904", BsmtFinType2="Unf", BsmtFinSF2="0", BsmtUnfSF="312", TotalBsmtSF="2216", Heating="GasA", HeatingQC="Ex", CentralAir="Y", Electrical="SBrkr", _1stFlrSF=undefined, _2ndFlrSF=undefined, LowQualFinSF="0", GrLivArea="2234", BsmtFullBath="1", BsmtHalfBath="0", FullBath="2", HalfBath="0", BedroomAbvGr="1", KitchenAbvGr="1", KitchenQual="Ex", TotRmsAbvGrd="9", Functional="Typ", Fireplaces="1", FireplaceQu="Gd", GarageType="Attchd", GarageYrBlt="2009", GarageFinish="Fin", GarageCars="3", GarageArea="1166", GarageQual="TA", GarageCond="TA", PavedDrive="Y", WoodDeckSF="0", OpenPorchSF="60", EnclosedPorch="0", _3SsnPorch=undefined, ScreenPorch="0", PoolArea="0", PoolQC="NA", Fence="NA", MiscFeature="NA", MiscVal="0", MoSold="7", YrSold="2009", SaleType="New", SaleCondition="Partial" */
+    
+    
+function predictHousePrice(OverallQual, YearBuilt, TotalBsmtSF, GrLivArea, FullBath, GarageCars, GarageArea, YearRemodAdd, MasVnrArea) {
+  // Add your calculation here
+  return 180000 - (YearBuilt * 100) + (OverallQual * 500) - (TotalBsmtSF * 20) + (GrLivArea * 30) + (FullBath * 10000) + (GarageCars * 5000) + (GarageArea * 30) + (YearRemodAdd * 200) - (MasVnrArea * 50);
+}

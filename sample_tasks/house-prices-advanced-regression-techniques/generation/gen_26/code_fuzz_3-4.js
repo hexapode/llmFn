@@ -1,0 +1,9 @@
+
+    /* Try to add a step in the computation using novel combination of variable. here is a sample input:
+Id="419", MSSubClass="50", MSZoning="RL", LotFrontage="60", LotArea="8160", Street="Pave", Alley="NA", LotShape="Reg", LandContour="Lvl", Utilities="AllPub", LotConfig="Inside", LandSlope="Gtl", Neighborhood="Edwards", Condition1="Norm", Condition2="Norm", BldgType="1Fam", HouseStyle="1.5Fin", OverallQual="5", OverallCond="6", YearBuilt="1940", YearRemodAdd="1950", RoofStyle="Gable", RoofMatl="CompShg", Exterior1st="MetalSd", Exterior2nd="MetalSd", MasVnrType="None", MasVnrArea="0", ExterQual="TA", ExterCond="TA", Foundation="BrkTil", BsmtQual="TA", BsmtCond="TA", BsmtExposure="No", BsmtFinType1="ALQ", BsmtFinSF1="312", BsmtFinType2="Unf", BsmtFinSF2="0", BsmtUnfSF="444", TotalBsmtSF="756", Heating="GasA", HeatingQC="Fa", CentralAir="N", Electrical="FuseF", _1stFlrSF=undefined, _2ndFlrSF=undefined, LowQualFinSF="0", GrLivArea="1134", BsmtFullBath="1", BsmtHalfBath="0", FullBath="1", HalfBath="1", BedroomAbvGr="3", KitchenAbvGr="1", KitchenQual="TA", TotRmsAbvGrd="7", Functional="Typ", Fireplaces="0", FireplaceQu="NA", GarageType="Detchd", GarageYrBlt="1940", GarageFinish="Unf", GarageCars="1", GarageArea="240", GarageQual="TA", GarageCond="TA", PavedDrive="P", WoodDeckSF="0", OpenPorchSF="0", EnclosedPorch="0", _3SsnPorch=undefined, ScreenPorch="0", PoolArea="0", PoolQC="NA", Fence="NA", MiscFeature="NA", MiscVal="0", MoSold="4", YrSold="2007", SaleType="WD", SaleCondition="AdjLand" */
+    
+    
+function predictHousePrice(OverallQual, YearBuilt, TotalBsmtSF, GrLivArea, FullBath, GarageCars, GarageArea, TotRmsAbvGrd, Fireplaces) {
+  // Add your calculation here
+  return (OverallQual * 10000) + (YearBuilt - 1870) + (TotalBsmtSF * 50) + (GrLivArea * 60) + (FullBath * 5000) + (GarageCars * 8000) + (GarageArea) + (TotRmsAbvGrd * 3000) + (Fireplaces * 5000) - 10000;
+}

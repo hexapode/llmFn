@@ -1,0 +1,21 @@
+{
+  "llm": [
+    {
+      "role": "system",
+      "content": "You are a programmer, and you need to build a javascript funtion to solve the following task:\n Prediction of Cirrhosis Outcomes. Each id in the test set had a single true class label, Status. For each id, you must submit a set of predicted probabilities for each of the three possible outcomes, e.g., Status_C, Status_CL, and Status_D.\nTo solve this task you need to create a javascript function that take into parameters A set of information about a patient and return An hashmap with 3 keys: Status_C, Status_CL and Status_D. Each key has a value between 0 and 1 representing the probability of the patient to have the corresponding outcome..\nOutput the code between ```javascript and ``` tags.\nDo not add usage sample code, only output the functions.\nTry to compute the probability to the best of your ability based on the parameters inputs! DO NOT Output Placeholder CODE! Actually implement the function!\nYour are not allow to use any external library or call any external service/library/function.\nYour output function should NOT contain ANY Comment. Do not add inline comments in the code. Do the calculations in the function, do not put a comment saying what to do instead.\nThe function should be named PredictCirrhosisOutcomes  and its signature should be PredictCirrhosisOutcomes(N_Days, Drug, Age, Sex, Ascites, Hepatomegaly, Spiders, Edema, Bilirubin, Cholesterol, Albumin, Copper, Alk_Phos, SGOT, Tryglicerides, Platelets, Prothrombin, Stage).\n"
+    },
+    {
+      "role": "assistant",
+      "content": "```javascript\nfunction PredictCirrhosisOutcomes(N_Days, Drug, Age, Sex, Ascites, Hepatomegaly, Spiders, Edema, Bilirubin, Cholesterol, Albumin, Copper, Alk_Phos, SGOT, Tryglicerides, Platelets, Prothrombin, Stage) {\n    const Status_C = 0.2 * (Age / 100) + 0.2 * (Bilirubin / 10) + 0.1 * (Cholesterol / 300) + 0.1 * (Albumin / 5) - 0.1 * (Platelets / 500) + 0.1 * Stage;\n    const Status_CL = 0.3 * (Age / 100) + 0.15 * (Bilirubin / 10) + 0.1 * (Cholesterol / 300) + 0.1 * (Albumin / 5) + 0.1 * (Prothrombin / 100) + 0.05 * Stage;\n    const Status_D = 0.25 * (Age / 100) + 0.1 * (Bilirubin / 10) + 0.1 * (Cholesterol / 300) + 0.2 * (Albumin / 5) + 0.15 * (Prothrombin / 100) + 0.1 * Stage;\n    \n    return {\n        Status_C: Math.max(0, Math.min(1, Status_C)),\n        Status_CL: Math.max(0, Math.min(1, Status_CL)),\n        Status_D: Math.max(0, Math.min(1, Status_D))\n    };\n}\n```"
+    },
+    {
+      "role": "user",
+      "content": "Try to think of a factor that could make sense for this prediction. How could it be infer / predicted based on the input parameter available to the function, implement it in the function. here is a sample input for reference, so you can look at available parameters:\nN_Days=\"1576\", Drug=\"Placebo\", Age=\"23241\", Sex=\"F\", Ascites=\"N\", Hepatomegaly=\"N\", Spiders=\"N\", Edema=\"N\", Bilirubin=\"0.5\", Cholesterol=\"223.0\", Albumin=\"3.85\", Copper=\"14.0\", Alk_Phos=\"824.0\", SGOT=\"83.7\", Tryglicerides=\"89.0\", Platelets=\"423.0\", Prothrombin=\"10.6\", Stage=\"3.0\""
+    },
+    {
+      "role": "assistant",
+      "content": "```javascript\nfunction PredictCirrhosisOutcomes(N_Days, Drug, Age, Sex, Ascites, Hepatomegaly, Spiders, Edema, Bilirubin, Cholesterol, Albumin, Copper, Alk_Phos, SGOT, Tryglicerides, Platelets, Prothrombin, Stage) {\n    let sexFactor = Sex === \"M\" ? 1 : 0.5;\n    const Status_C = 0.2 * (Age / 100) + 0.2 * (Bilirubin / 10) + 0.1 * (Cholesterol / 300) + 0.1 * (Albumin / 5) - 0.1 * (Platelets / 500) + 0.1 * Stage + sexFactor;\n    const Status_CL = 0.3 * (Age / 100) + 0.15 * (Bilirubin / 10) + 0.1 * (Cholesterol / 300) + 0.1 * (Albumin / 5) + 0.1 * (Prothrombin / 100) + 0.05 * Stage + sexFactor;\n    const Status_D = 0.25 * (Age / 100) + 0.1 * (Bilirubin / 10) + 0.1 * (Cholesterol / 300) + 0.2 * (Albumin / 5) + 0.15 * (Prothrombin / 100) + 0.1 * Stage + sexFactor;\n    \n    return {\n        Status_C: Math.max(0, Math.min(1, Status_C)),\n        Status_CL: Math.max(0, Math.min(1, Status_CL)),\n        Status_D: Math.max(0, Math.min(1, Status_D))\n    };\n}\n```"
+    }
+  ],
+  "perf": null
+}

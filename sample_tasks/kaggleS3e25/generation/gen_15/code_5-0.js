@@ -1,16 +1,25 @@
 
 function PredictCirrhosisOutcomes(N_Days, Drug, Age, Sex, Ascites, Hepatomegaly, Spiders, Edema, Bilirubin, Cholesterol, Albumin, Copper, Alk_Phos, SGOT, Tryglicerides, Platelets, Prothrombin, Stage) {
-  // Your prediction code here
-  // Calculate probabilities for each outcome (C, CL, D)
-  // Replace these dummy values with the actual probabilities
-  const probabilities = {
-    C: 0.5,
-    CL: 0.3,
-    D: 0.2
-  };
+  var Status_C, Status_CL, Status_D;
 
-  const highestProb = Math.max(...Object.values(probabilities));
-  const outcome = Object.keys(probabilities).find(key => probabilities[key] === highestProb);
-  
-  return outcome;
+  // Using Bilirubin, Albumin, and Stage as factors to predict the probabilities for each status
+  if (Bilirubin <= 1.2 && Albumin >= 3.5 && Stage <= 2.0) {
+    Status_C = 0.8;
+    Status_CL = 0.1;
+    Status_D = 0.1;
+  } else if (Bilirubin <= 2.5 && Albumin >= 3.0 && Stage <= 3.0) {
+    Status_C = 0.3;
+    Status_CL = 0.4;
+    Status_D = 0.3;
+  } else {
+    Status_C = 0.1;
+    Status_CL = 0.4;
+    Status_D = 0.5;
+  }
+
+  return {
+    Status_C: Status_C,
+    Status_CL: Status_CL,
+    Status_D: Status_D
+  };
 }

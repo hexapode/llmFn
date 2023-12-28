@@ -1,6 +1,6 @@
 {
-    "goal" : " Prediction of Cirrhosis Outcomes. Each id in the test set had a single true class label, Status. For each id, you must submit a set of predicted probabilities for each of the three possible outcomes, e.g., C, CL, and D.",
-    "output" : "An hashmap with 3 keys: C, CL,D. Each key has a value between 0 and 1 representing the probability of the patient to have the corresponding outcome.",
+    "goal" : " Prediction of Cirrhosis Outcomes. Each id in the test set had a single true class label, Status. For each id, you must submit a set of predicted probabilities for each of the three possible outcomes, e.g., Status_C, Status_CL, and Status_D.",
+    "output" : "An hashmap with 3 keys: Status_C, Status_CL and Status_D. Each key has a value between 0 and 1 representing the probability of the patient to have the corresponding outcome.",
     "input" : "A set of information about a patient",
     "functionName": "PredictCirrhosisOutcomes",
     "dataset" : {
@@ -8,6 +8,27 @@
         "folder" : "dataset",
         "evaluator" : "multiClassLogloss",
         "revaluatorOrder": "lowerIsBetter",
-        "output": ["Status"]
-    }
+        "output": "Status",
+        "outputSchema" : {
+            "type" : "hashmap",
+            "properties" : {
+                "Status_C" : {
+                    "type" : "number",
+                    "minimum" : 0,
+                    "maximum" : 1
+                },
+                "Status_CL" : {
+                    "type" : "number",
+                    "minimum" : 0,
+                    "maximum" : 1
+                },
+                "Status_D" : {
+                    "type" : "number",
+                    "minimum" : 0,
+                    "maximum" : 1
+                }
+            }
+        }
+    },
+    "useFuzzer" : true
 }
