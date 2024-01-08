@@ -15,14 +15,14 @@ async function execQueue(queue, concurrency, requeue=false) {
                 let fn = queue[current].task;
                 let args = queue[current].args;
                 let taskId = current;
-                try {
+             //   try {
                     let res = await fn(...args);
 
                     result[taskId] = res;
                     running--;
                     succeded++;
-                }
-                catch (e) {
+               // }
+               /*catch (e) {
                     console.log(e);
                     console.log("WITH", args)
                     // requeue
@@ -34,7 +34,7 @@ async function execQueue(queue, concurrency, requeue=false) {
                     }
                     running--;
                     succeded++;
-                }
+                } */
                 
             }
             worker();

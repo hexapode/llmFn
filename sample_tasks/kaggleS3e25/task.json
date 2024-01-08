@@ -7,7 +7,7 @@
         "type" : "kaggleTabular",
         "folder" : "dataset",
         "evaluator" : "multiClassLogloss",
-        "revaluatorOrder": "lowerIsBetter",
+        "evaluatorOrder": "lowerIsBetter",
         "output": "Status",
         "outputSchema" : {
             "type" : "hashmap",
@@ -28,7 +28,8 @@
                     "maximum" : 1
                 }
             }
-        }
+        },
+        "idColumn" : "id"
     },
     "useFuzzer" : true
 }

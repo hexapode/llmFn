@@ -26,7 +26,7 @@ async function loadTask(TASK, requireTest=false) {
         });
         let parameters = { ...trainingData[0]};
         delete parameters[TASK.dataset.output];
-        delete parameters.id;
+        delete parameters[TASK.dataset.idColumn];
 
         let parametersMap = {};
         for (let parameter in parameters) {
@@ -76,7 +76,7 @@ async function loadTask(TASK, requireTest=false) {
                 for (let key of TASK.realParameters) {
                     input.push(item[parametersMap[key]]);
                 }
-                TASK.testDataSet.push({input, id: item.id });
+                TASK.testDataSet.push({input, id: item[TASK.dataset.idColumn] });
             }
         }
     }

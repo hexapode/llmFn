@@ -66,28 +66,39 @@ function validateSchema(variable, schema) {
     return true;
 }
 
-async function evaluate(code, TASK) { 
+async function evaluate(code, TASK, datasetPass=1) { 
+    let errorResult = Infinity;
+    if (TASK.dataset.evaluatorOrder == "higherIsBetter") { 
+        errorResult= -Infinity;
+    }
+
     let fn = null;
     if (typeof code == "function") {
         fn = code;
     } else {
+
         try {
+            
             fn = eval(code + ";" + TASK.functionName);
-        }
+
+         }
         catch (e) {
-        // console.log(e);
+
             return {
                 input : "undefined",
                 output : "undefined",
-                result : e.toString()   
+                result :undefined,
+                score: errorResult
             };
         }
     }
   
 
     let results = [];
-    for (let[index, data] of TASK.dataSet.entries()) {
+    let count = 0;
+    for (let data of TASK.dataSet) {
         try {
+            count++;
             let input = data.input;
             let output = data.output;
             let result = fn(...input);
@@ -98,14 +109,19 @@ async function evaluate(code, TASK) {
                 output : output,
                 result : result
             });
+
+            if (count > TASK.dataset.length * datasetPass) {
+                break;
+            }
         }
         catch (e) {
             console.log(e);
-            results.push ({
+            return {
                 input : "undefined",
                 output : "undefined",
-                results : undefined
-            });
+                result :undefined,
+                score: errorResult
+            };
         }
     
     }
@@ -114,7 +130,7 @@ async function evaluate(code, TASK) {
 
     if (y_pred.length != y_true.length) {
         return {
-            score: Infinity,
+            score: errorResult,
             results: results
         };
     }
@@ -122,7 +138,7 @@ async function evaluate(code, TASK) {
     for (let i = 0; i < y_pred.length; i++) {
         if (!validateSchema(y_pred[i], TASK.dataset.outputSchema)) {
             return {
-                score: Infinity,
+                score: errorResult,
                 results: results
             };
         }
@@ -131,8 +147,13 @@ async function evaluate(code, TASK) {
     if (TASK.dataset.evaluator == "RMSE") {
         let loss = scorer.RMSE(y_true, y_pred);
         if (isNaN(loss)) { 
-            loss = Infinity;
+            loss = errorResult;
         }
+        for (let res of results) {
+            res.loss = scorer.RMSE([parseFloat(res.output)], [res.result]);        
+        }
+        // sort big to small loss
+        results.sort((a, b) => b.loss - a.loss);
         return {
             score: loss,
             // TODO: sort results according to loss!
@@ -142,10 +163,15 @@ async function evaluate(code, TASK) {
     }
 
     if (TASK.dataset.evaluator == "LogRMSE") {
-        let loss = scorer.LogRMSE(y_true, y_pred);
+         let loss = scorer.auc(y_true, y_pred);
         if (isNaN(loss)) { 
-            loss = Infinity;
+            loss = errorResult;
         }
+        for (let res of results) {
+            res.loss = scorer.RMSE([parseFloat(res.output)], [res.result]);        
+        }
+        // sort big to small loss
+        results.sort((a, b) => b.loss - a.loss);
         return {
             score: loss,
             // TODO: sort results according to loss!
@@ -154,15 +180,35 @@ async function evaluate(code, TASK) {
 
     }
 
-
+    if (TASK.dataset.evaluator == "ROCCurve") {
+         let loss = scorer.ROCAUCScore(y_true, y_pred);
+        if (isNaN(loss)) { 
+            loss = errorResult;
+        }
+        for (let res of results) {
+            res.loss = scorer.ROCAUCScore([parseFloat(res.output)], [res.result]);        
+        }
+        // sort big to small loss
+        results.sort((a, b) => a.loss - b.loss);
+        return {
+            score: loss,
+            // TODO: sort results according to loss!
+            results: results
+        };
+    }
 
     if (TASK.dataset.evaluator == "multiClassLogloss") {
         y_true = results.map(r => TASK.dataset.output + '_' + r.output);
         
         let loss = scorer.multiClassLogloss(y_true, y_pred);
         if (isNaN(loss)) { 
-            loss = Infinity;
+            loss = errorResult;
         }
+        for (let res of results) {
+            res.loss = scorer.multiClassLogloss([TASK.dataset.output + '_' + res.output], [res.result]);        
+        }
+        // sort big to small loss
+        results.sort((a, b) => b.loss - a.loss);
         return {
             score: loss,
             // TODO: sort results according to loss!

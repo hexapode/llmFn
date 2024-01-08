@@ -15,20 +15,20 @@ const openai = new OpenAI({
 
 
 let MODEL = 'gpt-3.5-turbo-1106';
-
+// let MODEL = 'gpt-4-1106-preview';
 
 
 function renderSample(sample, TASK) { 
     for (let i = 0; i < sample.input.length; i++) {
-        sample.input[i] = `${TASK.parameters[i]}=${JSON.stringify(sample.input[i])}`;
+        sample.input[i] = `${TASK.parameters[i]}=${sample.input[i]}`;
     }
 
-    return sample.input.join(', ');
+    return 'The result is ' + sample.output + ' for: ' + sample.input.join(', ') + '.';
 }
 
 
 function mutateCodeAccordingToPerf(results, TASK) { 
-    let sample = results.results[Math.random() * results.results.length | 0];
+    let sample = results.results[Math.random() * results.results.length * 0.05 | 0];
 
     return {
     role: 'user',
@@ -40,28 +40,28 @@ ${renderSample(sample, TASK)}`
 
 
 function beCreative(results, TASK) { 
-    let sample = results.results[Math.random() * results.results.length | 0];
+    let sample = results.results[Math.random() * results.results.length * 0.05 | 0];
 
     return {
         role: 'user',
-        content: `Try to think outside the box, and find novel a way to solve the problem. First describe it and why you think it make sense, then implement it in the function. here is a sample input for reference:
+        content: `Try to think outside the box, and find novel a way to solve the problem. First describe it and why you think it make sense, then update the function to implement it. here is a sample input for reference:
 ${renderSample(sample, TASK)}`
     };
 }
 
 function newFactor(results, TASK) { 
-    let sample = results.results[Math.random() * results.results.length | 0];
+    let sample = results.results[Math.random() * results.results.length * 0.05 | 0];
 
 
     return {
         role: 'user',
-        content: `Try to think of a factor that could make sense for this prediction. How could it be infer / predicted based on the input parameter available to the function, implement it in the function. here is a sample input for reference, so you can look at available parameters:
+        content: `Try to think of a factor that could make sense for this prediction. How could it be infer / predicted based on the input parameter available to the function, then update the function to implement it. here is a sample input for reference, so you can look at available parameters:
 ${renderSample(sample, TASK)}`
     };
 }
 
 function useAnotherMethod(results, TASK) { 
-    let sample = results.results[Math.random() * results.results.length | 0];
+    let sample = results.results[Math.random() * results.results.length * 0.05 | 0];
 
     return {
         role: 'user',
@@ -72,11 +72,21 @@ ${renderSample(sample, TASK)}`
 
 
 function combination(results, TASK) { 
-    let sample = results.results[Math.random() * results.results.length | 0];
+    let sample = results.results[Math.random() * results.results.length * 0.05 | 0];
 
     return {
         role: 'user',
-        content: `Try to add a step in the computation using novel combination of variable. here is a sample input:
+        content: `Try to add a step in the computation using novel combination of variable and add it to the function. here is a sample input:
+${renderSample(sample, TASK)}`
+    };
+}
+
+function complexify(results, TASK) { 
+    let sample = results.results[Math.random() * results.results.length * 0.05 | 0];
+
+    return {
+        role: 'user',
+        content: `Try to add to think which input parameter will make sense as an extra factor in one of the existing line of the computation, add it to the line(s) in a way that make sense. here is a sample input:
 ${renderSample(sample, TASK)}`
     };
 }
@@ -99,13 +109,47 @@ function improve(results) {
 }
 
 function unusedvariable(results, TASK) { 
-    let sample = results.results[Math.random() * results.results.length | 0];
+    let sample = results.results[Math.random() * results.results.length * 0.05 | 0];
 
     return {
         role: 'user',
-        content: `Try to add a step in the computation using unused variable, this stpe should impact the prediction. here is a sample input:
+        content: `Try to add a step in the computation using unused parameters, this step should impact the prediction. here is a sample input:
 ${renderSample(sample, TASK)}`
     };
+}
+
+
+async function refactor(results, TASK) { 
+
+    const prompt = `You will be provided with a JS function. Split it into multiple functions and output the full code. output between \`\`\`javscript and \`\`\` tags.`;
+
+    let score = await evaluate(results.code, TASK);
+
+
+    let chatCompletion = await openai.chat.completions.create({    
+        messages: [{
+                role: "system",
+                content: prompt
+            },
+            {
+                role: "user",
+                content: results.code
+            }
+        ],
+        model: MODEL,
+    });
+
+    // extract the code from the response with a regexp, it's contain between ```javascript and ``` blocks
+    let codeBlocks = [...chatCompletion.choices[0].message.content.matchAll(/```javascript([\s\S]*?)```/g)];
+    let code = codeBlocks.join('\n\n');
+
+    let codeScore = await evaluate(code, TASK);
+
+    if (codeScore != score) {
+        return await refactor(results, TASK);
+    }
+
+    return code;
 }
 
 function unusedvariableFound(results, TASK) { 
@@ -132,7 +176,7 @@ function unusedvariableFound(results, TASK) {
 
     return {
         role: 'user',
-        content: `Try to add a step in the computation using the parameter ${leastUsedVariable}. Here as some value it can take: ${values.join(', ')}.`
+        content: `Try to think how ${leastUsedVariable} parameter could impact the prediction, then add a step in the computation using the parameter ${leastUsedVariable}. Here as some value it can take: ${values.join(', ')}.`
     };
 }
 
@@ -147,20 +191,44 @@ async function nextGeneration(iteration, individu, TASK, ticksSinceLastImproveme
         unusedvariableFound,
         combination,
         unusedvariable,
+        unusedvariableFound,
+        unusedvariableFound,
         mutateCodeAccordingToPerf,
-        newFactor
+        newFactor,
+        complexify
     ]
     correctionMessage = methods[Math.random() * methods.length | 0](bestResults, TASK);
 
-    let modelPrompt = [...seedMessage, bestMessage, correctionMessage];
+    correctionMessage.content += "If there is call to functions in the original code, keep them all. Assume that called function existed already and do not reimplement them.";
+    // remove all comment (// and /* */) from the code
+    let bestCode = bestResults.code.replace(/\/\*[\s\S]*?\*\/|\/\/[^\r\n]*/g, '');
+
+    // remove all functions that are not the TASK.dataset.functionName function
+    let functions = bestCode.replace('function ' + TASK.functionName, "entrypoint " + TASK.functionName).match(/function\s*([A-z0-9]+)?\s*\((?:[^)(]+|\((?:[^)(]+|\([^)(]*\))*\))*\)\s*\{(?:[^}{]+|\{(?:[^}{]+|\{[^}{]*\})*\})*\}/gm); 
+    functions = functions.filter(func => !func.startsWith(`function ${TASK.functionName}`));
+    functions.forEach(func => {
+        bestCode = bestCode.replace(func, '');
+    });
+
+    // remove all multiple following \n from bestCode and replce by \n
+    bestCode = bestCode.replace(/\n+/gm, '\n');
+
+    bestCode = bestCode.trim();    
+
+
+
+    let modelPrompt = [...seedMessage, {
+        content: bestCode, 
+        role: "user"
+    }, correctionMessage];
 
     let chatCompletion = null;
 
 
-       chatCompletion =  await openai.chat.completions.create({
-            messages: modelPrompt,
-            model: MODEL,
-        });
+    chatCompletion =  await openai.chat.completions.create({
+        messages: modelPrompt,
+        model: MODEL,
+    });
 
 
     // extract the code from the response with a regexp, it's contain between ```javascript and ``` blocks
@@ -170,13 +238,18 @@ async function nextGeneration(iteration, individu, TASK, ticksSinceLastImproveme
 
     let code = codes.join('\n\n');
 
-    fs.writeFile(`${outDir}/code_${iteration}-${individu}.js`, code);
+    // add the removed function to the code
+
+    let functionsToAdd = functions.join('\n\n');
+
+    // add the functionTo add at the first line of TASK.functionName function (after delcaration)in code
+    let functionNameIndex = code.indexOf(`function ${TASK.functionName}`);
+    let functionDeclarationIndex = code.indexOf('{', functionNameIndex);
+    code = code.slice(0, functionDeclarationIndex + 1) + '\n' + functionsToAdd + '\n' + code.slice(functionDeclarationIndex + 1);
 
     results = await evaluate(code, TASK);
-    fs.writeFile(`${outDir}/log_${iteration}-${individu}.json`, JSON.stringify({
-        llm:[...modelPrompt, chatCompletion.choices[0].message],
-        perf: results.score
-    },null, 2));
+    code = `/** // ${results.score} //**/\n/**\n${correctionMessage.content}\n**/\n${code}`
+
     results.code = 
     `
     /* ${correctionMessage.content} */
@@ -184,8 +257,8 @@ async function nextGeneration(iteration, individu, TASK, ticksSinceLastImproveme
     ${code}`;
 
     if (TASK.useFuzzer) { 
-        results = await fuzz(results, TASK);
-        fs.writeFile(`${outDir}/code_fuzz_${iteration}-${individu}.js`, results.code);
+        results = await fuzz(results, TASK, 5 + ticksSinceLastImprovement / 2 | 0, 2, TASK.fuzzerPct || a, [0.1, -0.1], [-1, .5, 1.5, .9, 1.1, .09, 1.01]);
+      //  fs.writeFile(`${outDir}/code_fuzz_${iteration}-${individu}.js`, results.code);
     }
     
     results.individu = individu;
@@ -194,7 +267,7 @@ async function nextGeneration(iteration, individu, TASK, ticksSinceLastImproveme
 }
 
 
-async function runTask(taskDir) {
+async function runTask(taskDir, gen) {
 
     let TASK = require(`${taskDir}/task.json`);
     TASK.taskDir = taskDir;
@@ -202,13 +275,20 @@ async function runTask(taskDir) {
 
     await fs.mkdir(TASK.taskDir + '/generation/', { recursive: true });
 
+    
     let genCount = (await fs.readdir(TASK.taskDir + '/generation/')).length;
-
+    if (gen) {
+        genCount = gen;
+    }
     let outDir =  TASK.taskDir + '/generation/gen_' + genCount;
 
     await fs.mkdir(outDir, { recursive: true });
 
+    
     let iteration = 0;
+    if (gen) {
+        iteration =  (await fs.readdir(outDir)).length;
+    }
 
     let MainPrompt = `You are a programmer, and you need to build a javascript funtion to solve the following task:
 ${TASK.goal}
@@ -217,49 +297,68 @@ Output the code between \`\`\`javascript and \`\`\` tags.
 Do not add usage sample code, only output the functions.
 Try to compute the probability to the best of your ability based on the parameters inputs! DO NOT Output Placeholder CODE! Actually implement the function!
 Your are not allow to use any external library or call any external service/library/function.
-Your output function should NOT contain ANY Comment. Do not add inline comments in the code. Do the calculations in the function, do not put a comment saying what to do instead.
 The function should be named ${TASK.functionName}  and its signature should be ${TASK.functionnSignature}.
 The function should be deterministic, it should always return the same output for a given input.
 The function should contain calculations, not just a lookup table.
+Before updating the function explain your reasoning in a comment.
+Compute your prediction in the function, and return them at the end of the function. Do not return value before end of function.
+The function should not contain calls to a neural network or machine learning model.
 `;
 
     let seedMessage = [{ role: 'system', content: MainPrompt }];
 
-    let chatCompletion = await openai.chat.completions.create({
-        messages: [...seedMessage],
-        model: MODEL,
-     });
-
-    // extract the code from the response with a regexp, it's contain between ```javascript and ``` blocks
-    let codeBlocks = [...chatCompletion.choices[0].message.content.matchAll(/```javascript([\s\S]*?)```/g)];
-
-    let codes = codeBlocks.map(match => match[1]);
-
-    let code = codes.join('\n\n');
-    fs.writeFile(`${outDir}/code_${iteration}.js`, code);
 
 
-    let results = await evaluate(code, TASK);
-   
-    fs.writeFile(`${outDir}/log_${iteration}.js`, JSON.stringify({
-        llm: [...seedMessage, chatCompletion.choices[0].message],
-        perf: results.score
-    }, null, 2));
-
-    console.log(results.score, code);
-    let bestMessage = chatCompletion.choices[0].message;
-    let bestResults =  results;
-    let bestScore = results.score;
-    bestResults.code = code;
     let ticksSinceLastImprovement = 0;
+    let bestMessage = null;
+    let bestScore = null;
+    let bestResults = null;
+
+
+    if (gen) {
+        let bCode=   await fs.readFile(`${outDir}/best.js`, 'utf8');
+        bestMessage = {
+            role: "assistant",  
+            content:bCode
+        };
+        bestResults =  await evaluate(bCode, TASK);
+        console.log("Loaded best of gen", bestResults.score);
+        bestScore = bestResults.score;
+        bestResults.code = bCode;
+    }
+    else {
+        let chatCompletion = await openai.chat.completions.create({
+            messages: [...seedMessage],
+            model: MODEL,
+        });
+
+        // extract the code from the response with a regexp, it's contain between ```javascript and ``` blocks
+        let codeBlocks = [...chatCompletion.choices[0].message.content.matchAll(/```javascript([\s\S]*?)```/g)];
+
+        let codes = codeBlocks.map(match => match[1]);
+
+        let code = codes.join('\n\n');
+
+        let results = await evaluate(code, TASK);
+    
+        console.log(results.score, code);
+        bestMessage = chatCompletion.choices[0].message;
+        bestResults =  results;
+        bestResults.code = code;
+
+        bestScore = results.score;
+    }
+
     while (true) {
+        // reset Task?
+      //  await loadTask(TASK);
         iteration++;
         console.log("Iteration", iteration, "ticks since last gain", ticksSinceLastImprovement, "best", bestScore);
         if (iteration == 2000 || ticksSinceLastImprovement > 50) {
             break;
         }
         let jobQueue = [];
-        for (let count = 0; count < 5; count++) { 
+        for (let count = 0; count < 10; count++) { 
             // async function nextGeneration(iteration, individu, TASK, ticksSinceLastImprovement, seedMessage, bestScore, bestResults, bestMessage) { 
 
             jobQueue.push({
@@ -286,24 +385,45 @@ The function should contain calculations, not just a lookup table.
         // remove NaN and undefined results
         results = results.filter(r => r.score);
         // sort results by perf (asc)
-        results.sort((a, b) => a.score - b.score);
+        if (TASK.dataset.evaluatorOrder == "lowerIsBetter") {
+             results.sort((a, b) => a.score - b.score);
+        }
+        else {
+             results.sort((a, b) => b.score - a.score);
+        }
+       
         ticksSinceLastImprovement++;
         // take the best result
         if (results.length > 0) {
             let best = results[0]; 
-            if (best.score < bestScore) {
-                bestScore = best.score;
+            let real = {};
+            console.log(TASK.dataset.evaluatorOrder);
+            await loadTask(TASK);
+
+            real = await evaluate(best.code, TASK);
+        
+            if (  
+                (TASK.dataset.evaluatorOrder == "lowerIsBetter" && real.score < bestScore)
+                    ||
+                    (TASK.dataset.evaluatorOrder == "higherIsBetter" && real.score > bestScore)) {
+
+                let refactoredCode = await refactor(best, TASK);
+                best.code = refactoredCode;
+                bestScore = real.score;
                 bestResults = best;
                 bestMessage = best.message;
                 ticksSinceLastImprovement = 0;
                 fs.writeFile(`${outDir}/_improvement_${iteration}.js`, `/* Best score: ${bestScore} */\n\n` +  best.code);
+                fs.writeFile(`${outDir}/best.js`, `/* Best score: ${bestScore} */\n\n` +  best.code);
+
                 console.log(best.code);
             }
+
         }
     }
 }
 
 
 let taskDir = process.argv[2] || `./sample_tasks/KaggleS3e25`;
-
-runTask(taskDir);
+let gen = parseInt(process.argv[3]) || 0;
+runTask(taskDir, gen);

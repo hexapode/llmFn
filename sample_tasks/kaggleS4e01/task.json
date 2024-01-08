@@ -1,0 +1,19 @@
+{
+    "goal" : " Pedict whether a customer continues with their account or closes it (e.g., churns).",
+    "output" : "A prediction (between 0 and 1) of whether the customer will churn. 0 mean stay, 1 means churn.",
+    "input" : "A set of information about a patient",
+    "functionName": "PredictExited",
+    "dataset" : {
+        "type" : "kaggleTabular",
+        "folder" : "dataset",
+        "evaluator" : "ROCCurve",
+        "evaluatorOrder": "higherIsBetter",
+        "output": "Exited",
+        "outputSchema" : {
+            "type" : "number"
+        },
+        "idColumn" : "id"
+    },
+    "useFuzzer" : true,
+    "fuzzerPct": 0.05
+}
