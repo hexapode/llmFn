@@ -1,0 +1,402 @@
+[
+  {
+    "key": "accountAge",
+    "description": "The length of time a customer has had their account, as long-term customers may be less likely to churn"
+  },
+  {
+    "key": "monthlyUsage",
+    "description": "The average monthly usage of the customer, as higher usage may indicate satisfaction and lower likelihood of churn"
+  },
+  {
+    "key": "customerSupportInteractions",
+    "description": "The number of customer support interactions, as frequent interactions may indicate dissatisfaction and higher likelihood of churn"
+  },
+  {
+    "key": "contractLength",
+    "description": "The length of the customer's contract, as shorter contract length may lead to higher churn rates"
+  },
+  {
+    "key": "billingIssues",
+    "description": "Instances of billing issues or discrepancies, as unresolved issues may lead to customer dissatisfaction and churn"
+  },
+  {
+    "key": "competitorOffers",
+    "description": "The presence of competitive offers or incentives, as customers may churn to take advantage of better offers"
+  },
+  {
+    "key": "productUpgrades",
+    "description": "The frequency of product upgrades, as customers who upgrade may be more engaged and less likely to churn"
+  },
+  {
+    "key": "surveyFeedback",
+    "description": "Customer responses to satisfaction surveys, as negative feedback may indicate higher likelihood of churn"
+  },
+  {
+    "key": "paymentMethods",
+    "description": "The variety of payment methods accepted, as limited options could lead to customer frustration and higher churn rates"
+  },
+  {
+    "key": "usagePatterns",
+    "description": "Patterns of usage behavior, such as consistent or declining usage, which may indicate potential churn risk"
+  },
+  {
+    "key": "loyaltyProgramParticipation",
+    "description": "Participation in a loyalty program, as it may incentivize customers to stay with the company and reduce churn"
+  },
+  {
+    "key": "userInterfaceSatisfaction",
+    "description": "Satisfaction with the user interface and experience, as poor interface may lead to customer dissatisfaction and churn"
+  },
+  {
+    "key": "promotionalOffers",
+    "description": "Availability of promotional offers and discounts, as attractive offers can reduce churn by incentivizing continued use"
+  },
+  {
+    "key": "socialMediaEngagement",
+    "description": "Engagement with the company on social media, as active engagement may indicate lower churn likelihood"
+  },
+  {
+    "key": "accountManagerInteraction",
+    "description": "Frequency of interaction with account managers, as active management may reduce churn risk"
+  },
+  {
+    "key": "serviceOutages",
+    "description": "Frequency and impact of service outages, as frequent outages may lead to customer frustration and churn"
+  },
+  {
+    "key": "communityEngagement",
+    "description": "Participation in customer forums and communities, as engagement may indicate lower churn likelihood"
+  },
+  {
+    "key": "subscriptionPlanFlexibility",
+    "description": "Flexibility in subscription plans, as limited options may lead to customer dissatisfaction and higher churn"
+  },
+  {
+    "key": "rewardsProgramAccess",
+    "description": "Access to rewards programs, as attractive rewards may reduce churn by incentivizing continued loyalty"
+  },
+  {
+    "key": "customerReferralProgram",
+    "description": "Participation in a customer referral program, as it may indicate higher satisfaction and lower likelihood of churn"
+  },
+  {
+    "key": "appUsageFrequency",
+    "description": "The frequency of the customer's app usage, as active and frequent usage may indicate lower likelihood of churn"
+  },
+  {
+    "key": "customerFeedbackResponseTime",
+    "description": "The response time to customer feedback and complaints, as quick resolution may reduce churn risk"
+  },
+  {
+    "key": "personalizedRecommendations",
+    "description": "Availability of personalized product or service recommendations, as personalized attention may reduce churn"
+  },
+  {
+    "key": "websitePerformance",
+    "description": "The speed and performance of the company's website, as poor performance may lead to customer frustration and churn"
+  },
+  {
+    "key": "loyaltyProgramRewards",
+    "description": "The attractiveness and relevance of rewards offered through the loyalty program, as enticing rewards may reduce churn"
+  },
+  {
+    "key": "omnichannelExperience",
+    "description": "The consistency and quality of experience across multiple channels, as disjointed experiences may lead to churn"
+  },
+  {
+    "key": "customerEducationMaterials",
+    "description": "Availability of educational materials and resources for customers, as informed customers may churn less"
+  },
+  {
+    "key": "cybersecurityMeasures",
+    "description": "The robustness of cybersecurity measures to protect customer data, as security concerns may lead to churn"
+  },
+  {
+    "key": "supplierReliability",
+    "description": "The reliability of the company's suppliers and partners, as disruptions may impact customer satisfaction and churn"
+  },
+  {
+    "key": "personalizedCommunication",
+    "description": "The degree of personalized communication from the company, as personalized attention may reduce churn risk"
+  },
+  {
+    "key": "customerLocation",
+    "description": "The geographical location of the customer, as regional factors can influence churn behavior"
+  },
+  {
+    "key": "familyDiscounts",
+    "description": "Availability of discounts for family plans, as it may incentivize customers to stay with the company"
+  },
+  {
+    "key": "productRange",
+    "description": "The variety and quality of products or services offered, as a diverse range may reduce churn"
+  },
+  {
+    "key": "marketCompetition",
+    "description": "The level of competition in the market, as higher competition may increase churn rates"
+  },
+  {
+    "key": "customerEngagementEvents",
+    "description": "Participation in customer engagement events, as active participation may indicate lower churn likelihood"
+  },
+  {
+    "key": "annualPriceIncreases",
+    "description": "Frequency and magnitude of annual price increases, as excessive increases may lead to churn"
+  },
+  {
+    "key": "customerSatisfactionScores",
+    "description": "Internal measurements of customer satisfaction, as low scores may indicate higher likelihood of churn"
+  },
+  {
+    "key": "corporateSocialResponsibility",
+    "description": "The company's commitment to social and environmental responsibility, as aligned values may reduce churn"
+  },
+  {
+    "key": "self_serviceOptions",
+    "description": "Availability and ease of use of self-service options, as convenient options may reduce churn"
+  },
+  {
+    "key": "customerEmpowermentInitiatives",
+    "description": "Initiatives that empower customers, such as feedback mechanisms, as empowered customers may churn less"
+  },
+  {
+    "key": "brand_reputation",
+    "description": "The reputation and public perception of the brand, as a strong brand may reduce churn"
+  },
+  {
+    "key": "customer_onboarding_process",
+    "description": "The effectiveness and ease of the customer onboarding process, as poor onboarding may lead to early churn"
+  },
+  {
+    "key": "product_quality",
+    "description": "The quality and performance of the product or service, as high quality may lead to lower churn rates"
+  },
+  {
+    "key": "customer_service_quality",
+    "description": "The quality of customer service interactions, as poor service may lead to higher churn"
+  },
+  {
+    "key": "customer_relationship_management",
+    "description": "The effectiveness of customer relationship management efforts, as strong relationships may reduce churn"
+  },
+  {
+    "key": "customer_lifetime_value",
+    "description": "The predicted lifetime value of the customer, as higher value may indicate lower churn likelihood"
+  },
+  {
+    "key": "customer_preferences_tracking",
+    "description": "The tracking and utilization of customer preferences, as personalized experiences may reduce churn"
+  },
+  {
+    "key": "customer_feedback_utilization",
+    "description": "The incorporation of customer feedback into business decisions, as this may reduce churn by addressing concerns"
+  },
+  {
+    "key": "customer_success_programs",
+    "description": "Participation in customer success programs, as focused efforts may lead to lower churn"
+  },
+  {
+    "key": "customer_retention_initiatives",
+    "description": "Initiatives specifically designed to retain customers, as these may reduce churn rates"
+  },
+  {
+    "key": "customer_loyalty",
+    "description": "The level of loyalty exhibited by the customer, as loyal customers are less likely to churn"
+  },
+  {
+    "key": "customer_satisfaction_with_previous_interactions",
+    "description": "The degree of satisfaction with previous interactions and experiences, as satisfied customers are less likely to churn"
+  },
+  {
+    "key": "customer_trust_in_the_company",
+    "description": "The level of trust and confidence that customers have in the company, as trust may reduce churn"
+  },
+  {
+    "key": "customer_emotional_connection",
+    "description": "The emotional connection and attachment that customers have with the company, as emotional connections reduce churn"
+  },
+  {
+    "key": "customer_openness_to_communication",
+    "description": "The willingness of the customer to engage in communication and feedback, as open communication reduces churn"
+  },
+  {
+    "key": "customer_empowerment_and_autonomy",
+    "description": "The level of empowerment and autonomy provided to customers, as empowered customers are less likely to churn"
+  },
+  {
+    "key": "customer_fear_of_missing_out__FOMO_",
+    "description": "The presence of exclusive offers or experiences that reduce customer FOMO and churn likelihood"
+  },
+  {
+    "key": "customer_satisfaction_with_company_values",
+    "description": "The alignment of customers' values with the company's values, as alignment may reduce churn"
+  },
+  {
+    "key": "customer_emotional_needs_fulfillment",
+    "description": "The company's ability to fulfill emotional needs of customers, as satisfied emotional needs reduce churn"
+  },
+  {
+    "key": "customer_trust_in_the_company_s_leadership",
+    "description": "The level of trust that customers have in the company's leadership, as trust in leadership reduces churn"
+  },
+  {
+    "key": "customer_satisfaction_with_pricing",
+    "description": "The level of satisfaction customers have with the pricing of products or services, as satisfied customers are less likely to churn"
+  },
+  {
+    "key": "customer_perception_of_fairness",
+    "description": "The perception of fairness in pricing, policies, and practices, as fairness may reduce churn"
+  },
+  {
+    "key": "customer_feelings_of_appreciation",
+    "description": "The degree to which customers feel appreciated and valued by the company, as feelings of appreciation reduce churn"
+  },
+  {
+    "key": "customer_identification_with_the_brand",
+    "description": "The extent to which customers identify with the brand and its values, as strong identification reduces churn"
+  },
+  {
+    "key": "customer_feeling_of_being_heard",
+    "description": "The extent to which customers feel heard and understood by the company, as feeling heard reduces churn"
+  },
+  {
+    "key": "customer_emotional_response_to_marketing_campaigns",
+    "description": "The emotional impact of marketing campaigns on customers, as positive emotional responses reduce churn"
+  },
+  {
+    "key": "customer_willingness_to_advocate_for_the_brand",
+    "description": "The willingness of customers to actively advocate for the brand, as advocates are less likely to churn"
+  },
+  {
+    "key": "customer_brand_evangelism",
+    "description": "The extent to which customers actively promote and support the brand, as brand evangelists are less likely to churn"
+  },
+  {
+    "key": "customer_satisfaction_with_past_resolutions",
+    "description": "The degree to which customers are satisfied with past issue resolutions, as satisfied customers are less likely to churn"
+  },
+  {
+    "key": "customer_feelings_of_belonging",
+    "description": "The sense of belonging that customers feel with the brand community, as feelings of belonging reduce churn"
+  },
+  {
+    "key": "customer_opinion_on_company_ethics",
+    "description": "The perception of customers regarding the ethical practices of the company, as positive opinions can reduce churn"
+  },
+  {
+    "key": "customer_experience_consistency",
+    "description": "The consistency of customer experience across different touchpoints, as consistency may reduce churn"
+  },
+  {
+    "key": "customer_involvement_in_product_development",
+    "description": "The extent to which customers are involved in product development and improvement, as involvement can reduce churn"
+  },
+  {
+    "key": "customer_social_responsibility_alignment",
+    "description": "The degree to which customers' social responsibility values align with the company's, as alignment can reduce churn"
+  },
+  {
+    "key": "customer_perception_of_company_transparency",
+    "description": "The perception of customers regarding the transparency of the company, as transparency may reduce churn"
+  },
+  {
+    "key": "customer_satisfaction_with_delivery_logistics",
+    "description": "The level of satisfaction customers have with the delivery logistics, as satisfied customers are less likely to churn"
+  },
+  {
+    "key": "customer_emotional_attachment_to_employees",
+    "description": "The emotional attachment that customers have with employees of the company, as attachment reduces churn"
+  },
+  {
+    "key": "customer_resistance_to_change",
+    "description": "The extent to which customers resist changes in the company, as resistance can lead to lower churn"
+  },
+  {
+    "key": "customer_satisfaction_with_customer_engagement_initiatives",
+    "description": "The level of satisfaction customers have with customer engagement initiatives, as satisfied customers are less likely to churn"
+  },
+  {
+    "key": "customer_perception_of_innovation",
+    "description": "The perception of customers regarding the innovation practices of the company, as positive perception can reduce churn"
+  },
+  {
+    "key": "customer_satisfaction_with_billing_process",
+    "description": "The level of satisfaction customers have with the billing process, as satisfied customers are less likely to churn"
+  },
+  {
+    "key": "customer_satisfaction_with_loyalty_program",
+    "description": "The level of satisfaction customers have with the loyalty program, as satisfied customers are less likely to churn"
+  },
+  {
+    "key": "customer_trust_in_data_privacy_protection",
+    "description": "The level of trust that customers have in the company's data privacy protection measures, as trust can reduce churn"
+  },
+  {
+    "key": "customer_satisfaction_with_community_engagement",
+    "description": "The level of satisfaction customers have with community engagement efforts, as satisfied customers are less likely to churn"
+  },
+  {
+    "key": "customer_perception_of_personalized_offers",
+    "description": "The perception of customers regarding the personalized offers provided by the company, as positive perception can reduce churn"
+  },
+  {
+    "key": "customer_participation_in_customer_satisfaction_surveys",
+    "description": "The frequency of customers' participation in customer satisfaction surveys, as active participation may indicate lower churn likelihood"
+  },
+  {
+    "key": "customer_emotional_response_to_customer_support_interactions",
+    "description": "The emotional impact of customer support interactions on customers, as positive emotional responses reduce churn"
+  },
+  {
+    "key": "customer_perception_of_future_value",
+    "description": "The perception of customers regarding the future value they will receive from the company, as positive perception can reduce churn"
+  },
+  {
+    "key": "customer_satisfaction_with_product_reliability",
+    "description": "The level of satisfaction customers have with the reliability of products, as satisfied customers are less likely to churn"
+  },
+  {
+    "key": "customer_preference_for_communication_channels",
+    "description": "The preference of customers for specific communication channels, as aligning with preferences reduces churn"
+  },
+  {
+    "key": "customer_satisfaction_with_online_account_management",
+    "description": "The level of satisfaction customers have with the online account management system, as satisfied customers are less likely to churn"
+  },
+  {
+    "key": "customer_trust_in_customer_feedback_implementation",
+    "description": "The level of trust that customers have in the company's implementation of customer feedback, as trust can reduce churn"
+  },
+  {
+    "key": "customer_satisfaction_with_product_variety",
+    "description": "The level of satisfaction customers have with the variety of products offered, as satisfied customers are less likely to churn"
+  },
+  {
+    "key": "customer_perception_of_customer_appreciation_efforts",
+    "description": "The perception of customers regarding the company's efforts to appreciate and value customers, as positive perception can reduce churn"
+  },
+  {
+    "key": "customer_satisfaction_with_after_sales_service",
+    "description": "The level of satisfaction customers have with after-sales service, as satisfied customers are less likely to churn"
+  },
+  {
+    "key": "customer_emotional_response_to_brand_communications",
+    "description": "The emotional impact of brand communications on customers, as positive emotional responses reduce churn"
+  },
+  {
+    "key": "customer_perception_of_corporate_social_responsibility_efforts",
+    "description": "The perception of customers regarding the company's efforts in corporate social responsibility, as positive perception can reduce churn"
+  },
+  {
+    "key": "customer_satisfaction_with_product_affordability",
+    "description": "The level of satisfaction customers have with the affordability of products, as satisfied customers are less likely to churn"
+  },
+  {
+    "key": "customer_trust_in_pricing_transparency",
+    "description": "The level of trust that customers have in the pricing transparency of the company, as trust can reduce churn"
+  },
+  {
+    "key": "customer_emotional_response_to_company_values",
+    "description": "The emotional impact of company values on customers, as positive emotional responses reduce churn"
+  }
+]

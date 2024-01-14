@@ -1,0 +1,10 @@
+[
+  {
+    "key": "factor_one",
+    "description": "Customer satisfaction level, as measured by surveys or feedback"
+  },
+  {
+    "key": "factor_two",
+    "description": "Length of time since the customer's last interaction or purchase"
+  }
+]

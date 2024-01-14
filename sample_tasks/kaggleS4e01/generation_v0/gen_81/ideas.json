@@ -1,0 +1,42 @@
+[
+  {
+    "key": "customer_demographics",
+    "description": "Factors such as age, gender, location, and occupation may influence the decision to continue or close an account."
+  },
+  {
+    "key": "customer_engagement",
+    "description": "The frequency and depth of customer interactions with the product or service may impact their likelihood of churning."
+  },
+  {
+    "key": "customer_satisfaction",
+    "description": "The overall satisfaction level of the customer with the product or service can play a significant role in their decision to stay or leave."
+  },
+  {
+    "key": "pricing_plan",
+    "description": "The specific pricing plan or package the customer is subscribed to can affect their decision to continue or cancel their account."
+  },
+  {
+    "key": "customer_support",
+    "description": "The quality and responsiveness of customer support can influence a customer's decision to stay with the service or leave."
+  },
+  {
+    "key": "competitor_offerings",
+    "description": "The availability and attractiveness of offerings from competitors may impact the customer's decision to churn."
+  },
+  {
+    "key": "product_updates",
+    "description": "The frequency and impact of product updates or improvements may affect customer retention."
+  },
+  {
+    "key": "billing_issues",
+    "description": "Issues related to billing, invoicing, or payment processes can significantly impact customer retention."
+  },
+  {
+    "key": "contract_length",
+    "description": "The length and terms of the customer's contract or subscription may influence their decision to continue or cancel."
+  },
+  {
+    "key": "communication_strategy",
+    "description": "The effectiveness of communication strategies, such as personalized promotions or targeted messaging, can affect customer retention."
+  }
+]

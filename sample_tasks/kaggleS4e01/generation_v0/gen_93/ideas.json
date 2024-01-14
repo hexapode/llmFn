@@ -1,0 +1,10 @@
+[
+  {
+    "key": "factor_1",
+    "description": "Customer satisfaction: If a customer is satisfied with the product or service, they are more likely to continue their account."
+  },
+  {
+    "key": "factor_2",
+    "description": "Length of time using the service: Customers who have been using the service for a longer period of time may be less likely to churn compared to new customers."
+  }
+]

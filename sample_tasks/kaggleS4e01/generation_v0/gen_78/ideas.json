@@ -1,0 +1,10 @@
+[
+  {
+    "key": "customer_age",
+    "description": "Age could be a factor, as younger customers may have different needs and preferences than older ones, leading to different likelihoods of churning."
+  },
+  {
+    "key": "customer_interaction_level",
+    "description": "The level of interaction with the company, such as frequency of using the service or contacting customer support, could influence the likelihood of churning. Highly engaged customers may be less likely to churn."
+  }
+]

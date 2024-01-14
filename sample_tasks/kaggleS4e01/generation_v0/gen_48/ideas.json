@@ -1,0 +1,10 @@
+[
+  {
+    "key": "customer_age",
+    "description": "Age of the customer, as older customers may have stronger ties to the company and be less likely to churn."
+  },
+  {
+    "key": "monthly_usage",
+    "description": "Average monthly usage of the service, as customers who heavily rely on the service are less likely to churn."
+  }
+]

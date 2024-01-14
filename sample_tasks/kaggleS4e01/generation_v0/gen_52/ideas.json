@@ -1,0 +1,10 @@
+[
+  {
+    "key": "factor_1_age",
+    "description": "Age of the customer can influence their decision to continue or close their account. Younger customers may be more likely to close their account due to changing needs or priorities, while older customers may be more stable and less likely to churn."
+  },
+  {
+    "key": "factor_2_usage",
+    "description": "The level of usage or activity on the account can also be a strong predictor of churn. Customers who use the service frequently and engage with the platform are more likely to continue their account, while those with low or decreasing usage may be more prone to churn."
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "key": "customer_age",
+    "description": "The age of the customer could influence their likelihood of churning, with younger customers being more likely to close their accounts."
+  },
+  {
+    "key": "average_monthly_usage",
+    "description": "Customers who use the service more frequently may be less likely to churn, as they are getting more value from the product."
+  },
+  {
+    "key": "customer_support_interactions",
+    "description": "Customers who have had recent interactions with customer support are more likely to churn as they may be experiencing issues with the product."
+  },
+  {
+    "key": "subscription_length",
+    "description": "Customers who have been subscribed for a longer period of time may be less likely to churn, as they are more committed to the service."
+  },
+  {
+    "key": "number_of_competitors",
+    "description": "Customers faced with a larger number of competitors in the market may be more likely to churn, as they have more options to choose from."
+  },
+  {
+    "key": "usage_of_promotional_offers",
+    "description": "Customers who frequently use promotional offers may be more likely to churn, as they are more price-sensitive and less loyal to the brand."
+  },
+  {
+    "key": "customer_satisfaction_scores",
+    "description": "Customers who have lower satisfaction scores are more likely to churn, as they are less happy with the product or service."
+  },
+  {
+    "key": "financial_status",
+    "description": "Customers with unstable financial status may be more likely to churn, as they may be looking to cut expenses."
+  },
+  {
+    "key": "change_in_usage_patterns",
+    "description": "Customers who have recently changed their usage patterns may be more likely to churn, as they may be exploring other options."
+  },
+  {
+    "key": "network_outages",
+    "description": "Customers who have experienced frequent network outages may be more likely to churn, as they may perceive the service as unreliable."
+  }
+]

@@ -1,0 +1,122 @@
+[
+  {
+    "key": "customer_demographics",
+    "description": "Factors such as age, gender, location, and income level can influence a customer's decision to continue with their account or close it."
+  },
+  {
+    "key": "product_satisfaction",
+    "description": "The customer's satisfaction with the product or service they are using can greatly impact their decision to stay or leave."
+  },
+  {
+    "key": "customer_service_interaction",
+    "description": "The quality of customer service experiences, including response times and issue resolution, can affect customer retention."
+  },
+  {
+    "key": "pricing_and_promotions",
+    "description": "The competitiveness of pricing and the attractiveness of promotions can influence a customer's likelihood of churning."
+  },
+  {
+    "key": "length_of_relationship",
+    "description": "Customers who have been with the company for a longer period may be less likely to churn compared to newer customers."
+  },
+  {
+    "key": "usage_patterns",
+    "description": "Analyzing how frequently and in what ways customers use the product or service can provide insights into potential churn."
+  },
+  {
+    "key": "competitor_activity",
+    "description": "The actions and offerings of competitors in the market can impact customer decisions to stay or switch."
+  },
+  {
+    "key": "life_events",
+    "description": "Significant life events, such as marriage, moving, or job changes, may influence a customer's decision to continue or discontinue a service."
+  },
+  {
+    "key": "communication_effectiveness",
+    "description": "The effectiveness of communication from the company to the customer can impact customer retention."
+  },
+  {
+    "key": "perceived_value",
+    "description": "How customers perceive the value they receive compared to the cost can play a role in their decision to stay or leave."
+  },
+  {
+    "key": "customer_feedback",
+    "description": "Gathering and analyzing customer feedback and reviews can provide insights into factors that may lead to churn."
+  },
+  {
+    "key": "technological_changes",
+    "description": "Changes in technology, such as updates to the product or service, can impact customer retention."
+  },
+  {
+    "key": "loyalty_programs",
+    "description": "The presence and effectiveness of loyalty programs can influence customer retention rates."
+  },
+  {
+    "key": "economic_conditions",
+    "description": "Broader economic conditions, such as recessions or economic booms, can impact customer decisions to continue or close their accounts."
+  },
+  {
+    "key": "brand_reputation",
+    "description": "The reputation and public perception of the brand can affect customer loyalty and churn rates."
+  },
+  {
+    "key": "contract_terms",
+    "description": "The terms and conditions of the customer contract, including penalties for early termination, can impact churn rates."
+  },
+  {
+    "key": "personalization_efforts",
+    "description": "Efforts to personalize the customer experience, such as personalized recommendations, may impact customer retention."
+  },
+  {
+    "key": "social_influence",
+    "description": "The influence of friends, family, and social circles on a customer's decision to continue or discontinue a service."
+  },
+  {
+    "key": "convenience_factors",
+    "description": "Factors such as ease of use, convenience, and accessibility can impact customer retention."
+  },
+  {
+    "key": "trust_and_transparency",
+    "description": "The level of trust and transparency in the company's practices and policies can impact customer loyalty and churn rates."
+  },
+  {
+    "key": "customer_support_response_time",
+    "description": "The speed of response from customer support when issues or concerns are raised can impact customer satisfaction and churn rates."
+  },
+  {
+    "key": "product_quality",
+    "description": "The overall quality and reliability of the product or service can influence customer retention."
+  },
+  {
+    "key": "cross_selling_effectiveness",
+    "description": "The effectiveness of cross-selling efforts in encouraging customers to use more products or services within the company can impact retention."
+  },
+  {
+    "key": "billing_accuracy",
+    "description": "Accurate and transparent billing practices can contribute to positive customer experiences and reduce the likelihood of churn."
+  },
+  {
+    "key": "ease_of_switching",
+    "description": "The ease with which customers can switch to a different provider or substitute product can influence their decision to churn."
+  },
+  {
+    "key": "trust_in_security",
+    "description": "The perceived security and trustworthiness of the product or service can affect customer retention."
+  },
+  {
+    "key": "community_engagement",
+    "description": "Participation in or perception of a strong customer community can influence customer loyalty and reduce churn."
+  },
+  {
+    "key": "incentive_programs",
+    "description": "The effectiveness of incentive programs, such as referral bonuses or rewards for continued usage, can impact customer retention."
+  },
+  {
+    "key": "service_outages",
+    "description": "Frequent or prolonged service outages can lead to customer dissatisfaction and higher churn rates."
+  },
+  {
+    "key": "unique_selling_proposition",
+    "description": "The uniqueness of the value proposition compared to competitors can impact customer retention and churn rates."
+  }
+]

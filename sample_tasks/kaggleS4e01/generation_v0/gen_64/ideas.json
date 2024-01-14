@@ -1,0 +1,42 @@
+[
+  {
+    "key": "age_of_account",
+    "description": "The longer a customer has been with the company, the less likely they are to churn."
+  },
+  {
+    "key": "monthly_payment_amount",
+    "description": "Customers who have lower monthly payment amounts may be less likely to churn."
+  },
+  {
+    "key": "customer_support_interactions",
+    "description": "Customers who have had more interactions with customer support may be more likely to churn."
+  },
+  {
+    "key": "usage_of_additional_features",
+    "description": "Customers who actively use additional features of the product may be less likely to churn."
+  },
+  {
+    "key": "customer_satisfaction_rating",
+    "description": "Customers with higher satisfaction ratings are less likely to churn."
+  },
+  {
+    "key": "contract_length",
+    "description": "Customers on longer contract lengths may be less likely to churn."
+  },
+  {
+    "key": "number_of_competitor_offers",
+    "description": "Customers who have received multiple competitor offers may be more likely to churn."
+  },
+  {
+    "key": "frequency_of_product_usage",
+    "description": "Customers who use the product frequently are less likely to churn."
+  },
+  {
+    "key": "lifetime_value",
+    "description": "Customers with a higher lifetime value may be less likely to churn."
+  },
+  {
+    "key": "billing_issue_history",
+    "description": "Customers who have a history of billing issues may be more likely to churn."
+  }
+]

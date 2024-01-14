@@ -1,0 +1,10 @@
+[
+  {
+    "key": "customer_demographics",
+    "description": "Factors such as age, gender, income level, and family status can influence the decision to continue with an account or to close it. For example, younger customers might be more open to trying new services, while older customers might prefer stability and loyalty."
+  },
+  {
+    "key": "customer_satisfaction",
+    "description": "The level of satisfaction with the service or product offered can significantly impact customer retention. If a customer is satisfied with the service, they are more likely to continue their account, whereas unsatisfied customers are more likely to churn."
+  }
+]

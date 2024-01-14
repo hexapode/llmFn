@@ -1,0 +1,13 @@
+{
+  "llm": [
+    {
+      "role": "system",
+      "content": "You are a programmer, and you need to build a javascript funtion to solve the following task:\n Pedict whether a customer continues with their account or closes it (e.g., churns).\nTo solve this task you need to create a javascript function that take into parameters A set of information about a patient and return A prediction (between 0 and 1) of whether the customer will churn. 0 mean stay, 1 means churn..\nOutput the code between ```javascript and ``` tags.\nDo not add usage sample code, only output the functions.\nTry to compute the probability to the best of your ability based on the parameters inputs! DO NOT Output Placeholder CODE! Actually implement the function!\nYour are not allow to use any external library or call any external service/library/function.\nThe function should be named PredictExited  and its signature should be PredictExited(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary).\nThe function should be deterministic, it should always return the same output for a given input.\nThe function should contain calculations, not just a lookup table.\nBefore updating the function explain your reasoning in a comment.\nCompute your prediction in the function, and return them at the end of the function. Do not return value before end of function.\nThe function should not contain calls to a neural network or machine learning model.\n"
+    },
+    {
+      "role": "assistant",
+      "content": "```javascript\n// We will use a simple logistic regression model to predict customer churn based on the given input parameters.\nfunction PredictExited(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) {\n    // Let's define the coefficients for our logistic regression model\n    const coefficients = {\n        CreditScore: 0.05,\n        Age: 0.02,\n        Balance: 0.08,\n        NumOfProducts: 0.1,\n        IsActiveMember: -0.2,\n        EstimatedSalary: 0.0001\n    };\n\n    // Apply sigmoid function to predict the probability of customer churn\n    const z = \n        coefficients.CreditScore * CreditScore + \n        coefficients.Age * Age + \n        coefficients.Balance * Balance + \n        coefficients.NumOfProducts * NumOfProducts + \n        coefficients.IsActiveMember * IsActiveMember + \n        coefficients.EstimatedSalary * EstimatedSalary;\n    const probabilityChurn = 1 / (1 + Math.exp(-z));\n\n    return probabilityChurn;\n}\n```"
+    }
+  ],
+  "perf": -0.5017678816383321
+}

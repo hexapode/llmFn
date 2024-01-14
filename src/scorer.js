@@ -38,6 +38,46 @@ function ROCAUCScore(y_true, y_pred) {
     return auc;
 }
 
+// RSOC area under curve score
+function SROCAUCScore(y_true, y_pred) {
+    let p = 0;
+    for (let i = 0; i < y_true.length; i++) { 
+        if (y_pred[i] > 2) {
+            p += (y_pred[i] - 1) * (y_pred[i] - 1);
+        }
+        if (y_pred[i] < -1) {
+            p += (y_pred[i] + 1) * (y_pred[i] + 1);    
+        }
+    }
+    let N = y_true.length;
+    let n_pos = y_true.reduce((a, b) => a + b, 0);
+    let n_neg = N - n_pos;
+    let pairs = [];
+    for (let i = 0; i < N; i++) {
+        pairs.push([y_pred[i], y_true[i]]);
+    }
+    pairs.sort((a, b) => b[0] - a[0]);
+    let auc = 0;
+    let prev_x = 0;
+    let prev_y = 0;
+    let tp = 0;
+    let fp = 0;
+    for (let i = 0; i < N; i++) {
+        let [p, y_val] = pairs[i];  // Renamed 'y' to 'y_val'
+        if (y_val == 1) {  // Use 'y_val' instead of 'y'
+            tp += 1;
+        } else {
+            fp += 1;
+        }
+        let x = fp / n_neg;
+        let y = tp / n_pos;
+        auc += (x - prev_x) * (y + prev_y) / 2;
+        prev_x = x;
+        prev_y = y;
+    }
+    return auc - p;
+}
+
 function multiClassLogloss(y_true, y_pred) {
     let logloss = 0;
     let penality = 0;
@@ -86,6 +126,19 @@ function RMSE(y_true, y_pred) {
     return Math.sqrt(sum / N);
 }
 
+// Squared Error
+function AggErr(y_true, y_pred) {
+    let N = y_true.length;
+    let sum = 0;
+    for (let i = 0; i < N; i++) {
+        let y_i = y_true[i];
+        let p_i = y_pred[i];
+        sum += Math.abs(y_i - p_i);
+    }
+    return sum;
+}
+
+
 // Log Root-Mean-Squared-Error (RMSE)
 function LogRMSE(y_true, y_pred) {
     let N = y_true.length;
@@ -103,5 +156,7 @@ module.exports = {
     multiClassLogloss,
     RMSE,
     LogRMSE,
-    ROCAUCScore
+    ROCAUCScore,
+    SROCAUCScore,
+    AggErr
 }

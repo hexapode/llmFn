@@ -1,0 +1,10 @@
+[
+  {
+    "key": "account_age",
+    "description": "The length of time a customer has been with the company can influence their likelihood to churn. Older accounts may be more stable and loyal, while newer accounts may be more prone to churning."
+  },
+  {
+    "key": "customer_support_interaction",
+    "description": "The frequency and outcomes of customer support interactions can indicate a customer's satisfaction and loyalty. High levels of interaction or unresolved issues may increase the likelihood of churn."
+  }
+]

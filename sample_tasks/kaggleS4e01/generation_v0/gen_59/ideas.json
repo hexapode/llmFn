@@ -1,0 +1,10 @@
+[
+  {
+    "key": "customer_age",
+    "description": "The age of the customer could be a factor, as younger customers might be more likely to switch to a different service or provider, while older customers may be more loyal and less likely to churn."
+  },
+  {
+    "key": "average_monthly_usage",
+    "description": "The average monthly usage of the service could also be a factor, as customers with higher usage may be more likely to continue with their account, while those with lower usage may be at a higher risk of churning."
+  }
+]

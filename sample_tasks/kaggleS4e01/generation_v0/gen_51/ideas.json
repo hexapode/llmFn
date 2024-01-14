@@ -1,0 +1,10 @@
+[
+  {
+    "key": "factor_1_customer_age",
+    "description": "The age of the customer could be a factor, as younger customers might be more likely to switch providers or close accounts compared to older customers who are more established and loyal."
+  },
+  {
+    "key": "factor_2_customer_satisfaction",
+    "description": "Customer satisfaction with the service or product offered could also be a significant factor, as dissatisfied customers are more likely to close their accounts or switch to a competitor."
+  }
+]

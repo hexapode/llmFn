@@ -1,0 +1,10 @@
+[
+  {
+    "key": "factor_1",
+    "description": "Customer satisfaction: Happy and satisfied customers are more likely to continue with their account, while dissatisfied customers may be more inclined to close their account."
+  },
+  {
+    "key": "factor_2",
+    "description": "Length of relationship: Customers who have been with the company for a longer period of time may be more loyal and less likely to churn, compared to new customers who may be more prone to churning."
+  }
+]

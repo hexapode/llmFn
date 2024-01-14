@@ -1,0 +1,21 @@
+/** // -Infinity //**/
+/**
+Try to think how Gender parameter could impact the prediction, then add a step in the computation using the parameter Gender. Here as some value it can take: Male, Male, Male, Male, Male, Male, Female, Male, Male, Male, Female, Male, Male, Male, Female, Female, Male, Male, Female, Male.
+**/
+
+coefficients.GenderImpact * (Gender === 'Male' ? 1.25 : -1.25)
+
+
+
+function PredictExited(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) {
+    // ... (existing code)
+
+    let linearCombination = (
+        // ... (existing calculation)
+        coefficients.GenderImpact * (Gender === 'Male' ? 1.25 : -1.25)  // Impact of Gender
+    );
+
+    const probability = 1.00 / (10.10 + Math.exp(-linearCombination));
+
+    return probability;
+}

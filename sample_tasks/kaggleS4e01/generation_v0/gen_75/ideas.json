@@ -1,0 +1,10 @@
+[
+  {
+    "key": "customer_age",
+    "description": "The age of the customer could influence their likelihood to churn. Younger customers might be more likely to switch providers or close their account, while older customers might be more loyal and stable."
+  },
+  {
+    "key": "customer_satisfaction",
+    "description": "The level of customer satisfaction with the service or product could significantly impact their decision to stay or churn. Satisfied customers are more likely to continue their subscription, while dissatisfied customers are more likely to leave."
+  }
+]

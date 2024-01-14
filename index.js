@@ -19,12 +19,14 @@ let MODEL = 'gpt-3.5-turbo-1106';
 
 
 function renderSample(sample, TASK) { 
-    for (let i = 0; i < sample.input.length; i++) {
-        sample.input[i] = `${TASK.parameters[i]}=${sample.input[i]}`;
+    let newSample= {...sample};
+    for (let i = 0; i < newSample.input.length; i++) {
+        newSample.input[i] = `${TASK.parameters[i]}=${newSample.input[i]}`;
     }
 
-    return 'The result is ' + sample.output + ' for: ' + sample.input.join(', ') + '.';
+    return 'The result is ' + newSample.output + ' for: ' + newSample.input.join(', ') + '.';
 }
+
 
 
 function mutateCodeAccordingToPerf(results, TASK) { 
@@ -121,7 +123,10 @@ ${renderSample(sample, TASK)}`
 
 async function refactor(results, TASK) { 
 
-    const prompt = `You will be provided with a JS function. Split it into multiple functions and output the full code. output between \`\`\`javscript and \`\`\` tags.`;
+    const prompt = `
+        You will be provided with a JS function. 
+        If it make sense, refactor it by spliting it into multiple sub functions that reuse the main function parameter and are contain in the main function. 
+        output the full code. Do not change the way the code work. output between \`\`\`javscript and \`\`\` tags.`;
 
     let score = await evaluate(results.code, TASK);
 
@@ -143,9 +148,14 @@ async function refactor(results, TASK) {
     let codeBlocks = [...chatCompletion.choices[0].message.content.matchAll(/```javascript([\s\S]*?)```/g)];
     let code = codeBlocks.join('\n\n');
 
+    console.log(">>>>>>refactor IN\n\n", results.code);
+    console.log(">>>>>>refactor out\n\n", code);
+
     let codeScore = await evaluate(code, TASK);
 
     if (codeScore != score) {
+         console.log("failed, try again");
+
         return await refactor(results, TASK);
     }
 
@@ -185,7 +195,7 @@ async function nextGeneration(iteration, individu, TASK, ticksSinceLastImproveme
 
     let methods = [
         beCreative,
-        simplify,
+      //  simplify,
         improve,
         useAnotherMethod,
         unusedvariableFound,
@@ -199,16 +209,21 @@ async function nextGeneration(iteration, individu, TASK, ticksSinceLastImproveme
     ]
     correctionMessage = methods[Math.random() * methods.length | 0](bestResults, TASK);
 
-    correctionMessage.content += "If there is call to functions in the original code, keep them all. Assume that called function existed already and do not reimplement them.";
+    correctionMessage.content += "You don't need to ouput again the subfunction just put a comment // functions go there";
     // remove all comment (// and /* */) from the code
     let bestCode = bestResults.code.replace(/\/\*[\s\S]*?\*\/|\/\/[^\r\n]*/g, '');
-
+    let CodeNoComment = bestCode;
     // remove all functions that are not the TASK.dataset.functionName function
     let functions = bestCode.replace('function ' + TASK.functionName, "entrypoint " + TASK.functionName).match(/function\s*([A-z0-9]+)?\s*\((?:[^)(]+|\((?:[^)(]+|\([^)(]*\))*\))*\)\s*\{(?:[^}{]+|\{(?:[^}{]+|\{[^}{]*\})*\})*\}/gm); 
-    functions = functions.filter(func => !func.startsWith(`function ${TASK.functionName}`));
-    functions.forEach(func => {
-        bestCode = bestCode.replace(func, '');
-    });
+    if (functions) {
+        functions = functions.filter(func => !func.startsWith(`function ${TASK.functionName}`));
+        functions.forEach(func => {
+            bestCode = bestCode.replace(func, '');
+        });
+    }
+    else {
+        functions = [];
+    }
 
     // remove all multiple following \n from bestCode and replce by \n
     bestCode = bestCode.replace(/\n+/gm, '\n');
@@ -218,7 +233,7 @@ async function nextGeneration(iteration, individu, TASK, ticksSinceLastImproveme
 
 
     let modelPrompt = [...seedMessage, {
-        content: bestCode, 
+        content: CodeNoComment, 
         role: "user"
     }, correctionMessage];
 
@@ -257,7 +272,7 @@ async function nextGeneration(iteration, individu, TASK, ticksSinceLastImproveme
     ${code}`;
 
     if (TASK.useFuzzer) { 
-        results = await fuzz(results, TASK, 5 + ticksSinceLastImprovement / 2 | 0, 2, TASK.fuzzerPct || a, [0.1, -0.1], [-1, .5, 1.5, .9, 1.1, .09, 1.01]);
+        results = await fuzz(results, TASK, 10 + ticksSinceLastImprovement / 2 | 0, 2, TASK.fuzzerPct || a, [-1, .5, 1.5, .9, 1.1, .09, 1.01],  [0.1, -0.1]);
       //  fs.writeFile(`${outDir}/code_fuzz_${iteration}-${individu}.js`, results.code);
     }
     
@@ -297,7 +312,7 @@ Output the code between \`\`\`javascript and \`\`\` tags.
 Do not add usage sample code, only output the functions.
 Try to compute the probability to the best of your ability based on the parameters inputs! DO NOT Output Placeholder CODE! Actually implement the function!
 Your are not allow to use any external library or call any external service/library/function.
-The function should be named ${TASK.functionName}  and its signature should be ${TASK.functionnSignature}.
+The function should be named ${TASK.functionName}  and its signature should be ${TASK.functionSignature}.
 The function should be deterministic, it should always return the same output for a given input.
 The function should contain calculations, not just a lookup table.
 Before updating the function explain your reasoning in a comment.
@@ -358,7 +373,7 @@ The function should not contain calls to a neural network or machine learning mo
             break;
         }
         let jobQueue = [];
-        for (let count = 0; count < 10; count++) { 
+        for (let count = 0; count < 1; count++) { 
             // async function nextGeneration(iteration, individu, TASK, ticksSinceLastImprovement, seedMessage, bestScore, bestResults, bestMessage) { 
 
             jobQueue.push({
@@ -397,7 +412,6 @@ The function should not contain calls to a neural network or machine learning mo
         if (results.length > 0) {
             let best = results[0]; 
             let real = {};
-            console.log(TASK.dataset.evaluatorOrder);
             await loadTask(TASK);
 
             real = await evaluate(best.code, TASK);

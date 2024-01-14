@@ -1,0 +1,122 @@
+[
+  {
+    "key": "customer_demographics",
+    "description": "Factors such as age, gender, income level, and location can influence the likelihood of a customer churning."
+  },
+  {
+    "key": "customer_service_interaction",
+    "description": "The frequency and nature of interactions with customer service representatives can impact a customer's decision to churn."
+  },
+  {
+    "key": "billing_issues",
+    "description": "Experiencing problems with billing, such as incorrect charges or payment processing issues, may lead a customer to consider closing their account."
+  },
+  {
+    "key": "length_of_relationship",
+    "description": "Customers who have been with the company for a longer period may be less likely to churn compared to newer customers."
+  },
+  {
+    "key": "usage_experience",
+    "description": "Customers with a positive experience using the product or service are more likely to continue their account, while those with a negative experience may churn."
+  },
+  {
+    "key": "competitive_offer",
+    "description": "The availability of competitive offers from other companies in the market can influence a customer's decision to stay or leave."
+  },
+  {
+    "key": "product_quality",
+    "description": "The perceived quality and reliability of the product or service can impact customer retention."
+  },
+  {
+    "key": "communication_effectiveness",
+    "description": "Clear and effective communication from the company can contribute to customer satisfaction and reduce the likelihood of churn."
+  },
+  {
+    "key": "promotional_offers",
+    "description": "Customers may be influenced by promotional offers or discounts provided by the company to continue their account."
+  },
+  {
+    "key": "customer_feedback",
+    "description": "Feedback provided by customers through surveys or other channels can provide insights into potential reasons for churn."
+  },
+  {
+    "key": "customer_behavior",
+    "description": "Patterns in customer behavior, such as frequency of usage and engagement, can indicate the likelihood of churn."
+  },
+  {
+    "key": "contract_terms",
+    "description": "The terms of the customer's contract, including length and conditions, can impact their decision to continue or close their account."
+  },
+  {
+    "key": "economic_conditions",
+    "description": "External economic factors, such as recessions or changes in the job market, can influence customer churn rates."
+  },
+  {
+    "key": "customer_expectations",
+    "description": "Matching or exceeding customer expectations regarding the product or service can affect retention rates."
+  },
+  {
+    "key": "company_reputation",
+    "description": "The overall reputation and public perception of the company can play a role in customer retention."
+  },
+  {
+    "key": "technological_changes",
+    "description": "Advancements or changes in technology may impact the relevance and attractiveness of the company's offerings to customers."
+  },
+  {
+    "key": "loyalty_programs",
+    "description": "The presence of loyalty programs or rewards for long-term customers can influence retention rates."
+  },
+  {
+    "key": "customer_support_quality",
+    "description": "The quality of customer support, including response time and issue resolution, can impact customer satisfaction and churn."
+  },
+  {
+    "key": "life_events",
+    "description": "Major life events, such as moving to a new location or changes in family dynamics, can affect a customer's decision to continue or close their account."
+  },
+  {
+    "key": "peer_influence",
+    "description": "The influence of friends, family, or social circles on a customer's decision to continue with their account can be a factor in churn prediction."
+  },
+  {
+    "key": "user_interface",
+    "description": "The intuitiveness and user-friendliness of the product's user interface can impact customer satisfaction and retention."
+  },
+  {
+    "key": "marketing_effectiveness",
+    "description": "The effectiveness of the company's marketing efforts in conveying the value proposition and benefits of the product can influence customer retention."
+  },
+  {
+    "key": "personalization",
+    "description": "The level of personalization and customization offered to the customer can impact their attachment to the product or service."
+  },
+  {
+    "key": "trust",
+    "description": "The level of trust customers have in the company and its ability to fulfill promises can affect their decision to continue or close their account."
+  },
+  {
+    "key": "social_media_presence",
+    "description": "The company's presence and interactions on social media platforms can influence customer perception and retention."
+  },
+  {
+    "key": "data_security",
+    "description": "Customer concerns about the security and privacy of their data can impact their decision to continue using the product or service."
+  },
+  {
+    "key": "community_involvement",
+    "description": "The company's involvement in community initiatives and social responsibility may influence customer loyalty."
+  },
+  {
+    "key": "language_and_cultural_relevance",
+    "description": "Relevance of marketing content and product features to the customer's language and cultural background can impact retention."
+  },
+  {
+    "key": "ease_of_account_management",
+    "description": "The ease of managing and making changes to the customer's account can affect their decision to continue with the service."
+  },
+  {
+    "key": "perceived_value_for_money",
+    "description": "Customers' perception of the value they receive in relation to the price paid can influence their decision to churn."
+  }
+]

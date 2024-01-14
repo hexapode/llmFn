@@ -1,0 +1,122 @@
+[
+  {
+    "key": "customer_age",
+    "description": "The age of the customer could influence their likelihood to churn, with younger customers potentially being more unpredictable and older customers potentially being more stable and loyal."
+  },
+  {
+    "key": "account_tenure",
+    "description": "Customers who have been with the company for a longer period of time may be less likely to churn, as they have established a level of trust and familiarity with the service."
+  },
+  {
+    "key": "monthly_bill_amount",
+    "description": "The amount of money a customer pays each month could impact their likelihood to churn, with higher bills potentially leading to greater consideration of account closure."
+  },
+  {
+    "key": "customer_support_interactions",
+    "description": "Customers who have had multiple interactions with customer support may be more likely to churn, indicating potential dissatisfaction with the service."
+  },
+  {
+    "key": "usage_frequency",
+    "description": "Customers who use the service frequently may be less likely to churn, as they are actively engaged with the product or service."
+  },
+  {
+    "key": "contract_type",
+    "description": "Customers on a contract may have different churn behaviors compared to those on a month-to-month payment plan, as contract terms and conditions can influence loyalty."
+  },
+  {
+    "key": "competitor_offer",
+    "description": "The presence of competitive offers from other companies could entice customers to consider churning, especially if they perceive better value elsewhere."
+  },
+  {
+    "key": "customer_feedback_sentiment",
+    "description": "Analyzing the sentiment of customer feedback, such as through surveys or social media, could provide insights into potential churn behavior."
+  },
+  {
+    "key": "life_events",
+    "description": "Significant life events such as moving, marriage, or birth of a child could impact a customer's decision to churn, as their priorities and financial situation may change."
+  },
+  {
+    "key": "product_updates",
+    "description": "Receiving regular product updates and new features may positively impact customer retention, as they feel the service is continuously improving and evolving."
+  },
+  {
+    "key": "billing_issues",
+    "description": "Customers who experience billing problems or errors may be more likely to consider closing their account due to frustration or lack of trust in the billing system."
+  },
+  {
+    "key": "loyalty_program_participation",
+    "description": "Customers enrolled in loyalty programs or rewards programs may be less likely to churn, as they have an incentive to continue using the service."
+  },
+  {
+    "key": "economic_conditions",
+    "description": "Macro-economic conditions, such as recession or economic growth, may influence a customer's decision to continue or close their account due to changes in their financial stability."
+  },
+  {
+    "key": "trustpilot_rating",
+    "description": "The overall rating and reviews on platforms like Trustpilot could impact a customer's perception of the company and influence their decision to stay or churn."
+  },
+  {
+    "key": "service_outages",
+    "description": "Frequent or prolonged service outages may lead to customer dissatisfaction and increase the likelihood of churn."
+  },
+  {
+    "key": "contract_renewal_reminders",
+    "description": "Sending timely reminders about contract renewal dates may positively impact customer retention, as it prompts them to consider staying with the service."
+  },
+  {
+    "key": "cross_selling_efforts",
+    "description": "Aggressive cross-selling or upselling efforts may potentially annoy customers and lead to higher churn rates."
+  },
+  {
+    "key": "channel_engagement",
+    "description": "Customers who engage with the company through multiple channels (e.g., email, social media, phone) may be more likely to stay, as they have a stronger connection to the brand."
+  },
+  {
+    "key": "personalized_offers",
+    "description": "Receiving personalized offers based on their usage patterns and preferences may increase customer loyalty and reduce churn rates."
+  },
+  {
+    "key": "brand_reputation",
+    "description": "The overall reputation and visibility of the brand in the market could impact a customer's decision to remain a customer or switch to a competitor."
+  },
+  {
+    "key": "family_plan_subscription",
+    "description": "Customers who have family plans or multiple lines may be less likely to churn, as there is added complexity in switching providers."
+  },
+  {
+    "key": "data_speed",
+    "description": "The speed and reliability of the data connection could influence a customer's decision to stay with the service or explore alternatives."
+  },
+  {
+    "key": "contract_penalties",
+    "description": "The presence of penalties for early contract termination may discourage customers from churning, as they would incur additional costs."
+  },
+  {
+    "key": "product_bundles",
+    "description": "Customers who have bundled services may be less likely to churn, as it becomes more inconvenient to switch multiple services at once."
+  },
+  {
+    "key": "customer_account_manager",
+    "description": "Having a dedicated account manager or representative may enhance the customer experience and reduce churn by providing personalized support."
+  },
+  {
+    "key": "community_engagement",
+    "description": "Active participation in community forums, events, or advocacy groups related to the service may indicate a higher commitment to the brand and lower likelihood of churn."
+  },
+  {
+    "key": "accessibility_features",
+    "description": "Customers with specific accessibility needs may be less likely to churn if the service offers tailored features and support."
+  },
+  {
+    "key": "peer_recommendations",
+    "description": "Positive recommendations from friends, family, or colleagues may influence a customer to stay with the service and reduce the likelihood of churn."
+  },
+  {
+    "key": "environmental_consciousness",
+    "description": "Customers who perceive the company as environmentally conscious and sustainable may show higher loyalty and lower churn rates."
+  },
+  {
+    "key": "data_usage_patterns",
+    "description": "Analyzing the patterns of data usage (e.g., peak hours, heavy usage days) may provide insights into potential churn behavior and help tailor retention strategies."
+  }
+]

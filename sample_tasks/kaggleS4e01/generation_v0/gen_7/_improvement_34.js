@@ -1,0 +1,96 @@
+/* Best score: 0.8225993594064511 */
+
+
+    /* Try to add to think which input parameter will make sense as an extra factor in one of the existing line of the computation, add it to the line(s) in a way that make sense. here is a sample input:
+The result is 0 for: CustomerId=15667938, Surname=Udegbulam, CreditScore=676, Geography=Germany, Gender=Male, Age=45.0, Tenure=1, Balance=107135.04, NumOfProducts=2, HasCrCard=1.0, IsActiveMember=1.0, EstimatedSalary=88592.8. */
+    
+    /** // 0.8225529619526655 //**/
+/**
+Try to add to think which input parameter will make sense as an extra factor in one of the existing line of the computation, add it to the line(s) in a way that make sense. here is a sample input:
+The result is 0 for: CustomerId=15667938, Surname=Udegbulam, CreditScore=676, Geography=Germany, Gender=Male, Age=45.0, Tenure=1, Balance=107135.04, NumOfProducts=2, HasCrCard=1.0, IsActiveMember=1.0, EstimatedSalary=88592.8.
+**/
+
+function PredictExited(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) {
+
+    const coefficients = {
+        CustomerId: 0.00,
+        CreditScore: 0.00,
+        Age: 0.07,
+        Tenure: -0.04,
+        Balance: 0.00,
+        NumOfProducts: -0.49,
+        HasCrCard: -0.16,
+        IsActiveMember: -0.79,
+        EstimatedSalary: 0.00,
+        GeographyImpact: 0.39,
+        GenderImpact: -0.20,
+        SurnameImpact: 0.04,
+        NewParameterImpact: 0.02,
+        AdditionalImpact: -0.43,
+        CustomParameterImpact: -1.32, 
+        AgeBalanceImpact: 0.00, 
+        CreditScoreImpact: 0.00, 
+    };
+
+    let surnameLength = Surname.length;
+    let surnameImpact = 0.00;
+
+    if (surnameLength <= 5.00) {
+        surnameImpact = -1.18;
+    } else {
+        surnameImpact = 0.42;
+    }
+
+    let newParameter = (Age * Tenure) / (NumOfProducts + Balance);
+    let ageBalanceImpact = Age * Balance * coefficients.AgeBalanceImpact; 
+    let lastDigit = CustomerId % 10.00;
+    let customerIdImpact = 0.00 * lastDigit;
+    let additionalVariable = Math.abs(CreditScore - -1197.78) / 799.00;
+    // Integrating the number of products as an additional factor
+    additionalVariable += NumOfProducts * 0.05;
+
+    let surnameValue = 0.00;
+    switch (Surname) {
+        case "Ts'ui":
+            surnameValue = -0.13;
+            break;
+        default:
+            surnameValue = 0.12;
+            break;
+    }
+
+    let customParameter = (Age * 0.13) / (EstimatedSalary * 0.06);
+
+    let geographyImpact = 0.00;
+    if (Geography === 'Germany') {
+        geographyImpact = 1.24;
+    } else if (Geography === 'Spain') {
+        geographyImpact = -0.97;
+    } else {
+        geographyImpact = -1.06;
+    }
+
+    let linearCombination = (
+        coefficients.CustomerId * CustomerId +
+        coefficients.CreditScore * CreditScore +
+        coefficients.Age * Age +
+        coefficients.Tenure * Tenure +
+        coefficients.Balance * Balance +
+        coefficients.NumOfProducts * NumOfProducts +
+        coefficients.HasCrCard * HasCrCard +
+        coefficients.IsActiveMember * IsActiveMember +
+        coefficients.EstimatedSalary * EstimatedSalary +
+        coefficients.GeographyImpact * geographyImpact +
+        coefficients.GenderImpact * (Gender === 'Male' ? 1.21 : -1.12) +
+        coefficients.SurnameImpact * surnameImpact +
+        coefficients.NewParameterImpact * newParameter +
+        customerIdImpact +
+        coefficients.AdditionalImpact * additionalVariable +
+        coefficients.CustomParameterImpact * customParameter +
+        surnameValue + ageBalanceImpact + coefficients.CreditScoreImpact * CreditScore 
+    );
+
+    const probability = 1.00 / (1.02 + Math.exp(-linearCombination));
+
+    return probability;
+}

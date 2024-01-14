@@ -1,0 +1,10 @@
+[
+  {
+    "key": "customerEngagement",
+    "description": "The level of customer engagement with the product or service, including frequency of use, feature adoption, and interaction with customer support."
+  },
+  {
+    "key": "contractLength",
+    "description": "The length of the customer's contract or subscription, as customers with longer contracts may be less likely to churn compared to those with shorter contracts."
+  }
+]

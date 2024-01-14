@@ -1,0 +1,42 @@
+[
+  {
+    "key": "customer_age",
+    "description": "The age of the customer may influence their likelihood to continue with their account, as younger customers may have different needs and priorities compared to older customers."
+  },
+  {
+    "key": "usage_frequency",
+    "description": "How frequently the customer uses the service or product may indicate their level of satisfaction and engagement, influencing their decision to continue or close the account."
+  },
+  {
+    "key": "customer_feedback",
+    "description": "Feedback provided by the customer, such as surveys or reviews, can provide valuable insights into their satisfaction and potential to churn."
+  },
+  {
+    "key": "competitor_offers",
+    "description": "The presence of competitive offers and promotions from other companies may impact the customer's decision to stay or switch providers."
+  },
+  {
+    "key": "customer_support_interactions",
+    "description": "The frequency and nature of interactions with customer support may reflect the customer's overall experience and influence their likelihood to churn."
+  },
+  {
+    "key": "contract_length",
+    "description": "The length of the customer's contract or subscription commitment may affect their decision to continue or terminate the account."
+  },
+  {
+    "key": "payment_history",
+    "description": "The customer's history of on-time payments or instances of late payments may correlate with their likelihood to continue with their account."
+  },
+  {
+    "key": "product_quality",
+    "description": "The perceived quality of the product or service offered may impact customer satisfaction and retention."
+  },
+  {
+    "key": "life_events",
+    "description": "Significant life events, such as marriage, relocation, or career changes, may influence a customer's decision to retain or close their account."
+  },
+  {
+    "key": "communication_preferences",
+    "description": "Understanding the customer's preferred communication channels and frequency of communication can help tailor retention strategies and minimize churn."
+  }
+]

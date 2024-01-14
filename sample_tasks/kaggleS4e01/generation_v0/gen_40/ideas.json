@@ -1,0 +1,402 @@
+[
+  {
+    "key": "customer_age",
+    "description": "Younger customers may be more likely to churn as they have less attachment to the brand."
+  },
+  {
+    "key": "monthly_payment",
+    "description": "Customers with higher monthly payments may be more likely to churn as they may be more price-sensitive."
+  },
+  {
+    "key": "customer_service_interactions",
+    "description": "Customers who have had multiple interactions with customer service may be more likely to churn due to unresolved issues."
+  },
+  {
+    "key": "contract_length",
+    "description": "Customers with shorter contract lengths may be more likely to churn as they have less commitment to the service."
+  },
+  {
+    "key": "usage_patterns",
+    "description": "Customers who use the service less frequently may be more likely to churn as they may not find it valuable."
+  },
+  {
+    "key": "competition_offer",
+    "description": "Customers who are presented with better offers from competitors may be more likely to churn."
+  },
+  {
+    "key": "customer_satisfaction",
+    "description": "Customers with lower satisfaction scores may be more likely to churn as they are not happy with the service."
+  },
+  {
+    "key": "service_quality",
+    "description": "Customers who experience frequent service outages or poor quality may be more likely to churn."
+  },
+  {
+    "key": "product_features",
+    "description": "Customers who do not use or are unsatisfied with specific product features may be more likely to churn."
+  },
+  {
+    "key": "communication_effectiveness",
+    "description": "Customers who do not receive effective communication from the company may be more likely to churn as they feel uninformed or unappreciated."
+  },
+  {
+    "key": "payment_history",
+    "description": "Customers with a history of late payments or payment issues may be more likely to churn."
+  },
+  {
+    "key": "life_events",
+    "description": "Customers going through major life events such as moving, getting married, or having a baby may be more likely to churn due to changing priorities."
+  },
+  {
+    "key": "loyalty_program",
+    "description": "Customers with access to a competitive loyalty program from a competitor may be more likely to churn."
+  },
+  {
+    "key": "customer_location",
+    "description": "Customers located in areas with poor service coverage or infrastructure may be more likely to churn."
+  },
+  {
+    "key": "recommendations",
+    "description": "Customers who do not receive personalized recommendations or offers may be more likely to churn as they feel undervalued."
+  },
+  {
+    "key": "social_media_sentiment",
+    "description": "Negative sentiment about the brand on social media may influence customers to churn."
+  },
+  {
+    "key": "product_price_comparisons",
+    "description": "Customers who frequently compare the price of the product with competitors may be more likely to churn."
+  },
+  {
+    "key": "switching costs",
+    "description": "Customers with low switching costs, such as easy setup with competitors, may be more likely to churn."
+  },
+  {
+    "key": "communication_preferences",
+    "description": "Customers who do not receive communications through their preferred channels may be more likely to churn."
+  },
+  {
+    "key": "community_engagement",
+    "description": "Customers who are not part of an active user community may be more likely to churn due to lack of engagement with the brand."
+  },
+  {
+    "key": "company_reputation",
+    "description": "Customers may churn if the company has a poor reputation or has been involved in controversies."
+  },
+  {
+    "key": "customer_reviews",
+    "description": "Negative customer reviews and low ratings may influence other customers to churn."
+  },
+  {
+    "key": "upgrades_and_downgrades",
+    "description": "Customers who frequently upgrade or downgrade their service may be more likely to churn due to inconsistent needs or dissatisfaction."
+  },
+  {
+    "key": "customer_support_response_time",
+    "description": "Customers who experience long wait times or delayed responses from customer support may be more likely to churn."
+  },
+  {
+    "key": "data_security_concerns",
+    "description": "Customers who have concerns about the security of their personal data may be more likely to churn."
+  },
+  {
+    "key": "family_and_friends_recommendations",
+    "description": "Customers may be more likely to churn if their family and friends have also churned or recommended a different service."
+  },
+  {
+    "key": "market_trends",
+    "description": "Customers may be influenced to churn based on market trends or changes in the industry."
+  },
+  {
+    "key": "availability_of_alternatives",
+    "description": "Customers in areas with a wide range of alternative services may be more likely to churn."
+  },
+  {
+    "key": "billing_issues",
+    "description": "Customers who experience billing errors, unclear charges, or issues with payment may be more likely to churn."
+  },
+  {
+    "key": "brand_affinity",
+    "description": "Customers may be less likely to churn if they have a strong emotional connection or affinity towards the brand."
+  },
+  {
+    "key": "customer engagement",
+    "description": "Customers who are actively engaged with the brand through events, surveys, or feedback may be less likely to churn."
+  },
+  {
+    "key": "contract renewal process",
+    "description": "Customers who face complex, difficult, or unappealing contract renewal processes may be more likely to churn."
+  },
+  {
+    "key": "company financial stability",
+    "description": "Customers may be more likely to churn if they perceive the company as financially unstable or at risk of closure."
+  },
+  {
+    "key": "customer expectations",
+    "description": "Customers may churn if their expectations regarding service, features, or quality are not met."
+  },
+  {
+    "key": "multi-service discounts",
+    "description": "Customers using multiple services from the company may be less likely to churn due to discounts or bundled offerings."
+  },
+  {
+    "key": "customer feedback response",
+    "description": "Customers may be more likely to churn if they feel their feedback or complaints are not adequately addressed by the company."
+  },
+  {
+    "key": "technology advancements",
+    "description": "Customers may churn if the company fails to keep up with technological advancements or innovation in the industry."
+  },
+  {
+    "key": "service reliability",
+    "description": "Customers may be more likely to churn if the service experiences frequent disruptions or downtime."
+  },
+  {
+    "key": "environmental factors",
+    "description": "Customers may be more likely to churn due to environmental factors such as changes in regulations, natural disasters, or public health crises."
+  },
+  {
+    "key": "trust and transparency",
+    "description": "Customers may be less likely to churn if the company demonstrates trustworthiness and transparency in its operations and policies."
+  },
+  {
+    "key": "customer education and onboarding",
+    "description": "Customers who receive thorough education and support during the onboarding process may be less likely to churn."
+  },
+  {
+    "key": "personalized experiences",
+    "description": "Customers may be less likely to churn if they receive personalized experiences and offers tailored to their preferences and behavior."
+  },
+  {
+    "key": "social responsibility",
+    "description": "Customers may be more likely to churn if the company is perceived as disregarding social or environmental responsibilities."
+  },
+  {
+    "key": "industry regulations",
+    "description": "Customers may churn if the company fails to comply with industry regulations or undergoes legal issues."
+  },
+  {
+    "key": "relocation",
+    "description": "Customers who relocate to areas with no service coverage may be more likely to churn."
+  },
+  {
+    "key": "product availability",
+    "description": "Customers may be more likely to churn if the product or service they depend on is consistently out of stock or unavailable."
+  },
+  {
+    "key": "surprise fees",
+    "description": "Customers may be more likely to churn if they encounter unexpected or hidden fees in their billing statements."
+  },
+  {
+    "key": "language barriers",
+    "description": "Customers who face language barriers when interacting with customer support or using the service may be more likely to churn."
+  },
+  {
+    "key": "perceived value for money",
+    "description": "Customers may churn if they feel that the service does not provide enough value for the price they pay."
+  },
+  {
+    "key": "data accessibility and control",
+    "description": "Customers may be more likely to churn if they feel that they lack control over their personal data or have limited access to their own data."
+  },
+  {
+    "key": "User interface and user experience (UI/UX)",
+    "description": "Customers may churn if the user interface is difficult to use or the overall user experience is poor."
+  },
+  {
+    "key": "Subscription flexibility",
+    "description": "Customers may be more likely to churn if the company does not offer flexible subscription options that cater to their evolving needs."
+  },
+  {
+    "key": "Incentive programs",
+    "description": "Customers may be less likely to churn if the company offers attractive incentive programs such as referral rewards or loyalty points."
+  },
+  {
+    "key": "Product/service relevance",
+    "description": "Customers may churn if the product or service offered by the company becomes less relevant to their changing needs or preferences."
+  },
+  {
+    "key": "Privacy concerns",
+    "description": "Customers may be more likely to churn if they have concerns about their privacy or the way their personal data is handled by the company."
+  },
+  {
+    "key": "Product/service innovation",
+    "description": "Customers may churn if the company fails to innovate or introduce new features or services to keep up with market demands."
+  },
+  {
+    "key": "Community impact",
+    "description": "Customers may be less likely to churn if they feel that the company has a positive impact on their local community or society at large."
+  },
+  {
+    "key": "Corporate culture and values",
+    "description": "Customers may churn if the company's corporate culture and values are not aligned with their own beliefs or principles."
+  },
+  {
+    "key": "Accessibility and inclusivity",
+    "description": "Customers may be more likely to churn if the company's products or services are not accessible or inclusive to all demographics or abilities."
+  },
+  {
+    "key": "Customer service empathy and understanding",
+    "description": "Customers may be less likely to churn if they feel that the customer service representatives demonstrate empathy and understanding towards their unique situations or challenges."
+  },
+  {
+    "key": "Customer Health Score",
+    "description": "Customers who have a lower health score, indicating their dissatisfaction with the service, may be more likely to churn."
+  },
+  {
+    "key": "Customer Service Availability",
+    "description": "Customers may be more likely to churn if customer support is not available when needed, leading to frustration and dissatisfaction."
+  },
+  {
+    "key": "Self-Service Capabilities",
+    "description": "Customers may be less likely to churn if the company provides robust self-service capabilities, allowing them to address issues independently."
+  },
+  {
+    "key": "Regret Minimization Framework",
+    "description": "Customers may churn if they feel their decision to join the service does not align with their long-term goals, following the regret minimization framework."
+  },
+  {
+    "key": "Seasonal Influence",
+    "description": "Customers may be more likely to churn based on seasonal factors such as holidays, economic cycles, or regional events."
+  },
+  {
+    "key": "Gamification and Engagement",
+    "description": "Customers may be less likely to churn if the service utilizes gamification and interactive features to enhance user engagement and retention."
+  },
+  {
+    "key": "Payment Options",
+    "description": "Customers may churn if the company's available payment options do not align with their preferred or convenient methods."
+  },
+  {
+    "key": "Personal Circumstances",
+    "description": "Customers may be more likely to churn due to personal life events, economic changes, or career shifts."
+  },
+  {
+    "key": "Political or Social Movements",
+    "description": "Customers may be influenced to churn based on their alignment with or opposition to political or social movements associated with the company."
+  },
+  {
+    "key": "Cognitive Biases",
+    "description": "Customers' decisions to churn may be influenced by cognitive biases such as loss aversion, anchoring, or availability heuristic."
+  },
+  {
+    "key": "Customer Lifetime Value",
+    "description": "Customers with a lower projected lifetime value may be more likely to churn as they are perceived to have lesser long-term value to the company."
+  },
+  {
+    "key": "Environmental Awareness",
+    "description": "Customers may be more likely to churn if the company's environmental practices or impact are not aligned with their own environmental awareness and concerns."
+  },
+  {
+    "key": "Medical or Health Related Factors",
+    "description": "Customers may be more likely to churn due to medical conditions, health-related constraints, or changes in healthcare needs."
+  },
+  {
+    "key": "Legal or Regulatory Changes",
+    "description": "Customers may churn if legal or regulatory changes impact the company's ability to provide the service or affect the terms of the service."
+  },
+  {
+    "key": "Value Alignment",
+    "description": "Customers may be more likely to churn if they perceive a misalignment between their personal values and the ethical stance or actions of the company."
+  },
+  {
+    "key": "Generational Influences",
+    "description": "Different generational cohorts may have varying propensities to churn, influenced by their unique experiences, values, and behaviors."
+  },
+  {
+    "key": "Advertising and Branding",
+    "description": "Customers may be influenced to churn based on the company's advertising strategies, brand image, or the perception of the brand in the market."
+  },
+  {
+    "key": "Competitive Analysis",
+    "description": "Customers may churn based on comparative analysis with competitors, including features, pricing, and overall value propositions."
+  },
+  {
+    "key": "Frequent Product Updates",
+    "description": "Customers may be more likely to churn if the company's frequent product updates lead to dissatisfaction or confusion rather than perceived enhancement."
+  },
+  {
+    "key": "News and Media Coverage",
+    "description": "Customers may be influenced to churn by news and media coverage related to the company, its leadership, or its industry."
+  },
+  {
+    "key": "Technological Advancements",
+    "description": "Customers may churn if the company fails to keep up with technological advancements in the industry, leading to outdated or less competitive offerings."
+  },
+  {
+    "key": "Subscription or Contract Clarity",
+    "description": "Customers may be more likely to churn if there is a lack of transparency or clarity in subscription or contract terms, leading to trust issues."
+  },
+  {
+    "key": "Affordability and Economic Factors",
+    "description": "Customers may churn due to changes in their economic circumstances, making the service less affordable or justifiable."
+  },
+  {
+    "key": "Family or Household Factors",
+    "description": "Customer decisions to churn may be influenced by family dynamics, household preferences, or shared service usage within the household."
+  },
+  {
+    "key": "Societal Trends and Movements",
+    "description": "Customers may be more likely to churn based on broader societal trends, movements, or changes in consumer behavior."
+  },
+  {
+    "key": "Wellness and Lifestyle Changes",
+    "description": "Customers may churn due to personal wellness or lifestyle changes, leading to shifts in their needs, priorities, or values."
+  },
+  {
+    "key": "Educational or Professional Factors",
+    "description": "Customers may churn due to changes in their educational pursuits, career transitions, or professional development requirements."
+  },
+  {
+    "key": "Celebrity or Influencer Endorsements",
+    "description": "Customers may be influenced to churn based on endorsements or disassociations with the company by celebrities or influencers."
+  },
+  {
+    "key": "Pandemic-Related Influences",
+    "description": "Customers may churn due to impacts of a pandemic such as changes in work patterns, financial constraints, or health considerations."
+  },
+  {
+    "key": "Customer Social Networks",
+    "description": "Customers may be influenced to churn by social network effects, including the behaviors and opinions of their social connections regarding the service."
+  },
+  {
+    "key": "Inflation and Economic Conditions",
+    "description": "Customers may churn due to economic factors such as inflation, changes in purchasing power, or overall economic conditions."
+  },
+  {
+    "key": "Psychological Triggers",
+    "description": "Customer decisions to churn may be influenced by psychological triggers such as fear of missing out, scarcity, or social proof."
+  },
+  {
+    "key": "Incarceration or Legal Issues",
+    "description": "Customers may churn due to personal legal matters, incarceration, or legal issues that impact their ability to use or pay for the service."
+  },
+  {
+    "key": "Mental Health and Well-being",
+    "description": "Customers may churn due to issues related to mental health, stress, or overall well-being, impacting their engagement with the service."
+  },
+  {
+    "key": "Disaster or Emergency Situations",
+    "description": "Customers may churn due to the impact of natural disasters, emergencies, or crisis situations that disrupt their ability to use the service."
+  },
+  {
+    "key": "Service Accessibility and Mobility",
+    "description": "Customers may be more likely to churn if the accessibility and mobility of the service are hindered, for example, due to relocation or travel constraints."
+  },
+  {
+    "key": "Perceived Risk or Uncertainty",
+    "description": "Customers may churn due to heightened perceived risk or uncertainty about the future of the service, the company, or the industry."
+  },
+  {
+    "key": "Regulatory Changes",
+    "description": "Customers may be influenced to churn based on changes in regulatory requirements that impact the service offering, pricing, or terms and conditions."
+  },
+  {
+    "key": "Digital Inclusion and Literacy",
+    "description": "Customers may churn due to digital exclusion or lack of digital literacy, impacting their ability to fully utilize the service."
+  },
+  {
+    "key": "Philanthropy and Social Impact",
+    "description": "Customers may be influenced to churn based on the company's philanthropic activities, social impact initiatives, or lack thereof."
+  }
+]

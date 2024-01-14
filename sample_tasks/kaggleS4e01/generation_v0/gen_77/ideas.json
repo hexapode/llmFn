@@ -1,0 +1,10 @@
+[
+  {
+    "key": "factor_1_monthly_usage",
+    "description": "The amount of usage, such as data usage for a cell phone plan or streaming hours for a video subscription, could influence a customer's decision to continue or close their account. Higher usage may indicate satisfaction and loyalty, while lower usage may signal disengagement or dissatisfaction."
+  },
+  {
+    "key": "factor_2_customer_support_interactions",
+    "description": "The frequency and nature of interactions with customer support, such as inquiries, complaints, or issue resolutions, could impact customer retention. Customers who have positive experiences with support may be more likely to stay, while those with frequent or unresolved issues may be at higher risk of churning."
+  }
+]

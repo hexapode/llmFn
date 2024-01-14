@@ -1,0 +1,10 @@
+[
+  {
+    "key": "age_of_account",
+    "description": "The longer a customer has been with the company, the more likely they are to continue with their account as they have developed loyalty and trust."
+  },
+  {
+    "key": "customer_support_interactions",
+    "description": "Customers who have had frequent interactions with customer support may be more likely to close their account, possibly due to unresolved issues or dissatisfaction with the service."
+  }
+]

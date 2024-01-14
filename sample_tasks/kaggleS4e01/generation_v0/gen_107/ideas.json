@@ -1,0 +1,122 @@
+[
+  {
+    "key": "customerAge",
+    "description": "The age of the customer may influence their likelihood to continue with their account, as older customers may have established habits and loyalty."
+  },
+  {
+    "key": "billingFrequency",
+    "description": "Customers who are billed less frequently (e.g. monthly vs. annually) may be more likely to churn, as they have more frequent opportunities to re-evaluate their subscription."
+  },
+  {
+    "key": "customerEngagement",
+    "description": "The level of customer engagement with the product or service, such as frequency of logins, usage of features, and interaction with customer support, can be a strong indicator of potential churn."
+  },
+  {
+    "key": "competitorPromotions",
+    "description": "Customers may be influenced by promotions or offers from competitors, leading to a higher likelihood of churn if they perceive a better value elsewhere."
+  },
+  {
+    "key": "customerSatisfaction",
+    "description": "Customer satisfaction surveys and feedback can provide insights into the likelihood of churn, as dissatisfied customers are more likely to leave."
+  },
+  {
+    "key": "accountTenure",
+    "description": "The length of time a customer has been with the company may impact their likelihood to churn, as long-term customers may have stronger ties to the brand."
+  },
+  {
+    "key": "billingIssues",
+    "description": "Frequent billing issues, such as failed payments or discrepancies in billing, may lead to frustration and a higher likelihood of churn."
+  },
+  {
+    "key": "productUpdates",
+    "description": "Significant changes or updates to the product or service may impact customer retention, as some customers may not adapt well to change."
+  },
+  {
+    "key": "customerSupportQuality",
+    "description": "Quality of customer support interactions can impact churn, as poor experiences may lead to customer dissatisfaction and eventual churn."
+  },
+  {
+    "key": "subscriptionCost",
+    "description": "The cost of the subscription relative to the perceived value of the product or service may influence churn, as customers may be more likely to leave if they feel it is not worth the price."
+  },
+  {
+    "key": "usageFrequency",
+    "description": "Customers who use the product or service frequently may be less likely to churn, as it has become an ingrained part of their routine or workflow."
+  },
+  {
+    "key": "communicationEffectiveness",
+    "description": "The effectiveness of communication from the company, such as timely updates, relevant information, and personalized outreach, can influence customer retention."
+  },
+  {
+    "key": "lifeEvents",
+    "description": "Life events such as moving, changing jobs, or other significant personal changes may impact a customer's need for the product or service, leading to potential churn."
+  },
+  {
+    "key": "perceivedValue",
+    "description": "The perception of value derived from the product or service relative to its cost can strongly influence a customer's decision to continue or discontinue their account."
+  },
+  {
+    "key": "industryTrends",
+    "description": "Trends in the industry or market may impact customer decisions, as changes in technology or new competitors may sway customer loyalty."
+  },
+  {
+    "key": "contractTerms",
+    "description": "The terms of the customer's contract, such as commitment length or cancellation fees, may impact their decision to churn as they assess the costs of leaving."
+  },
+  {
+    "key": "reputationManagement",
+    "description": "The company's reputation, including public perception, reviews, and social media sentiment, can impact customer retention as they assess the brand's trustworthiness."
+  },
+  {
+    "key": "serviceOutages",
+    "description": "Frequent service outages or disruptions may lead to dissatisfaction and increased churn, particularly in industries where reliability is crucial."
+  },
+  {
+    "key": "peerInfluence",
+    "description": "The influence of peers or colleagues who use or have left the service may impact a customer's decision to continue or close their account."
+  },
+  {
+    "key": "userExperience",
+    "description": "The overall user experience, including ease of use, performance, and accessibility, can impact customer satisfaction and long-term retention."
+  },
+  {
+    "key": "loyaltyProgram",
+    "description": "Inclusion in a loyalty program or rewards program may influence a customer's decision to continue with their account, as they may feel more invested in the brand."
+  },
+  {
+    "key": "personalizationEfforts",
+    "description": "Efforts to personalize the customer experience, such as tailored recommendations or customized content, may positively impact retention."
+  },
+  {
+    "key": "socialEngagement",
+    "description": "Active engagement with the customer through social media or community events can foster a sense of belonging and reduce churn risk."
+  },
+  {
+    "key": "onboardingProcess",
+    "description": "The effectiveness of the onboarding process, including education about the product or service, can impact a customer's long-term commitment."
+  },
+  {
+    "key": "productDiversification",
+    "description": "The availability of a diverse range of products or services may influence a customer to stay with the company to take advantage of the offerings."
+  },
+  {
+    "key": "trustBuilding",
+    "description": "Efforts by the company to build trust with the customer, such as transparent policies and security measures, can impact long-term loyalty."
+  },
+  {
+    "key": "upsellingTactics",
+    "description": "Aggressive or intrusive upselling tactics may lead to customer dissatisfaction and increase the likelihood of churn."
+  },
+  {
+    "key": "feedbackManagement",
+    "description": "The company's response to customer feedback, including addressing concerns and implementing suggestions, can impact long-term satisfaction and loyalty."
+  },
+  {
+    "key": "thirdPartyIntegrations",
+    "description": "The availability of integrations with third-party tools or services may impact a customer's decision to continue with their account, particularly in B2B contexts."
+  },
+  {
+    "key": "competitiveAdvantage",
+    "description": "The company's unique selling propositions and competitive advantages may impact a customer's decision to continue their account over switching to a competitor."
+  }
+]

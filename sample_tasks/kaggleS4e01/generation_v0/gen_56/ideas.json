@@ -1,0 +1,10 @@
+[
+  {
+    "key": "tenure_in_months",
+    "description": "This factor represents the length of time the customer has been with the company. Customers with longer tenure may be less likely to churn as they have established a relationship with the company and are familiar with the services provided."
+  },
+  {
+    "key": "customer_support_interactions",
+    "description": "This factor accounts for the number of interactions a customer has had with the customer support team. Customers who have had multiple interactions, especially those related to issues or complaints, may be more likely to churn as it signals dissatisfaction with the service."
+  }
+]

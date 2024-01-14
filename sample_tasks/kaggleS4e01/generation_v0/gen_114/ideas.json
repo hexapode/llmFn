@@ -1,0 +1,82 @@
+[
+  {
+    "key": "contract_length",
+    "description": "Customers who have longer contract lengths may be less likely to churn as they have made a commitment to stay with the service for a longer period of time."
+  },
+  {
+    "key": "monthly_usage",
+    "description": "Customers who use the service more frequently on a monthly basis may be less likely to churn as they are deriving greater value from it."
+  },
+  {
+    "key": "customer_support_interactions",
+    "description": "Customers who have had positive interactions with customer support may be less likely to churn, as good customer service can improve retention."
+  },
+  {
+    "key": "competitive_offer",
+    "description": "If a customer receives a more attractive offer from a competitor, they may be more likely to churn and switch to the alternative."
+  },
+  {
+    "key": "billing_issues",
+    "description": "Customers who experience frequent billing issues or errors may be more likely to churn, as it can lead to dissatisfaction with the service."
+  },
+  {
+    "key": "product_quality",
+    "description": "High product quality and reliability may lead to lower churn rates, as customers are more satisfied with the service."
+  },
+  {
+    "key": "engagement_with_features",
+    "description": "Customers who actively engage with the various features and offerings of the service may be less likely to churn, as they find value in the product."
+  },
+  {
+    "key": "price_changes",
+    "description": "Sudden or frequent changes in pricing may lead to higher churn rates as customers may perceive the service as less affordable."
+  },
+  {
+    "key": "feedback_responses",
+    "description": "Customers who see their feedback and suggestions being implemented by the service provider may be less likely to churn, as it demonstrates attentiveness to their needs."
+  },
+  {
+    "key": "contract_renewal_reminders",
+    "description": "Regular reminders and incentives for contract renewal may reduce churn rates, as it keeps the service top of mind for the customer."
+  },
+  {
+    "key": "loyalty_program",
+    "description": "Customers enrolled in a loyalty program may be less likely to churn, as they perceive additional benefits and value from continued patronage."
+  },
+  {
+    "key": "user_experience",
+    "description": "A seamless and positive user experience may lead to lower churn rates, as customers are more satisfied with the ease of use."
+  },
+  {
+    "key": "market_reputation",
+    "description": "A strong positive reputation in the market may reduce churn, as customers are more likely to trust and remain loyal to a well-regarded service."
+  },
+  {
+    "key": "account_manager_interaction",
+    "description": "Positive and proactive interactions with dedicated account managers may decrease churn rates, as customers feel valued and supported."
+  },
+  {
+    "key": "service_outages",
+    "description": "Frequent service outages or disruptions may lead to higher churn rates, as customers may perceive the service as unreliable."
+  },
+  {
+    "key": "industry_changes",
+    "description": "Changes in the industry landscape, such as new trends or technologies, may impact churn rates as customers reassess their needs and options."
+  },
+  {
+    "key": "contract_terms_clarity",
+    "description": "Clear and transparent contract terms may reduce churn rates, as confusion and dissatisfaction related to terms and conditions can lead to customer attrition."
+  },
+  {
+    "key": "personalized_recommendations",
+    "description": "Offering personalized recommendations and content may decrease churn, as customers feel the service understands their preferences and caters to their needs."
+  },
+  {
+    "key": "value_added_services",
+    "description": "Additional value-added services or features may decrease churn rates, as they enhance the overall service offering and customer experience."
+  },
+  {
+    "key": "social_proof",
+    "description": "Positive social proof, such as testimonials and reviews, may reduce churn rates by increasing customer confidence and trust in the service."
+  }
+]

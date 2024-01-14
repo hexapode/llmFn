@@ -1,0 +1,10 @@
+[
+  {
+    "key": "tenure_length",
+    "description": "The length of time a customer has been with the company could have a significant impact on their likelihood to churn. Long-time customers may have stronger loyalty and attachment to the company, reducing their likelihood to churn."
+  },
+  {
+    "key": "customer_support_interaction",
+    "description": "The frequency and nature of a customer's interactions with customer support could also influence their likelihood to churn. Customers who have had multiple negative interactions or unresolved issues may be more likely to churn."
+  }
+]

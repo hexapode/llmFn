@@ -1,0 +1,10 @@
+[
+  {
+    "key": "factor_1_age",
+    "description": "Age of the customer could be a significant factor in predicting churn, as younger customers might be more likely to switch providers or cancel their accounts."
+  },
+  {
+    "key": "factor_2_usage_frequency",
+    "description": "The frequency of usage or engagement with the service could also influence the likelihood of churn. Customers who use the service less frequently may be more likely to close their accounts."
+  }
+]

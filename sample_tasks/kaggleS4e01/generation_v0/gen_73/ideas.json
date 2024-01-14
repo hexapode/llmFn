@@ -1,0 +1,10 @@
+[
+  {
+    "key": "age_of_account",
+    "description": "The length of time a customer has been with the company can influence their likelihood of continuing with their account. Customers who have been with the company for a longer period may be more likely to stay due to loyalty or satisfaction with the service."
+  },
+  {
+    "key": "customer_support_interaction",
+    "description": "The frequency and nature of interactions with customer support can also impact churn. Customers who have had positive experiences with customer support are more likely to continue with their account, while those who have had unresolved issues or negative interactions may be more likely to churn."
+  }
+]

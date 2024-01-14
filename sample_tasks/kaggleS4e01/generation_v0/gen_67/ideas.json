@@ -1,0 +1,10 @@
+[
+  {
+    "key": "age_of_account",
+    "description": "The length of time a customer has been using the service could influence their likelihood of churning. New customers may be more likely to churn as they haven't formed a strong attachment to the service, while longtime customers may be more loyal."
+  },
+  {
+    "key": "average_monthly_usage",
+    "description": "Customers who heavily use the service may be less likely to churn, as they are deriving significant value from it. On the other hand, customers with low average monthly usage may be more likely to churn as they may not see the benefit of continuing with the service."
+  }
+]

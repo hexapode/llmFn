@@ -1,0 +1,10 @@
+[
+  {
+    "key": "factor_1_customer_experience",
+    "description": "The overall satisfaction level of the customer with the product or service, including the quality of customer support, ease of use, and value for money."
+  },
+  {
+    "key": "factor_2_contract_length",
+    "description": "The length of the customer's contract or subscription, as customers with longer commitments may be less likely to churn compared to those with shorter or flexible terms."
+  }
+]

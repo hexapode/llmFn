@@ -1,0 +1,10 @@
+[
+  {
+    "key": "customerExperience",
+    "description": "The level of satisfaction with the overall customer experience, including product/service quality, customer support, and user interface."
+  },
+  {
+    "key": "contractLength",
+    "description": "The duration of the customer's contract or subscription, as longer contract lengths may indicate a higher likelihood of customer retention."
+  }
+]

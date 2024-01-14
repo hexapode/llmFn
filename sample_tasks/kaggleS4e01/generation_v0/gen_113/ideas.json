@@ -1,0 +1,122 @@
+[
+  {
+    "key": "contract_type",
+    "description": "The type of contract the customer has, such as monthly, yearly, or multi-year, could influence their decision to continue or cancel their account."
+  },
+  {
+    "key": "customer_support_interaction",
+    "description": "The frequency and nature of customer support interactions, such as inquiries or complaints, may indicate a customer's likelihood to churn."
+  },
+  {
+    "key": "payment_history",
+    "description": "The customer's payment history, including any instances of late or missed payments, could be a strong indicator of their intention to continue or close their account."
+  },
+  {
+    "key": "usage_patterns",
+    "description": "Understanding the usage patterns of the customer, such as frequency of use, feature adoption, and engagement levels, can provide insights into their likelihood of churning."
+  },
+  {
+    "key": "competitor_offer",
+    "description": "The availability and attractiveness of offers from competitors may impact the customer's decision to continue with their current account or explore alternatives."
+  },
+  {
+    "key": "feedback_sentiment",
+    "description": "Analyzing the sentiment of customer feedback, whether positive or negative, can offer valuable clues about their satisfaction and potential loyalty."
+  },
+  {
+    "key": "account_age",
+    "description": "The length of time a customer has held their account, whether short-term or long-term, may influence their propensity to churn."
+  },
+  {
+    "key": "life_events",
+    "description": "Major life events of the customer, such as relocation, job changes, or personal milestones, can have an impact on their decision to maintain or terminate their account."
+  },
+  {
+    "key": "product_changes",
+    "description": "Significant changes in the product or service offerings, such as updates, new features, or pricing modifications, could influence customer retention."
+  },
+  {
+    "key": "communication_preferences",
+    "description": "Understanding and respecting the customer's communication preferences, such as email, phone, or app notifications, can play a role in their decision to stay or leave."
+  },
+  {
+    "key": "satisfaction_surveys",
+    "description": "Feedback obtained from customer satisfaction surveys can offer valuable insights into their likelihood to churn based on their overall experience and sentiments."
+  },
+  {
+    "key": "loyalty_programs",
+    "description": "Participation in loyalty programs, rewards, or exclusive offers may impact the customer's decision to remain loyal to the brand and continue their account."
+  },
+  {
+    "key": "customer_demographics",
+    "description": "Demographic factors such as age, gender, income level, and geographic location can provide valuable information on customer churn tendencies."
+  },
+  {
+    "key": "social_media_activity",
+    "description": "Monitoring the customer's social media activity and engagement with the brand can provide indications of their satisfaction and potential loyalty."
+  },
+  {
+    "key": "app_usage",
+    "description": "Tracking the frequency and depth of the customer's usage of the company's app, if applicable, can indicate their level of engagement and satisfaction."
+  },
+  {
+    "key": "billing_cycle",
+    "description": "The timing of the billing cycle and its alignment with the customer's financial situation may influence their decision to continue or close their account."
+  },
+  {
+    "key": "incentive_offers",
+    "description": "The availability and effectiveness of incentive offers, such as discounts, upgrades, or referral bonuses, may impact customer retention."
+  },
+  {
+    "key": "churn_history",
+    "description": "Understanding the customer's historical pattern of churning or staying loyal can provide predictive insights into their future behavior."
+  },
+  {
+    "key": "communication_effectiveness",
+    "description": "Assessing the effectiveness of past communication strategies and outreach efforts in retaining customers can guide future retention tactics."
+  },
+  {
+    "key": "product_experience",
+    "description": "Evaluating the overall product or service experience, including ease of use, performance, and value, can influence the customer's decision to remain with the company."
+  },
+  {
+    "key": "loyalty_to_brand",
+    "description": "The customer's overall loyalty and attachment to the brand, including brand perception and affiliation, can impact their decision to stay or leave."
+  },
+  {
+    "key": "customer_relationship_management",
+    "description": "The quality of the customer relationship management, including personalization, responsiveness, and proactive outreach, can influence customer retention."
+  },
+  {
+    "key": "market_trends",
+    "description": "External market trends, industry developments, and competitive landscape changes can impact the customer's inclination to continue or cancel their account."
+  },
+  {
+    "key": "educational_resources",
+    "description": "Access to and utilization of educational resources, tutorials, and guides may influence the customer's satisfaction and likelihood of churning."
+  },
+  {
+    "key": "privacy_concerns",
+    "description": "The handling of customer data privacy and security concerns can affect their trust and willingness to continue their account."
+  },
+  {
+    "key": "user_experience",
+    "description": "The overall user experience, including website navigation, interface design, and customer journey, can influence customer satisfaction and loyalty."
+  },
+  {
+    "key": "subscription_value",
+    "description": "The perceived value and benefits of the subscription to the customer, in relation to its cost, can impact their decision to continue or terminate the account."
+  },
+  {
+    "key": "customer_network",
+    "description": "The influence of the customer's network, such as friends, family, or colleagues, and their experiences with the brand, can impact their decision to stay or leave."
+  },
+  {
+    "key": "customer_health",
+    "description": "Evaluating the overall health of the customer's usage patterns, engagement, and satisfaction levels can provide insights into their likelihood to churn."
+  },
+  {
+    "key": "strategic_initiatives",
+    "description": "The alignment of the customer's values and interests with the company's strategic initiatives and future plans can affect their decision to maintain their account."
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "key": "age_of_account",
+    "description": "The length of time a customer has been with the company, older accounts may be less likely to churn"
+  },
+  {
+    "key": "monthly_usage",
+    "description": "The average monthly usage of the customer, higher usage may indicate lower likelihood of churn"
+  },
+  {
+    "key": "customer_support_interactions",
+    "description": "The number of interactions a customer has with customer support, more interactions may indicate dissatisfaction and higher likelihood of churn"
+  },
+  {
+    "key": "contract_type",
+    "description": "The type of contract the customer has, such as month-to-month, one year, or two years, with month-to-month customers having a higher likelihood of churn"
+  },
+  {
+    "key": "payment_method",
+    "description": "The payment method used by the customer, different payment methods may have different churn rates"
+  },
+  {
+    "key": "internet_speed",
+    "description": "The speed of the customer's internet connection, with higher speeds potentially correlating with lower churn rates"
+  },
+  {
+    "key": "number_of_subscriptions",
+    "description": "The number of additional services or subscriptions the customer has, with more subscriptions potentially leading to lower churn"
+  },
+  {
+    "key": "customer_rating",
+    "description": "The rating the customer has given to the company's service, with lower ratings indicating higher likelihood of churn"
+  },
+  {
+    "key": "promotional_offers_used",
+    "description": "The extent to which the customer uses promotional offers, with more use potentially indicating higher likelihood of churn"
+  },
+  {
+    "key": "average_bill_amount",
+    "description": "The average monthly bill amount for the customer, with higher bills potentially correlating with lower likelihood of churn"
+  }
+]

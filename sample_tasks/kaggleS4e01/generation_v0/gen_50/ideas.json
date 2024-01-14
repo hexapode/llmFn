@@ -1,0 +1,10 @@
+[
+  {
+    "key": "factor_1_duration_of_membership",
+    "description": "The longer a customer has been a member, the more likely they are to continue with their account, as they have invested more time and potentially developed a stronger loyalty to the service."
+  },
+  {
+    "key": "factor_2_customer_engagement",
+    "description": "Customers who frequently interact with the service, such as making purchases, providing feedback, or participating in community events, are more likely to continue with their account as they are actively involved and finding value in the service."
+  }
+]

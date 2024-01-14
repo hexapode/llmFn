@@ -1,0 +1,242 @@
+[
+  {
+    "key": "customer_tenure",
+    "description": "The length of time the customer has been with the company, as long-term customers are less likely to churn"
+  },
+  {
+    "key": "monthly_charges",
+    "description": "The amount the customer is charged per month, as higher charges may lead to more churn"
+  },
+  {
+    "key": "customer_support_calls",
+    "description": "The number of customer support calls made by the customer, as more calls may indicate dissatisfaction"
+  },
+  {
+    "key": "contract_type",
+    "description": "The type of contract the customer has (e.g., monthly, yearly), as this can affect their likelihood of churning"
+  },
+  {
+    "key": "internet_service_type",
+    "description": "The type of internet service the customer has (e.g., DSL, fiber optic), as different types may impact churn differently"
+  },
+  {
+    "key": "streaming_services",
+    "description": "Whether the customer subscribes to streaming services, as this may affect their satisfaction and likelihood of churning"
+  },
+  {
+    "key": "payment_method",
+    "description": "The method of payment used by the customer, as this may be correlated with churn"
+  },
+  {
+    "key": "customer_satisfaction_score",
+    "description": "The satisfaction score reported by the customer, as lower scores may indicate higher likelihood of churn"
+  },
+  {
+    "key": "number_of_outages",
+    "description": "The frequency of service outages experienced by the customer, as this can impact their satisfaction and likelihood of churning"
+  },
+  {
+    "key": "total_refunds",
+    "description": "The total amount of refunds issued to the customer, as this may indicate dissatisfaction with the service"
+  },
+  {
+    "key": "contract_renewal_reminders",
+    "description": "Whether the company sends contract renewal reminders to the customer, as this may impact customer retention"
+  },
+  {
+    "key": "competitor_offer",
+    "description": "Whether the customer has received a competitive offer from another company, which may influence their decision to churn"
+  },
+  {
+    "key": "household_income",
+    "description": "The income level of the customer's household, as this may impact their ability to afford the service"
+  },
+  {
+    "key": "age_of_customer",
+    "description": "The age of the customer, as older or younger customers may have different churn behavior"
+  },
+  {
+    "key": "presence_of_children",
+    "description": "Whether the customer has children, as this may impact their priorities and likelihood of churning"
+  },
+  {
+    "key": "usage_of_additional_features",
+    "description": "The usage of additional features provided by the company, such as cloud storage or security services, which may impact satisfaction and churn"
+  },
+  {
+    "key": "interaction_with_company_website",
+    "description": "The frequency and type of interactions the customer has with the company's website, as this may indicate engagement and likelihood of churn"
+  },
+  {
+    "key": "social_media_engagement",
+    "description": "The level of engagement with the company on social media platforms, as this may indicate satisfaction and likelihood of churn"
+  },
+  {
+    "key": "contract_terms_accepted",
+    "description": "Whether the customer has accepted all the terms and conditions of the contract, as this may impact their commitment to the service"
+  },
+  {
+    "key": "household_size",
+    "description": "The number of people in the customer's household, as larger households may have different churn behavior compared to smaller ones"
+  },
+  {
+    "key": "customer_location",
+    "description": "The geographic location of the customer, as regional factors may impact churn rates"
+  },
+  {
+    "key": "availability_of_competing_services",
+    "description": "The availability of competing services in the customer's area, as this may influence their likelihood of churning"
+  },
+  {
+    "key": "customer_engagement_events_attended",
+    "description": "The number of customer engagement events attended, as this may indicate loyalty and likelihood of churn"
+  },
+  {
+    "key": "recent_customer_complaints",
+    "description": "The number of recent complaints filed by the customer, as this may indicate dissatisfaction and likelihood of churn"
+  },
+  {
+    "key": "billing_issue_resolution_time",
+    "description": "The average time taken to resolve billing issues for the customer, as prompt resolution may impact satisfaction and churn"
+  },
+  {
+    "key": "customer_referral_program_participation",
+    "description": "Whether the customer has participated in the company's referral program, as this may indicate loyalty and likelihood of churn"
+  },
+  {
+    "key": "customer_lifetime_value",
+    "description": "The predicted net profit attributed to the entire future relationship with a customer, as higher value customers may be less likely to churn"
+  },
+  {
+    "key": "customer_product_usage",
+    "description": "The frequency and extent of product usage by the customer, as this may indicate satisfaction and likelihood of churn"
+  },
+  {
+    "key": "customer_feedback_sentiment",
+    "description": "The sentiment analysis of customer feedback, as negative sentiment may indicate higher likelihood of churn"
+  },
+  {
+    "key": "customer_downtime_experience",
+    "description": "The customer's experience with downtime or service interruptions, as this may impact their satisfaction and likelihood of churn"
+  },
+  {
+    "key": "customer_communication_preference",
+    "description": "The customer's preferred communication channel (e.g., email, phone, chat), as this may impact their engagement and likelihood of churn"
+  },
+  {
+    "key": "seasonal_usage_patterns",
+    "description": "Variations in customer usage based on seasonal patterns, as this may impact their likelihood of churning at different times of the year"
+  },
+  {
+    "key": "customer_emotional_state",
+    "description": "The emotional state of the customer, as this may impact their decision-making and likelihood of churn"
+  },
+  {
+    "key": "customer_health_of_account",
+    "description": "The health of the customer's account based on various usage and engagement metrics, as this may indicate their likelihood of churning"
+  },
+  {
+    "key": "customer_trust_score",
+    "description": "A score representing the level of trust the customer has in the company, as this may impact their likelihood of churning"
+  },
+  {
+    "key": "customer_life_event",
+    "description": "Occurrence of significant life events for the customer (e.g., marriage, relocation), as this may influence their priorities and likelihood of churning"
+  },
+  {
+    "key": "customer_preferred_features",
+    "description": "The customer's preference for specific product features, as this may impact their satisfaction and likelihood of churn"
+  },
+  {
+    "key": "customer_investment_in_training",
+    "description": "The customer's investment in learning and training related to the product or service, as this may indicate their commitment and likelihood of churn"
+  },
+  {
+    "key": "customer_social_circle_influence",
+    "description": "The influence of the customer's social circle on their decisions, as this may impact their likelihood of churning"
+  },
+  {
+    "key": "customer_attitude_towards_technology",
+    "description": "The customer's attitude towards technology and digital services, as this may influence their satisfaction and likelihood of churn"
+  },
+  {
+    "key": "customer_response_to_promotions",
+    "description": "The customer's response to promotional offers and discounts, as this may indicate their loyalty and likelihood of churn"
+  },
+  {
+    "key": "customer_awareness_of_alternative_products",
+    "description": "The customer's awareness of alternative products or services in the market, as this may influence their likelihood of churning"
+  },
+  {
+    "key": "customer_openness_to_feedback",
+    "description": "The customer's receptiveness to feedback and suggestions, as this may impact their loyalty and likelihood of churn"
+  },
+  {
+    "key": "customer_preferences_for_customer_service",
+    "description": "The customer's preferences for customer service interactions (e.g., chat, phone), as this may impact their satisfaction and likelihood of churn"
+  },
+  {
+    "key": "customer_relationship_with_account_manager",
+    "description": "The strength and quality of the customer's relationship with their account manager, as this may influence their likelihood of churning"
+  },
+  {
+    "key": "customer_sentiment_towards_company_mergers",
+    "description": "The customer's sentiment towards any mergers or acquisitions involving the company, as this may impact their satisfaction and likelihood of churn"
+  },
+  {
+    "key": "customer_involvement_in_community_events",
+    "description": "The customer's involvement in community events or initiatives organized by the company, as this may indicate loyalty and likelihood of churn"
+  },
+  {
+    "key": "customer_adoption_of_new_features",
+    "description": "The customer's adoption of new features or updates to the product or service, as this may impact their satisfaction and likelihood of churn"
+  },
+  {
+    "key": "customer_sustainability_orientation",
+    "description": "The customer's orientation towards sustainability and eco-friendly practices, as this may influence their loyalty and likelihood of churn"
+  },
+  {
+    "key": "customer_expectations_alignment",
+    "description": "The alignment of the customer's expectations with the actual service provided, as a mismatch may impact their satisfaction and likelihood of churn"
+  },
+  {
+    "key": "customer_availability_for_feedback",
+    "description": "The availability of the customer for providing feedback to the company, as this may indicate their engagement and likelihood of churn"
+  },
+  {
+    "key": "customer_habit_changes",
+    "description": "Changes in the customer's habits and routines, as this may influence their satisfaction and likelihood of churn"
+  },
+  {
+    "key": "customer_contribution_to_community_discussions",
+    "description": "The customer's contribution to community discussions and forums related to the company's products or services, as this may indicate their loyalty and engagement"
+  },
+  {
+    "key": "customer_sensitivity_to_pricing_changes",
+    "description": "The customer's sensitivity to changes in pricing or subscription fees, as this may impact their likelihood of churn"
+  },
+  {
+    "key": "customer_relationship_with_customer_service_representatives",
+    "description": "The quality of the customer's relationship with customer service representatives, as this may influence their satisfaction and likelihood of churn"
+  },
+  {
+    "key": "customer_willingness_to_accept_surveys",
+    "description": "The customer's willingness to participate in surveys and feedback requests, as this may indicate their engagement and likelihood of churn"
+  },
+  {
+    "key": "customer_experience_with_self_service_options",
+    "description": "The customer's experience with self-service options provided by the company, as this may impact their satisfaction and likelihood of churn"
+  },
+  {
+    "key": "customer_accessibility_of_account_information",
+    "description": "The ease of access to account information and billing details for the customer, as this may influence their satisfaction and likelihood of churn"
+  },
+  {
+    "key": "customer_hesitancy_to_renew_contract",
+    "description": "The customer's hesitancy or reluctance to renew their contract or subscription, as this may indicate their likelihood of churn"
+  },
+  {
+    "key": "customer_adoption_of_flexible_payment_options",
+    "description": "The customer's adoption of flexible payment options offered by the company, as this may impact their satisfaction and likelihood of churn"
+  }
+]

@@ -1,0 +1,122 @@
+[
+  {
+    "key": "account_tenure",
+    "description": "The length of time the customer has been with the company, as longer-tenured customers may be less likely to churn."
+  },
+  {
+    "key": "customer_support_interactions",
+    "description": "The number of customer support interactions, as customers who have had multiple interactions may be more likely to churn due to unresolved issues."
+  },
+  {
+    "key": "usage_frequency",
+    "description": "How often the customer uses the product or service, as lower usage frequency may indicate a higher likelihood of churn."
+  },
+  {
+    "key": "payment_history",
+    "description": "The customer's history of on-time payments, as those with a consistent payment history may be less likely to churn."
+  },
+  {
+    "key": "competitor_offers",
+    "description": "The presence of competitive offers or promotions from other companies, as these may influence a customer's decision to churn."
+  },
+  {
+    "key": "sentiment_analysis",
+    "description": "Sentiment analysis of customer feedback and interactions, as negative sentiment may indicate a higher likelihood of churn."
+  },
+  {
+    "key": "contract_length",
+    "description": "The length of the customer's contract, as those with shorter contract lengths may be more likely to churn."
+  },
+  {
+    "key": "feature_engagement",
+    "description": "The extent to which the customer engages with specific product features, as low engagement may indicate a higher likelihood of churn."
+  },
+  {
+    "key": "demographic_changes",
+    "description": "Changes in the customer's demographic information, such as address or marital status, as these changes may influence churn behavior."
+  },
+  {
+    "key": "marketing_campaign_engagement",
+    "description": "The customer's engagement with marketing campaigns, as higher engagement may indicate a lower likelihood of churn."
+  },
+  {
+    "key": "loyalty_program_participation",
+    "description": "Whether the customer is part of a loyalty program, as this may influence their decision to stay with the company."
+  },
+  {
+    "key": "price_changes",
+    "description": "How the customer has reacted to past price changes, as negative reactions may indicate a higher likelihood of churn."
+  },
+  {
+    "key": "product_updates_engagement",
+    "description": "The customer's engagement with new product updates or releases, as low engagement may indicate a higher likelihood of churn."
+  },
+  {
+    "key": "user_experience_feedback",
+    "description": "Feedback on the user experience of the product or service, as poor user experience may lead to higher churn rates."
+  },
+  {
+    "key": "social_media_presence",
+    "description": "The customer's presence and activity on social media, as this may influence their loyalty to the company."
+  },
+  {
+    "key": "cross_selling_success",
+    "description": "Success of cross-selling efforts, as customers who have engaged with additional products may be less likely to churn."
+  },
+  {
+    "key": "life_events",
+    "description": "Life events such as marriage, new job, or retirement, as these events may trigger churn behavior."
+  },
+  {
+    "key": "trust_score",
+    "description": "The level of trust and satisfaction the customer has with the company, as this may impact their decision to stay or leave."
+  },
+  {
+    "key": "community_engagement",
+    "description": "The customer's engagement with the company's community or forums, as active participation may indicate lower churn likelihood."
+  },
+  {
+    "key": "product_variety_usage",
+    "description": "The extent to which the customer uses different products or services offered by the company, as higher variety usage may indicate lower churn likelihood."
+  },
+  {
+    "key": "app_usage_patterns",
+    "description": "Patterns of app usage, such as time of day and frequency, as this may indicate user engagement and potential churn risk."
+  },
+  {
+    "key": "customer_feedback_scores",
+    "description": "Scores from customer feedback surveys, as low scores may indicate dissatisfaction and potential churn risk."
+  },
+  {
+    "key": "communication_channel_preferences",
+    "description": "Preferences for communication channels (e.g., email, phone, chat), as aligning with preferences may reduce churn risk."
+  },
+  {
+    "key": "product_availability",
+    "description": "The availability of the product or service in the customer's location, as limited availability may increase churn risk."
+  },
+  {
+    "key": "complaint_resolution_time",
+    "description": "The average time taken to resolve customer complaints, as longer resolution times may increase churn risk."
+  },
+  {
+    "key": "subscription_plan_changes",
+    "description": "History of changes to the customer's subscription plan, as frequent changes may indicate potential churn risk."
+  },
+  {
+    "key": "customer_relationship_history",
+    "description": "The customer's history of relationship with the company, including any past churn events and re-engagement, as this may indicate likelihood of future churn."
+  },
+  {
+    "key": "economic_indicator_changes",
+    "description": "Changes in economic indicators (e.g., unemployment rate, inflation) that may impact customer's financial situation and churn likelihood."
+  },
+  {
+    "key": "peer_influence",
+    "description": "The influence of friends, family, or social circles on the customer's decision to stay or leave the service, as social influence can impact churn behavior."
+  },
+  {
+    "key": "customer_education_level",
+    "description": "The education level of the customer, as it may correlate with churn behavior due to different financial and lifestyle factors."
+  }
+]

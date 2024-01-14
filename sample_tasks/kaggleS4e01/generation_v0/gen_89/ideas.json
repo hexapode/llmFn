@@ -1,0 +1,10 @@
+[
+  {
+    "key": "customerDemographics",
+    "description": "Factors such as age, gender, and income level can influence a customer's decision to churn. Younger customers may be more likely to switch providers due to lifestyle changes, while higher income customers may be more selective and likely to churn if they are unsatisfied with the service."
+  },
+  {
+    "key": "customerSatisfaction",
+    "description": "The level of satisfaction with the products or services offered can heavily influence the likelihood of a customer churning. If a customer is dissatisfied with the quality of service, customer support, or overall experience, they are more likely to close their account and look for alternatives."
+  }
+]

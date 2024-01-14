@@ -1,0 +1,122 @@
+[
+  {
+    "key": "customerAge",
+    "description": "Age of the customer, as older customers may be more likely to stay with the account."
+  },
+  {
+    "key": "accountTenure",
+    "description": "Length of time the customer has had the account, as longer tenure may indicate higher likelihood of retention."
+  },
+  {
+    "key": "monthlyCharges",
+    "description": "Amount the customer is charged each month, as higher charges may lead to higher churn rates."
+  },
+  {
+    "key": "customerSupportCalls",
+    "description": "Number of customer support calls made by the customer, as more calls may indicate dissatisfaction and potential churn."
+  },
+  {
+    "key": "contractType",
+    "description": "Type of contract (e.g., month-to-month, annual), as different contract lengths may impact likelihood of churn."
+  },
+  {
+    "key": "usageFrequency",
+    "description": "How often the customer uses the service, as higher usage may indicate lower likelihood of churn."
+  },
+  {
+    "key": "competitorOffers",
+    "description": "Availability of competitive offers in the market, as the presence of attractive alternatives may increase churn rate."
+  },
+  {
+    "key": "customerSatisfaction",
+    "description": "Feedback or satisfaction scores provided by the customer, as lower satisfaction may indicate higher likelihood of churn."
+  },
+  {
+    "key": "billingIssues",
+    "description": "Occurrence of billing issues, as unresolved issues may lead to customer dissatisfaction and churn."
+  },
+  {
+    "key": "add_onServices",
+    "description": "Utilization of add-on services or features, as higher usage may indicate lower likelihood of churn."
+  },
+  {
+    "key": "paymentMethod",
+    "description": "The payment method used by the customer, as certain methods may be associated with higher churn rates."
+  },
+  {
+    "key": "lifeEvents",
+    "description": "Occurrence of significant life events (e.g., marriage, new job) that may impact customer's decision to stay or churn."
+  },
+  {
+    "key": "internetSpeed",
+    "description": "The speed of the internet connection, as slower connections may lead to dissatisfaction and churn."
+  },
+  {
+    "key": "contractRenewalOffers",
+    "description": "Availability of renewal offers at the end of the contract term, as attractive offers may impact customer retention."
+  },
+  {
+    "key": "socialMediaEngagement",
+    "description": "Level of engagement with the company's social media channels, as active engagement may be a positive sign for retention."
+  },
+  {
+    "key": "householdSize",
+    "description": "The number of people in the customer's household, as larger households may be less likely to churn."
+  },
+  {
+    "key": "relocationStatus",
+    "description": "Whether the customer has recently relocated, as relocation may impact the decision to continue with the account."
+  },
+  {
+    "key": "emailOpenRate",
+    "description": "The rate at which the customer opens and engages with company emails, as higher engagement may indicate lower churn likelihood."
+  },
+  {
+    "key": "customerReferrals",
+    "description": "The extent to which the customer has referred others to the service, as strong referrals may indicate lower churn rates."
+  },
+  {
+    "key": "priceSensitivity",
+    "description": "Customer's sensitivity towards pricing changes, as more price-sensitive customers may be more likely to churn."
+  },
+  {
+    "key": "customerComplaints",
+    "description": "Number of formal complaints filed by the customer, as higher complaints may lead to increased likelihood of churn."
+  },
+  {
+    "key": "loyaltyProgramParticipation",
+    "description": "Participation in loyalty programs offered by the company, as active participation may indicate lower likelihood of churn."
+  },
+  {
+    "key": "technicalSupportQuality",
+    "description": "Quality of technical support provided to the customer, as poor support may impact retention negatively."
+  },
+  {
+    "key": "deviceCompatibility",
+    "description": "Compatibility of the service with the customer's devices, as compatibility issues may lead to dissatisfaction and churn."
+  },
+  {
+    "key": "familyPlanUsage",
+    "description": "Participation in family plans or shared accounts, as shared plans may lead to lower likelihood of churn."
+  },
+  {
+    "key": "accountUsageVariability",
+    "description": "Variability in the customer's account usage patterns, as consistent usage may indicate lower likelihood of churn."
+  },
+  {
+    "key": "creditScore",
+    "description": "The credit score of the customer, as higher credit scores may be associated with lower churn rates."
+  },
+  {
+    "key": "marketTrends",
+    "description": "Overall market trends and competition, as changes in the market may impact customer retention."
+  },
+  {
+    "key": "productQuality",
+    "description": "Perceived quality of the service or product offered, as higher quality may lead to lower likelihood of churn."
+  },
+  {
+    "key": "customerEducationLevel",
+    "description": "The educational level of the customer, as higher education levels may be associated with lower churn rates."
+  }
+]

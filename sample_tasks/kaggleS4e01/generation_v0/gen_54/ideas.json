@@ -1,0 +1,10 @@
+[
+  {
+    "key": "tenure_length",
+    "description": "The length of time a customer has been with the company can influence their likelihood of churning. A long tenure may indicate loyalty and satisfaction, leading to a lower chance of churn."
+  },
+  {
+    "key": "customer_support_interactions",
+    "description": "The number of interactions a customer has with customer support could indicate dissatisfaction and potential churn. Higher number of interactions may suggest a higher likelihood of churn."
+  }
+]

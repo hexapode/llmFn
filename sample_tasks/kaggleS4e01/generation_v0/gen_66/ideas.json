@@ -1,0 +1,42 @@
+[
+  {
+    "key": "customer_age",
+    "description": "The age of the customer may influence their likelihood to stay with the account, with older customers potentially being more loyal."
+  },
+  {
+    "key": "average_monthly_spend",
+    "description": "Customers with higher average monthly spend may be less likely to close their account due to the value they perceive from the services."
+  },
+  {
+    "key": "customer_service_interactions",
+    "description": "Customers who have frequent interactions with customer service may be more likely to churn due to dissatisfaction or unresolved issues."
+  },
+  {
+    "key": "length_of_relationship",
+    "description": "Customers who have a longer history with the company may be less likely to churn compared to new customers."
+  },
+  {
+    "key": "utilization_of_rewards_program",
+    "description": "Customers who actively use and benefit from a rewards program may be more likely to stay with the account."
+  },
+  {
+    "key": "frequency_of_usage",
+    "description": "Customers who use the services frequently may be less likely to churn compared to those who use them sparingly."
+  },
+  {
+    "key": "competitor_offerings",
+    "description": "The availability of competitive offerings in the market may influence the customer's decision to stay or leave."
+  },
+  {
+    "key": "customer_feedback_sentiment",
+    "description": "Analyzing the sentiment of customer feedback and reviews can provide insight into their likelihood to churn."
+  },
+  {
+    "key": "life_events",
+    "description": "Major life events such as moving, getting married, or having children may impact a customer's decision to continue with their account."
+  },
+  {
+    "key": "economic_conditions",
+    "description": "External economic conditions such as recessions or economic booms may impact a customer's financial situation and thus their decision to keep or close their account."
+  }
+]

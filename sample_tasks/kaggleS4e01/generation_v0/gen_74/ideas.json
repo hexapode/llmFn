@@ -1,0 +1,10 @@
+[
+  {
+    "key": "factor_1_time_spent",
+    "description": "The amount of time a customer spends using the product or service can be a strong indicator of their satisfaction and likelihood to churn. Customers who spend more time using the product are more likely to continue with their account."
+  },
+  {
+    "key": "factor_2_customer_support_interactions",
+    "description": "The frequency and nature of customer support interactions can also be a significant factor in predicting churn. Customers who have frequent or unresolved issues may be more likely to close their account."
+  }
+]

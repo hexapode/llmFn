@@ -1,0 +1,10 @@
+[
+  {
+    "key": "factor_1_age",
+    "description": "Age of the customer may influence their decision to continue with the account or close it. Younger customers might be more likely to churn as they tend to be more mobile and open to trying new services, while older customers may be more loyal and less likely to churn."
+  },
+  {
+    "key": "factor_2_customer_service_interactions",
+    "description": "The number of customer service interactions can indicate a customer's level of satisfaction and their likelihood to churn. Higher levels of interactions may suggest dissatisfaction with the service, leading to a higher likelihood of churn."
+  }
+]

@@ -1,0 +1,10 @@
+[
+  {
+    "key": "factor_1_customer_satisfaction",
+    "description": "Customer satisfaction with the service or product offered by the company can influence their decision to continue or close their account. Satisfied customers are more likely to stay, while dissatisfied customers are more likely to churn."
+  },
+  {
+    "key": "factor_2_price_sensitivity",
+    "description": "Price sensitivity of customers can also impact their decision to continue or close their account. Customers who are highly price sensitive may be more likely to switch to competitors offering lower prices, while those who prioritize other factors such as quality or convenience may be more likely to stay."
+  }
+]

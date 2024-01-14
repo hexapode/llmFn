@@ -1,0 +1,42 @@
+[
+  {
+    "key": "tenure_duration",
+    "description": "The length of time the customer has been with the company, as long-term customers are less likely to churn."
+  },
+  {
+    "key": "monthly_charges",
+    "description": "The amount the customer is billed each month, as higher charges may lead to churn."
+  },
+  {
+    "key": "customer_support_interaction",
+    "description": "The frequency and satisfaction of the customer's interactions with customer support, as positive experiences may reduce churn."
+  },
+  {
+    "key": "contract_type",
+    "description": "Whether the customer has a fixed-term contract or a month-to-month arrangement, as contract type can impact churn rates."
+  },
+  {
+    "key": "product_usage",
+    "description": "How frequently and extensively the customer uses the company's products or services, as more usage may indicate lower churn likelihood."
+  },
+  {
+    "key": "competitor_offers",
+    "description": "The presence of competitive offers or promotions from rival companies, as these can influence customer churn."
+  },
+  {
+    "key": "billing_issues",
+    "description": "Any problems related to billing or payment processing, as these can contribute to customer dissatisfaction and potential churn."
+  },
+  {
+    "key": "customer_feedback",
+    "description": "The feedback provided by the customer through surveys or reviews, as negative feedback may indicate a higher likelihood of churn."
+  },
+  {
+    "key": "life_changes",
+    "description": "Significant life events or changes that may impact the customer's need for the company's services, as these events can influence churn."
+  },
+  {
+    "key": "service_reliability",
+    "description": "The reliability and consistency of the company's services, as service interruptions or issues can lead to customer dissatisfaction and churn."
+  }
+]

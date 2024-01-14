@@ -13,7 +13,7 @@ async function loadTask(TASK, requireTest=false) {
                 TASK.dataSet.push({ input, output });
             }
         }
-        TASK.functionnSignature = `${TASK.functionName}(${OCRText})`;
+        TASK.functionSignature = `${TASK.functionName}(${OCRText})`;
     }
 
     if (TASK.dataset.type == "kaggleTabular") {
@@ -51,13 +51,22 @@ async function loadTask(TASK, requireTest=false) {
             TASK.parameters.push(parametersMap[key]);
         }
         TASK.realParameters = Object.keys(parameters);
-        TASK.functionnSignature = `${TASK.functionName}(${TASK.parameters.join(', ')})`;
+        TASK.functionSignature = `${TASK.functionName}(${TASK.parameters.join(', ')})`;
         for (let item of trainingData) {
             let output = item[TASK.dataset.output];
             delete item[TASK.dataset.output];
             let input = [];
             for (let key of TASK.realParameters) {
-                input.push(item[parametersMap[key]]);
+                // if match number, PARSEFLOAT it or parseInt it
+                if (item[parametersMap[key]].match(/^-?\d+$/)) {
+                    input.push(parseInt(item[parametersMap[key]]));
+                }
+                else if (item[parametersMap[key]].match(/^-?\d+\.\d+$/)) {
+                    input.push(parseFloat(item[parametersMap[key]]));
+                }
+                else {
+                    input.push(item[parametersMap[key]]);
+                }
             }
             TASK.dataSet.push({input, output });
         }

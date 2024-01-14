@@ -163,7 +163,7 @@ async function evaluate(code, TASK, datasetPass=1) {
     }
 
     if (TASK.dataset.evaluator == "LogRMSE") {
-         let loss = scorer.auc(y_true, y_pred);
+        let loss = scorer.LogRMSE(y_true, y_pred);
         if (isNaN(loss)) { 
             loss = errorResult;
         }
@@ -181,9 +181,13 @@ async function evaluate(code, TASK, datasetPass=1) {
     }
 
     if (TASK.dataset.evaluator == "ROCCurve") {
-         let loss = scorer.ROCAUCScore(y_true, y_pred);
+         let loss = scorer.SROCAUCScore(y_true, y_pred);
         if (isNaN(loss)) { 
             loss = errorResult;
+        }
+        // debugger;
+        return {
+            score: loss
         }
         for (let res of results) {
             res.loss = scorer.ROCAUCScore([parseFloat(res.output)], [res.result]);        

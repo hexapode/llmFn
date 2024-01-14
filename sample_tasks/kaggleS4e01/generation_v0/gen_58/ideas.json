@@ -1,0 +1,10 @@
+[
+  {
+    "key": "factor_1_age_of_customer",
+    "description": "The age of the customer could influence their decision to continue with their account or close it. Younger customers may be more mobile and open to switching providers, while older customers may be more loyal and less likely to churn."
+  },
+  {
+    "key": "factor_2_customer_satisfaction_score",
+    "description": "The satisfaction level of the customer with the service could also be a key factor in predicting churn. Satisfied customers are more likely to continue with their account, while dissatisfied customers are more likely to churn."
+  }
+]

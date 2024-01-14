@@ -1,0 +1,42 @@
+[
+  {
+    "key": "customer_age",
+    "description": "The age of the customer may influence their likelihood of churning, as younger customers may be more likely to switch providers or close their accounts."
+  },
+  {
+    "key": "monthly_usage",
+    "description": "Customers with higher monthly usage may be more loyal and less likely to churn, as they find the service valuable and essential to their needs."
+  },
+  {
+    "key": "customer_feedback",
+    "description": "Customer feedback and satisfaction scores can be indicative of their loyalty, as dissatisfied customers are more likely to churn."
+  },
+  {
+    "key": "contract_length",
+    "description": "Customers with longer contract lengths may be less likely to churn, as they have committed to using the service for a specified period."
+  },
+  {
+    "key": "customer_support_interaction",
+    "description": "Customers who have frequent interactions with customer support may be more likely to churn, as it could indicate unresolved issues or dissatisfaction."
+  },
+  {
+    "key": "competitive_offer",
+    "description": "The presence of competitive offers from other providers may influence a customer's decision to churn, especially if they perceive better value elsewhere."
+  },
+  {
+    "key": "billing_issues",
+    "description": "Customers who experience billing issues or discrepancies may be more likely to churn, as it can lead to frustration and loss of trust."
+  },
+  {
+    "key": "lifestyle_changes",
+    "description": "Significant lifestyle changes such as relocation or job change may influence a customer's decision to churn, as their needs and priorities shift."
+  },
+  {
+    "key": "service_outages",
+    "description": "Frequent service outages or disruptions could increase the likelihood of churn, as it affects the reliability of the service."
+  },
+  {
+    "key": "customer_engagement",
+    "description": "Customers who actively engage with the company's promotional offers, loyalty programs, and community events may be less likely to churn, as they feel a stronger connection to the brand and its values."
+  }
+]

@@ -1,0 +1,402 @@
+[
+  {
+    "key": "age_of_account",
+    "description": "The longer a customer has been with the company, the more likely they are to continue with their account."
+  },
+  {
+    "key": "monthly_usage",
+    "description": "Customers who use the service frequently are less likely to churn."
+  },
+  {
+    "key": "customer_support_interactions",
+    "description": "Customers who have had positive interactions with customer support are more likely to stay."
+  },
+  {
+    "key": "competitive_pricing",
+    "description": "Customers may churn if they find a competitor offering better pricing."
+  },
+  {
+    "key": "service_quality",
+    "description": "High-quality service leads to higher customer retention."
+  },
+  {
+    "key": "contract_length",
+    "description": "Customers with longer contract lengths are less likely to churn."
+  },
+  {
+    "key": "billing_issues",
+    "description": "Customers who experience billing problems may be more likely to churn."
+  },
+  {
+    "key": "product_updates",
+    "description": "Regular product updates and new features may influence customers to stay."
+  },
+  {
+    "key": "loyalty_programs",
+    "description": "Customers enrolled in loyalty programs may be less likely to churn."
+  },
+  {
+    "key": "customer_feedback",
+    "description": "Listening to and acting on customer feedback can positively impact retention rates."
+  },
+  {
+    "key": "communication_preferences",
+    "description": "Customers who receive communication through their preferred channels are more likely to stay."
+  },
+  {
+    "key": "life_events",
+    "description": "Major life events, such as moving, marriage, or having a child, can impact a customer's likelihood to churn."
+  },
+  {
+    "key": "competitive_advantages",
+    "description": "Customers may churn if they perceive that a competitor offers better features or advantages."
+  },
+  {
+    "key": "user_experience",
+    "description": "A positive user experience leads to higher customer retention."
+  },
+  {
+    "key": "personalization",
+    "description": "Tailoring the service to the individual customer's needs and preferences can reduce churn."
+  },
+  {
+    "key": "economic_conditions",
+    "description": "Changes in the economy can influence a customer's decision to continue or close their account."
+  },
+  {
+    "key": "trust_in_brand",
+    "description": "Customers who trust the company and its brand are more likely to stay."
+  },
+  {
+    "key": "satisfaction_with_previous_provider",
+    "description": "Customers who were dissatisfied with their previous provider may be more loyal to the current company."
+  },
+  {
+    "key": "incentive_programs",
+    "description": "Special incentives and rewards can encourage customers to continue their account."
+  },
+  {
+    "key": "industry_regulations",
+    "description": "Regulatory changes in the industry may impact customer behavior and churn rates."
+  },
+  {
+    "key": "social_proof",
+    "description": "Positive reviews, testimonials, and endorsements can influence a customer to stay."
+  },
+  {
+    "key": "account_activity",
+    "description": "Customers who regularly engage with their account and use the service are less likely to churn."
+  },
+  {
+    "key": "subscription_bundle",
+    "description": "Customers with multiple subscriptions or bundled services may have higher retention rates."
+  },
+  {
+    "key": "community_involvement",
+    "description": "Customers who are involved in a company's online or offline community are more likely to stay."
+  },
+  {
+    "key": "educational_resources",
+    "description": "Access to educational resources and support materials may reduce churn rates."
+  },
+  {
+    "key": "market_trends",
+    "description": "Changes in market trends and consumer behavior can impact customer retention."
+  },
+  {
+    "key": "perceived_value",
+    "description": "Customers who perceive high value in the service are less likely to churn."
+  },
+  {
+    "key": "brand_reputation",
+    "description": "A strong brand reputation can lead to higher customer retention."
+  },
+  {
+    "key": "digital_engagement",
+    "description": "Customers who actively engage with the company's digital platforms may have lower churn rates."
+  },
+  {
+    "key": "customer_age",
+    "description": "Younger and older customers may have different retention behaviors based on their preferences and needs."
+  },
+  {
+    "key": "spending_habits",
+    "description": "Customer spending habits and patterns can influence their decision to continue or close their account."
+  },
+  {
+    "key": "family_influence",
+    "description": "Family members' opinions and experiences can affect a customer's likelihood to churn."
+  },
+  {
+    "key": "promotional_offers",
+    "description": "Customers may be influenced to stay by targeted promotional offers."
+  },
+  {
+    "key": "brand_affinity",
+    "description": "Customers with a strong affinity towards the brand are less likely to churn."
+  },
+  {
+    "key": "billing_frequency",
+    "description": "The frequency of billing cycles may impact a customer's decision to continue with their account."
+  },
+  {
+    "key": "reliability_of_service",
+    "description": "Reliability and consistency of the service can impact customer retention."
+  },
+  {
+    "key": "perceived_switching_costs",
+    "description": "Customers may consider the effort and cost of switching to a different provider before churning."
+  },
+  {
+    "key": "personal_circumstances",
+    "description": "Individual circumstances such as job changes or health issues can impact a customer's churn decision."
+  },
+  {
+    "key": "ease_of_cancellation_process",
+    "description": "The ease of cancelling the service may influence a customer's decision to churn."
+  },
+  {
+    "key": "trust_in_leadership",
+    "description": "Customers' trust in the company's leadership can impact their likelihood to churn."
+  },
+  {
+    "key": "customer_service_response_time",
+    "description": "The speed and efficiency of customer service responses can impact customer retention."
+  },
+  {
+    "key": "product_customization",
+    "description": "Customers who can customize the product to their needs may have higher retention rates."
+  },
+  {
+    "key": "brand_image",
+    "description": "The overall image and perception of the brand can influence customer churn rates."
+  },
+  {
+    "key": "general_satisfaction",
+    "description": "Overall satisfaction with the product or service can impact customer retention."
+  },
+  {
+    "key": "peer_recommendations",
+    "description": "Recommendations from friends or colleagues can influence a customer's decision to stay or leave."
+  },
+  {
+    "key": "rewards_programs",
+    "description": "Participation in rewards programs may lead to higher customer retention."
+  },
+  {
+    "key": "customer_acquisition_channel",
+    "description": "Customers acquired through certain channels may have different retention rates."
+  },
+  {
+    "key": "ease_of_use",
+    "description": "The ease of using the product or service can impact customer churn rates."
+  },
+  {
+    "key": "security_and_privacy",
+    "description": "Customers' perception of the security and privacy of their data can impact retention."
+  },
+  {
+    "key": "emotional_engagement",
+    "description": "Customers who have an emotional attachment to the brand or product may have higher retention rates."
+  },
+  {
+    "key": "perceived_customer_value",
+    "description": "The perceived value and benefits received by the customer can influence their decision to stay or churn."
+  },
+  {
+    "key": "customer_advocacy",
+    "description": "Customers who actively advocate for the brand or service are more likely to stay."
+  },
+  {
+    "key": "social_media_presence",
+    "description": "The brand's presence and engagement on social media can impact customer retention."
+  },
+  {
+    "key": "voice_of_customer_programs",
+    "description": "Incorporating customer feedback through voice of customer programs can positively impact retention."
+  },
+  {
+    "key": "cross_selling_strategies",
+    "description": "Effective cross-selling strategies may lead to higher customer retention."
+  },
+  {
+    "key": "data_security_compliance",
+    "description": "Adherence to data security and privacy regulations can impact customer trust and retention."
+  },
+  {
+    "key": "product_reliability",
+    "description": "Reliability and consistency of the product may influence customer churn rates."
+  },
+  {
+    "key": "contract_terms",
+    "description": "The terms and conditions of the contract may impact a customer's decision to continue or close their account."
+  },
+  {
+    "key": "add_on_services",
+    "description": "Offering additional add-on services may lead to increased customer retention."
+  },
+  {
+    "key": "customer_experience_consistency",
+    "description": "Consistency in providing a positive customer experience can impact retention rates."
+  },
+  {
+    "key": "environmental_consciousness",
+    "description": "Customers may prefer to continue with a company that demonstrates environmental consciousness and sustainable practices."
+  },
+  {
+    "key": "response_to_feedback",
+    "description": "Companies that actively respond to customer feedback and implement changes may experience higher customer retention."
+  },
+  {
+    "key": "digital_integration",
+    "description": "Seamless integration with digital platforms and convenience can positively impact customer retention."
+  },
+  {
+    "key": "cultural_relevance",
+    "description": "Cultural relevance and sensitivity in marketing and communications can influence customer retention."
+  },
+  {
+    "key": "product_diversification",
+    "description": "A diverse range of products and services may lead to increased customer retention."
+  },
+  {
+    "key": "customer_demographics",
+    "description": "Understanding and catering to specific customer demographics can impact retention rates."
+  },
+  {
+    "key": "renewal_reminders",
+    "description": "Effective and timely renewal reminders may reduce customer churn rates."
+  },
+  {
+    "key": "product_badges_and_certifications",
+    "description": "Having industry-recognized badges and certifications can positively influence customer retention."
+  },
+  {
+    "key": "personalized_recommendations",
+    "description": "Providing personalized product or service recommendations may lead to increased customer retention."
+  },
+  {
+    "key": "customer_feedback_gathering",
+    "description": "Active gathering and utilization of customer feedback can positively impact customer retention."
+  },
+  {
+    "key": "brand_partnerships",
+    "description": "Strategic partnerships with other trusted brands may positively influence customer retention."
+  },
+  {
+    "key": "family_plan_options",
+    "description": "Offering family plan options and discounts can impact customer churn rates."
+  },
+  {
+    "key": "customer_success_programs",
+    "description": "Implementing customer success programs may promote higher customer retention."
+  },
+  {
+    "key": "consolidated_billing",
+    "description": "Consolidating billing across multiple services may reduce customer churn."
+  },
+  {
+    "key": "accessibility_features",
+    "description": "Incorporating accessibility features in the product or service can positively impact customer retention."
+  },
+  {
+    "key": "customer_communication_personalization",
+    "description": "Personalizing customer communication can lead to higher retention rates."
+  },
+  {
+    "key": "mobile_app_engagement",
+    "description": "Customers highly engaged with the mobile app may exhibit lower churn rates."
+  },
+  {
+    "key": "remote_support_services",
+    "description": "Providing effective remote support services may reduce customer churn."
+  },
+  {
+    "key": "customer_satisfaction_surveys",
+    "description": "Proactively conducting customer satisfaction surveys may positively impact retention."
+  },
+  {
+    "key": "product_cost_transparency",
+    "description": "Transparent pricing and cost breakdowns may lead to higher customer retention."
+  },
+  {
+    "key": "Ethical_business_practices",
+    "description": "Customers are more likely to continue with a company that demonstrates ethical business practices and corporate social responsibility."
+  },
+  {
+    "key": "Ease_of_upgrades",
+    "description": "Customers are less likely to churn if the process of upgrading their service or product is seamless and hassle-free."
+  },
+  {
+    "key": "Personalized_onboarding_experience",
+    "description": "A personalized onboarding experience can lead to higher customer satisfaction and lower churn rates."
+  },
+  {
+    "key": "Industry_expertise",
+    "description": "Customers may be more likely to continue with a company that demonstrates deep industry expertise and knowledge."
+  },
+  {
+    "key": "Accessibility_for_people_with_disabilities",
+    "description": "Providing accessibility features for people with disabilities may positively impact customer retention."
+  },
+  {
+    "key": "Consumption_based_pricing",
+    "description": "Consumption-based pricing models may lead to higher retention as customers feel in control of their spending."
+  },
+  {
+    "key": "Community_support_and_engagement",
+    "description": "Active community engagement and support initiatives can lead to higher customer retention."
+  },
+  {
+    "key": "Transparent_terms_and_conditions",
+    "description": "Clear and transparent terms and conditions may reduce customer churn rates."
+  },
+  {
+    "key": "Data_portability_and_interoperability",
+    "description": "Offering data portability and interoperability features may positively impact customer retention."
+  },
+  {
+    "key": "Referral_programs",
+    "description": "Successful referral programs may lead to increased customer retention as customers are motivated to bring in new users."
+  },
+  {
+    "key": "Inclusivity_and_diversity_initiatives",
+    "description": "Companies with inclusive and diverse initiatives may experience higher customer retention."
+  },
+  {
+    "key": "Personal_finance_management_tools",
+    "description": "Providing personal finance management tools may lead to increased customer retention."
+  },
+  {
+    "key": "Cybersecurity_measures",
+    "description": "Strong cybersecurity measures can positively influence customer retention."
+  },
+  {
+    "key": "Innovative_technology_adoption",
+    "description": "Adoption of innovative technologies may lead to higher customer retention."
+  },
+  {
+    "key": "Social_impact_initiatives",
+    "description": "Companies with active social impact initiatives may experience higher customer retention."
+  },
+  {
+    "key": "Local_community_involvement",
+    "description": "Involvement in the local community can positively impact customer retention."
+  },
+  {
+    "key": "Psychological_pricing_strategies",
+    "description": "Implementing psychological pricing strategies may lead to increased customer retention."
+  },
+  {
+    "key": "Digital_transformation_efforts",
+    "description": "Successful digital transformation efforts may lead to higher customer retention."
+  },
+  {
+    "key": "Regulatory_compliance_transparency",
+    "description": "Transparent regulatory compliance practices may positively influence customer retention."
+  },
+  {
+    "key": "Artificial_intelligence_and_machine_learning_integration",
+    "description": "Integration of AI and machine learning may lead to higher customer retention through personalized experiences and improved service delivery."
+  }
+]

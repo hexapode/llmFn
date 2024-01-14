@@ -1,0 +1,10 @@
+[
+  {
+    "key": "customer_demographics",
+    "description": "Factors such as age, gender, income level, and family status can influence a customer's decision to continue with their account or close it."
+  },
+  {
+    "key": "customer_satisfaction",
+    "description": "The level of satisfaction with the products or services, the interactions with customer support, and overall experience can impact a customer's likelihood to churn."
+  }
+]

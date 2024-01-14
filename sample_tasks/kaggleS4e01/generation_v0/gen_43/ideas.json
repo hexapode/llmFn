@@ -1,0 +1,402 @@
+[
+  {
+    "key": "customer_age",
+    "description": "The age of the customer may influence their likelihood of churning, as younger customers may be less committed to long-term relationships with service providers."
+  },
+  {
+    "key": "monthly_usage",
+    "description": "Customers who use the service more frequently may be less likely to churn, as they have integrated the service into their routine."
+  },
+  {
+    "key": "customer_support_interactions",
+    "description": "Customers who have frequent interactions with customer support may be more likely to churn, indicating dissatisfaction with the service."
+  },
+  {
+    "key": "contract_length",
+    "description": "Customers with longer contract lengths may be less likely to churn, as they have committed to the service for a specific period."
+  },
+  {
+    "key": "billing_issues",
+    "description": "Customers who frequently experience billing issues may be more likely to churn, reflecting a dissatisfaction with the billing process."
+  },
+  {
+    "key": "competitor_offers",
+    "description": "Customers who receive offers from competitors may be more likely to churn if the offers are more appealing than the current service."
+  },
+  {
+    "key": "customer_satisfaction_scores",
+    "description": "Customers with lower satisfaction scores may be more likely to churn, indicating discontent with the service."
+  },
+  {
+    "key": "usage_patterns",
+    "description": "Customers with irregular or declining usage patterns may be more likely to churn, as their interest in the service may be waning."
+  },
+  {
+    "key": "product_updates",
+    "description": "Customers who receive and engage with product updates may be less likely to churn, as they are actively interested in the evolution of the service."
+  },
+  {
+    "key": "customer_relationship_duration",
+    "description": "Customers with longer durations of the relationship with the service may be less likely to churn, as they have developed a strong bond with the brand."
+  },
+  {
+    "key": "payment_method",
+    "description": "The customer's preferred payment method may influence churn, as changes in payment method may indicate a precursor to churn."
+  },
+  {
+    "key": "number_of_complaints",
+    "description": "Customers who have submitted a high number of complaints may be more likely to churn, signaling dissatisfaction with the service."
+  },
+  {
+    "key": "household_income",
+    "description": "Higher household income may correlate with lower churn rates, as customers may be less sensitive to price changes or competitive offers."
+  },
+  {
+    "key": "subscription_plan",
+    "description": "Customers on higher-tier subscription plans may be less likely to churn, as they are committed to the additional features and benefits."
+  },
+  {
+    "key": "service_outages",
+    "description": "Frequent service outages or disruptions may increase the likelihood of churn, especially for customers reliant on consistent service."
+  },
+  {
+    "key": "customer_feedback",
+    "description": "Analysis of customer feedback and sentiment may reveal high-churn-risk patterns and concerns worth addressing."
+  },
+  {
+    "key": "contract_renewal_reminders",
+    "description": "Customers who receive and engage with contract renewal reminders may be less likely to churn, as they are prompted to consider their continued commitment."
+  },
+  {
+    "key": "marketing_engagement",
+    "description": "Customers who actively engage with marketing materials and promotions may be less likely to churn, as they are interested in the brand's offerings."
+  },
+  {
+    "key": "peer_reviews",
+    "description": "Positive or negative reviews from a customer's social circle may influence the likelihood of churn, indicating the impact of peer recommendations."
+  },
+  {
+    "key": "loyalty_program_participation",
+    "description": "Customers enrolled in loyalty programs may be less likely to churn, as they benefit from incentives and rewards for continued patronage."
+  },
+  {
+    "key": "average_usage_session_duration",
+    "description": "Customers with longer average usage session durations may be less likely to churn, as they are deeply engaged with the service."
+  },
+  {
+    "key": "customer_location",
+    "description": "The geographical location of the customer may affect churn, as certain regions or demographics may exhibit different churn behaviors."
+  },
+  {
+    "key": "customer_onboarding_process",
+    "description": "The smoothness and effectiveness of the customer onboarding process may influence churn, with a well-executed onboarding process leading to lower churn rates."
+  },
+  {
+    "key": "social_media_presence",
+    "description": "Customers who actively interact with the brand on social media platforms may be less likely to churn, as they have a stronger connection to the brand."
+  },
+  {
+    "key": "website_app_performance",
+    "description": "Poor performing website or app may lead to higher churn rates as customers get frustrated with the service."
+  },
+  {
+    "key": "family_status",
+    "description": "Customers' family status (single, married, with children) may influence churn, as their priorities and financial situations differ."
+  },
+  {
+    "key": "environmental_factors",
+    "description": "External factors such as economic conditions, natural disasters, or social events may affect customers' decisions to churn."
+  },
+  {
+    "key": "customer_skill_level",
+    "description": "For technical products/services, the customer's skill level may influence churn, with less tech-savvy customers being more prone to churn."
+  },
+  {
+    "key": "marketing_communication_tone",
+    "description": "The tone and style of marketing communications may impact churn, as it can affect customer perception and satisfaction."
+  },
+  {
+    "key": "cross_selling_up_selling_effectiveness",
+    "description": "The effectiveness of cross-selling or up-selling efforts may impact churn, as it can demonstrate the value of additional products/services to the customer."
+  },
+  {
+    "key": "customer_s_purchase_frequency",
+    "description": "Customers who make frequent purchases may be less likely to churn, as they are actively engaging with the brand."
+  },
+  {
+    "key": "response_time_to_customer_queries",
+    "description": "Customers who've experienced long waiting times for responses to their queries may be more likely to churn, indicating dissatisfaction with the support."
+  },
+  {
+    "key": "customer_s_preferred_communication_channel",
+    "description": "The customer's preferred communication channel (e.g., email, phone, chat) may impact churn, as it affects the ease of interaction with the service provider."
+  },
+  {
+    "key": "availability_of_self_service_options",
+    "description": "Customers who utilize self-service options and resources may be less likely to churn, as they appreciate having the ability to solve issues independently."
+  },
+  {
+    "key": "customer_loyalty_status",
+    "description": "Customers with higher loyalty status or VIP memberships may be less likely to churn, as they receive exclusive benefits and attention."
+  },
+  {
+    "key": "customer_s_lifestyle_changes",
+    "description": "Significant lifestyle changes, such as job relocation or retirement, may impact churn as customer needs and priorities shift."
+  },
+  {
+    "key": "compliance_with_service_terms_and_conditions",
+    "description": "Customers' compliance with the service's terms and conditions may indicate their commitment and influence churn likelihood."
+  },
+  {
+    "key": "product_customization_options",
+    "description": "Customers who have personalized or customized their products/services may be less likely to churn, as they have invested effort into tailoring the service to their needs."
+  },
+  {
+    "key": "presence_of_customer_advocates",
+    "description": "Customers who have relationships with customer advocates within the company may be less likely to churn, as they have a direct line for issue resolution and preferential treatment."
+  },
+  {
+    "key": "customer_s_past_purchase_behavior",
+    "description": "Analysis of the customer's past purchase behavior and trends may reveal patterns that can indicate a likelihood of churn."
+  },
+  {
+    "key": "customer_s_digital_footprint",
+    "description": "Analysis of the customer's digital footprint, such as online behavior and interactions, may provide insights into their likelihood of churn."
+  },
+  {
+    "key": "community_involvement",
+    "description": "Customers who are actively involved in the brand's community events or forums may be less likely to churn, as they feel a sense of belonging and connection."
+  },
+  {
+    "key": "customer_s_preferred_device",
+    "description": "The device through which the customer primarily accesses the service may impact churn, as user experience may vary across different devices."
+  },
+  {
+    "key": "health_of_the_customer_relationship",
+    "description": "The overall health and strength of the customer relationship, as indicated by sentiment, feedback, and interactions, may predict churn likelihood."
+  },
+  {
+    "key": "customer_s_subscription_renewal_behavior",
+    "description": "Customers who consistently renew their subscriptions without lapses may be less likely to churn, as it reflects commitment to the service."
+  },
+  {
+    "key": "trends_in_customer_service_interactions",
+    "description": "Patterns and trends in the customer's interactions with customer service may indicate a likelihood of churn, especially if there is an increase in negative interactions."
+  },
+  {
+    "key": "customer_s_sentiment_towards_competitors",
+    "description": "Customers' sentiment and behavior towards competitors may influence churn, as it reflects comparative satisfaction and loyalty."
+  },
+  {
+    "key": "availability_of_referral_program",
+    "description": "The availability and effectiveness of a referral program may impact churn, as customers may be incentivized to stay and refer others."
+  },
+  {
+    "key": "accessibility_of_account_information",
+    "description": "Customers' ability to access and manage their account information easily may impact churn, as it affects their overall experience."
+  },
+  {
+    "key": "compatibility_with_new_technologies",
+    "description": "The service's compatibility with new technologies and trends may impact churn, especially if customers perceive the service as outdated or incompatible with their needs."
+  },
+  {
+    "key": "customer_s_social_influence",
+    "description": "Customers with a high degree of social influence may be less likely to churn, as they have a reputation to uphold and may feel more invested in staying with the service."
+  },
+  {
+    "key": "availability_of_customer_retention_offers",
+    "description": "Customers who are offered retention offers or incentives to stay may be less likely to churn, as they are provided with a reason to continue their relationship with the service."
+  },
+  {
+    "key": "customer_s_engagement_with_loyalty_programs",
+    "description": "Customers who actively engage with and utilize the benefits of loyalty programs may be less likely to churn, as they value the rewards and benefits provided."
+  },
+  {
+    "key": "usage_of_customer_feedback",
+    "description": "The incorporation of customer feedback into service improvements may impact churn, as it signals to customers that their input is valued and acted upon."
+  },
+  {
+    "key": "customer_s_preferred_contact_frequency",
+    "description": "The frequency with which the service contacts the customer may impact churn, as it can influence perceptions of attentiveness or intrusiveness."
+  },
+  {
+    "key": "customer_s_credit_score",
+    "description": "Customers with higher credit scores may be less likely to churn, as they are perceived as more financially stable and able to afford the service."
+  },
+  {
+    "key": "participation_in_customer_satisfaction_surveys",
+    "description": "Customers who actively participate in customer satisfaction surveys may be less likely to churn, as they are engaged and providing feedback."
+  },
+  {
+    "key": "awareness_of_upcoming_product_features",
+    "description": "Customers who are aware of and anticipate upcoming product features may be less likely to churn, as they have a stake in the future of the service."
+  },
+  {
+    "key": "past_churn_behavior",
+    "description": "Analysis of the customer's past churn behavior, including reasons for churn and post-churn behavior, may provide insights into likelihood of future churn."
+  },
+  {
+    "key": "customer_s_openness_to_change",
+    "description": "The customer's openness to change, indicated by their willingness to try new features or services, may impact their likelihood of churn."
+  },
+  {
+    "key": "customer_s_utilization_of_premium_features",
+    "description": "Customers who actively use premium features of the service may be less likely to churn, as they value the additional offerings."
+  },
+  {
+    "key": "proactive_communication_from_the_service_provider",
+    "description": "Proactive and personalized communication from the service provider may impact churn, as it shows attentiveness to the customer's needs."
+  },
+  {
+    "key": "sustainability_and_social_responsibility_initiatives",
+    "description": "Customers who align with the service provider's sustainability and social responsibility initiatives may be less likely to churn, as they feel a connection to the brand's values."
+  },
+  {
+    "key": "customer_s_interaction_with_educational_resources",
+    "description": "Customers who engage with educational resources offered by the service may be less likely to churn, as they are invested in learning and making the most of the service."
+  },
+  {
+    "key": "customer_s_response_to_targeted_promotions",
+    "description": "Responses to targeted promotions may indicate a customer's likelihood to churn, as it reflects receptiveness to incentives and offers."
+  },
+  {
+    "key": "perception_of_data_privacy_and_security",
+    "description": "Customer perception of the service provider's data privacy and security measures may impact churn, especially in the context of increasing concerns around data protection."
+  },
+  {
+    "key": "usage_of_multi_device_or_multi_platform_features",
+    "description": "Customers who utilize multi-device or multi-platform features of the service may be less likely to churn, as they have integrated the service into multiple aspects of their lives."
+  },
+  {
+    "key": "alignment_with_the_brand_s_values",
+    "description": "Customers who align with the brand's core values and mission may be less likely to churn, as they feel a strong connection to the brand."
+  },
+  {
+    "key": "engagement_with_user_community",
+    "description": "Customers who actively engage with and contribute to the service's user community may be less likely to churn, as they feel a sense of belonging and contribution."
+  },
+  {
+    "key": "customer_s_network_switching_cost",
+    "description": "Customers with high network switching costs, such as the effort and time required to switch to a new service, may be less likely to churn, as they are more committed to the current service."
+  },
+  {
+    "key": "customer_s_feedback_frequency",
+    "description": "The frequency with which a customer provides feedback may indicate their level of engagement and investment in the service, influencing churn likelihood."
+  },
+  {
+    "key": "duration_of_customer_complaints",
+    "description": "Trends in the duration and resolution of customer complaints may reveal patterns that impact churn, particularly if complaints remain unresolved over time."
+  },
+  {
+    "key": "customer_s_knowledge_of_service_features",
+    "description": "Customers with comprehensive knowledge of the service's features may be less likely to churn, as they are proficient in utilizing the service."
+  },
+  {
+    "key": "perception_of_customer_service_quality",
+    "description": "The customer's perception of the quality of customer service received may heavily sway their decision to churn or stay with the service."
+  },
+  {
+    "key": "customer_s_preferred_payment_frequency",
+    "description": "The frequency at which a customer prefers to make payments for the service may influence their likelihood to churn, especially if the payment structure does not align with their preferences."
+  },
+  {
+    "key": "awareness_of_future_service_improvements",
+    "description": "Customers who are aware of and anticipate upcoming service improvements may be less likely to churn, as they see value in the service's ongoing developments."
+  },
+  {
+    "key": "customer_s_active_involvement_in_service_promotions",
+    "description": "Customers who actively participate in service promotions, such as referral programs or exclusive events, may be less likely to churn, as they are actively engaged with the service."
+  },
+  {
+    "key": "perceived_level_of_service_personalization",
+    "description": "The perceived level of personalization in the service may impact churn, as customers value tailored experiences and may churn if they feel underserved in this aspect."
+  },
+  {
+    "key": "sensitivity_to_pricing_changes",
+    "description": "Customers with high sensitivity to pricing changes may be more likely to churn, especially in response to price increases or alterations in subscription plans."
+  },
+  {
+    "key": "impact_of_social_endorsements",
+    "description": "Endorsements from social circles or influencers may impact churn, as customers value the opinions of those they trust and respect."
+  },
+  {
+    "key": "customer_s_awareness_of_service_updates",
+    "description": "Customers who are well-informed about updates and changes to the service are likely more engaged and less likely to churn."
+  },
+  {
+    "key": "experience_with_third_party_integrations",
+    "description": "Positive experiences with third-party integrations may increase customer stickiness and lower the likelihood of churn."
+  },
+  {
+    "key": "perception_of_account_management_tools",
+    "description": "The quality and effectiveness of account management tools may impact churn, as it affects the ease of use and overall experience."
+  },
+  {
+    "key": "customer_s_involvement_in_beta_testing",
+    "description": "Customers who actively participate in beta testing and provide feedback are likely more engaged and less likely to churn."
+  },
+  {
+    "key": "alignment_of_service_with_customer_s_values",
+    "description": "Customers are less likely to churn if they perceive the service as aligned with their personal values and beliefs."
+  },
+  {
+    "key": "satisfaction_with_user_interface_and_design",
+    "description": "Customers' satisfaction with the user interface and design positively impacts retention and churn likelihood."
+  },
+  {
+    "key": "depth_of_service_integration_into_customer_s_routine",
+    "description": "The deeper the service is integrated into the customer's daily routine, the less likely they are to churn."
+  },
+  {
+    "key": "perception_of_the_service_s_future_roadmap",
+    "description": "Customers who are optimistic about the service's future developments and roadmap are less likely to churn."
+  },
+  {
+    "key": "frequency_and_timeliness_of_service_updates",
+    "description": "Regular and timely service updates keep customers engaged, lowering the likelihood of churn."
+  },
+  {
+    "key": "availability_of_customer_appreciation_events",
+    "description": "Customers are less likely to churn when they have access to customer appreciation events and exclusive engagements with the service provider."
+  },
+  {
+    "key": "Ease_of_reaching_a_customer_support_representative",
+    "description": "Customers are less likely to churn if they find it convenient to reach out to a customer support representative, which can impact issue resolution and satisfaction."
+  },
+  {
+    "key": "Utilization_of_in_app_messaging",
+    "description": "Customers who actively use in-app messaging for support or inquiries are likely more engaged and less likely to churn."
+  },
+  {
+    "key": "Preferred_customer_service_channel",
+    "description": "The customer's preferred customer service channel can affect churn, as it pertains to their ease of seeking support and resolving issues."
+  },
+  {
+    "key": "Relationship_with_assigned_customer_success_manager",
+    "description": "Customers with a positive relationship with their assigned customer success manager are less likely to churn, as they feel valued and supported."
+  },
+  {
+    "key": "Utilization_of_self_service_knowledge_base",
+    "description": "Actively using the self-service knowledge base suggests engagement and can lower the likelihood of churn."
+  },
+  {
+    "key": "Integration_with_personal_productivity_tools",
+    "description": "Customers who have integrated the service with their personal productivity tools are likely more dependent on the service and less likely to churn."
+  },
+  {
+    "key": "Awareness_and_usage_of_new_integrations",
+    "description": "Customers who are aware of and utilize new integrations are likely more engaged and less likely to churn."
+  },
+  {
+    "key": "Perception_of_customer_appreciation_efforts",
+    "description": "Customer perception of service provider's efforts in showing appreciation can positively impact customer retention."
+  },
+  {
+    "key": "Experience_with_service_outage_resolution",
+    "description": "Positive experiences with service outage resolution can mitigate churn risk and increase customer loyalty."
+  },
+  {
+    "key": "Understanding_of_service_s_unique_selling_propositions",
+    "description": "Customers who understand and appreciate the service's unique selling propositions are less likely to churn, as they recognize its value."
+  }
+]
