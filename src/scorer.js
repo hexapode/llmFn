@@ -38,6 +38,20 @@ function ROCAUCScore(y_true, y_pred) {
     return auc;
 }
 
+
+//default cross-entropy loss
+
+function crossEntropyLoss(y_true, y_pred) {
+    let N = y_true.length;
+    let sum = 0;
+    for (let i = 0; i < N; i++) {
+        let y_i = y_true[i];
+        let p_i = y_pred[i];
+        sum += y_i * Math.log(p_i) + (1 - y_i) * Math.log(1 - p_i);
+    }
+    return -sum / N;
+}
+
 // RSOC area under curve score
 function SROCAUCScore(y_true, y_pred) {
     let p = 0;
@@ -158,5 +172,6 @@ module.exports = {
     LogRMSE,
     ROCAUCScore,
     SROCAUCScore,
-    AggErr
+    AggErr,
+    crossEntropyLoss
 }

@@ -18,25 +18,20 @@ async function runTask(taskDir, file, outDir, doRMSE=false) {
 
     if (doRMSE) {
         // copy task to NTask
-        let NTask = JSON.parse(JSON.stringify(TASK));
-
-        NTask.dataset.evaluatorOrder = 'lowerIsBetter';
 
 
-        NTask.dataset.evaluator = 'RMSE';
-        let res2 = await evaluate(code, NTask);
-        res2.code = code;
-        // MSE
-        let Ef = await fuzz(res2, NTask, 10000000, 5, TASK.fuzzerPct, null, null, outDir);
-        code = Ef.code;
+        TASK.dataset.evaluatorOrder = 'lowerIsBetter';
+
+
+        TASK.dataset.evaluator = 'RMSE';
 
     }
     let res = await evaluate(code, TASK);
 
     res.code = code;
     console.log(res.score);
-    for (let i = 2; i <= 16; i++)  {
-        res = await fuzz(res, TASK, 10000000, i, TASK.fuzzerPct * 3, null, null, outDir);
+    for (let i = 1; i <= 16; i++)  {
+        res = await fuzz(res, TASK, 100000, i, 1, null, null, outDir, 0, false);
         await fs.writeFile(outDir + '/codeFZ_final.js', res.code);
     }
     console.log('over')
@@ -47,4 +42,4 @@ async function runTask(taskDir, file, outDir, doRMSE=false) {
 let taskDir = process.argv[2];
 let file = process.argv[3];
 let outDir = process.argv[4];
-runTask(taskDir, file, outDir, false);
+runTask(taskDir, file, outDir, true);

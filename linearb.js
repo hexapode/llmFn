@@ -7,34 +7,21 @@ const {execQueue} = require('./src/queue.js');
 
 const evaluate = require('./src/evaluate.js');
 const fuzz = require('./src/fuzzer.js');
+const { getEnabledCategories } = require('trace_events');
 
 const openai = new OpenAI({
   apiKey: process.env['OPENAI_API_KEY'], // This is the default and can be omitted
 });
 
 
-let ROUND = 1;
-FACTOR_PER_ROUND = 10;
+let ROUND = 9;
+FACTOR_PER_ROUND = 15;
 let MODEL = 'gpt-3.5-turbo-1106';
 // let MODEL = 'gpt-4-1106-preview';
 
 
-async function runTask(taskDir, gen) {
+async function genIdeas(TASK, outDir) { 
 
-    let TASK = require(`${taskDir}/task.json`);
-    TASK.taskDir = taskDir;
-    await loadTask(TASK);
-
-    await fs.mkdir(TASK.taskDir + '/generation/', { recursive: true });
-
-    
-    let genCount = (await fs.readdir(TASK.taskDir + '/generation/')).length;
-    if (gen) {
-        genCount = gen;
-    }
-    let outDir =  TASK.taskDir + '/generation/gen_' + genCount;
-
-    await fs.mkdir(outDir, { recursive: true });
 
     let ideas = [];
 
@@ -76,6 +63,47 @@ The key should be astring containing only letters, numbers and underscores, and 
         ++i
     }
 
+
+    seedMessage = [{
+        role: "system",
+        content: `You are a datascientist, working on: ${TASK.goal}. \
+Imagine what could be ${FACTOR_PER_ROUND}  out of the box/creative factors that could influence the result of this prediction. What could make this more likely to happen or not happen?
+Output in a JSON hashmap with the name of the factor as key and a description as value. like:
+{
+    "idea_first": "this is a description of the idea",
+    "idea_two": "this is a description of the idea",
+    [...]
+}
+The key should not contain number.
+The key should be astring containing only letters, numbers and underscores, and starting by a letter as it will be used as a JS function name. It hsould describe the idea.`
+    }, {
+        role: "user",
+        content: `Do it!`
+}];
+
+    chatCompletion = await openai.chat.completions.create({
+        messages: [...seedMessage],
+        model: MODEL,
+    });
+    i = 0;
+    
+    while (i < ROUND) {
+        seedMessage.push(chatCompletion.choices[0].message);
+        seedMessage.push({
+            role: "user",
+            content: `${FACTOR_PER_ROUND} more`
+        });
+        chatCompletion = await openai.chat.completions.create({
+            messages: [...seedMessage],
+            model: MODEL,
+        });
+        texts.push(chatCompletion.choices[0].message.content);
+        ++i
+    }
+
+
+
+
     for (let text of texts) { 
         console.log(text);
         try {
@@ -92,8 +120,17 @@ The key should be astring containing only letters, numbers and underscores, and 
         idea.key = idea.key.replace(/[^a-zA-Z0-9_]/g, '_');
     }
 
+    
+
     console.log(ideas);
     await fs.writeFile(outDir + '/ideas.json', JSON.stringify(ideas, null, 2));
+    return ideas;
+}
+
+
+async function buildFN(TASK, outDir, ideas) {
+
+
 
     let finalFunction = "return "
     let first = true;
@@ -102,6 +139,9 @@ The key should be astring containing only letters, numbers and underscores, and 
     let finalFullCode = "";
 
     let ideaCount = 0;
+    let bestScore = undefined;
+    let bestFinalCode = undefined;
+    let bestFinalFnCode = "";
     for (let idea of ideas) {
         let worked = false;
 
@@ -119,13 +159,18 @@ The function should contain calculations, not just a lookup table.
 Compute your prediction in the function, and return them at the end of the function. Do not return value before end of function.
 The function should not contain calls to a neural network or machine learning model.
 The parameter of the function are all you have, try to be creative and use them to compute the probability. You need to have actual code calculating a probability based on the parameters even if it's a longshot!
-Here is a sample input:
+Here are 5  sample input:
 ${renderSample(TASK.dataSet[TASK.dataSet.length * Math.random() | 0], TASK)}
+${renderSample(TASK.dataSet[TASK.dataSet.length * Math.random() | 0], TASK)}
+${renderSample(TASK.dataSet[TASK.dataSet.length * Math.random() | 0], TASK)}
+${renderSample(TASK.dataSet[TASK.dataSet.length * Math.random() | 0], TASK)}
+${renderSample(TASK.dataSet[TASK.dataSet.length * Math.random() | 0], TASK)}
+
 `;
 
        let chatCompletion =  await  openai.chat.completions.create({
             messages: [{ role: "system", "content": MainPrompt},
-             {role: "user", "content": "Write a JS function for probability of " + idea.key + " based on " + idea.description + ""}],
+             {role: "user", "content": "Write a JS function for probability of " + idea.key + " based on " + idea.description + ". Try to interpolate based on the parameters, be imaginative! Do not output placeholder code!"}],
             model: MODEL,
         });
 
@@ -155,10 +200,12 @@ ${renderSample(TASK.dataSet[TASK.dataSet.length * Math.random() | 0], TASK)}
                 throw new Error('failed to evaluate');
             }
             sr.code = code;
-            let res = await fuzz(sr, NTask, 500, 2, NTask.fuzzerPct);
+            let res = await fuzz(sr, NTask, 1000, 3, NTask.fuzzerPct);
             console.log(res.score, res.code);
             worked = true;
-            finalCode += `
+            finalCode = `
+    ${bestFinalFnCode}
+
 /*
  ${idea.key}:
  ${idea.description}
@@ -180,14 +227,12 @@ ${res.code}
             ideaCount++;
 
             let fnCall = "";
-            console.log(finalFullCode);
-            if (finalFullCode.length > 0) {
-               fnCall= finalFullCode.match(/\/\* The Call \*\/\nreturn ([\s\S]*?);/)[1].trim();
-                debugger;
-                fnCall +=  ` + ${TASK.functionSignature.replace(TASK.functionName, idea.key)} * ${1.0/ideas.length}`;
+            if (bestFinalCode?.length > 0) {
+               fnCall= bestFinalCode.match(/\/\* The Call \*\/\nreturn ([\s\S]*?);/)[1].trim();
+                fnCall +=  ` + ${TASK.functionSignature.replace(TASK.functionName, idea.key)} * 0.33`;
             }
             else {
-                fnCall = `${TASK.functionSignature.replace(TASK.functionName, idea.key)} * ${1.0/ideas.length}`;
+                fnCall = `${TASK.functionSignature.replace(TASK.functionName, idea.key)}  * 0.33`;
             }
             finalFullCode = `
 function ${TASK.functionSignature} {
@@ -199,14 +244,29 @@ return ${fnCall};
 
             await fs.writeFile(outDir + `/idea_${ideaCount}.js`, finalFullCode);
 
-      //      debugger;
             let res = await evaluate(finalFullCode, TASK);
             res.code = finalFullCode;
             console.log(res.score);
-
-            let rf = await fuzz(res, TASK, 5000, 2, TASK.fuzzerPct, null, null, outDir, ideaCount);
+          
+            let rf = await fuzz(res, TASK, 15000, 3, TASK.fuzzerPct, null, null, outDir, ideaCount, true);
             await fs.writeFile(outDir + `/ideat_fz+${ideaCount}.js`, `//${rf.score}
 ${rf.code}`);
+            if (bestScore == undefined || 
+                (
+                    (TASK.dataset.evaluatorOrder == "lowerIsBetter" && rf.score < bestScore)
+                    ||
+                    (TASK.dataset.evaluatorOrder == "higherIsBetter" && rf.score > bestScore)     
+                )
+            )
+            {
+                 await fs.writeFile(outDir + `/best_fz.js`, `//${rf.score}
+${rf.code}`);
+                bestFinalFnCode = finalCode;
+                bestScore = rf.score;
+                bestFinalCode = rf.code;
+            }
+
+
         }
     }
 
@@ -226,6 +286,37 @@ function renderSample(sample, TASK) {
 }
 
 
+async function runTask(taskDir, gen) {
+    let TASK = require(`${taskDir}/task.json`);
+    TASK.taskDir = taskDir;
+    await loadTask(TASK);
+
+    await fs.mkdir(TASK.taskDir + '/generation/', { recursive: true });
+
+    
+    let genCount = (await fs.readdir(TASK.taskDir + '/generation/')).length;
+    let ideas = [];
+
+    if (gen) {
+        genCount = gen;
+    }
+
+    let outDir =  TASK.taskDir + '/generation/gen_' + genCount;
+
+    if (gen > 0) {
+        ideas = require(outDir + '/ideas.json');
+    }
+
+
+
+
+    await fs.mkdir(outDir, { recursive: true });
+
+    if (!ideas.length) {
+        ideas = await genIdeas(TASK, outDir);
+    }
+    await buildFN(TASK, outDir, ideas);
+}
 
 let taskDir = process.argv[2] || `./sample_tasks/KaggleS3e25`;
 let gen = parseInt(process.argv[3]) || 0;

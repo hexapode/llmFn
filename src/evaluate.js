@@ -148,6 +148,9 @@ async function evaluate(code, TASK, datasetPass=1) {
         let loss = scorer.RMSE(y_true, y_pred);
         if (isNaN(loss)) { 
             loss = errorResult;
+        }    
+        return {
+            score: loss
         }
         for (let res of results) {
             res.loss = scorer.RMSE([parseFloat(res.output)], [res.result]);        
@@ -180,8 +183,30 @@ async function evaluate(code, TASK, datasetPass=1) {
 
     }
 
+
+    if (TASK.dataset.evaluator == "crossEntropyLoss") {
+        let loss = scorer.crossEntropyLoss(y_true, y_pred);
+        if (isNaN(loss)) { 
+            loss = errorResult;
+        } 
+         return {
+            score: loss
+        }
+        for (let res of results) {
+            res.loss = scorer.RMSE([parseFloat(res.output)], [res.result]);        
+        }
+        // sort big to small loss
+        results.sort((a, b) => b.loss - a.loss);
+        return {
+            score: loss,
+            // TODO: sort results according to loss!
+            results: results
+        };
+
+    }
+
     if (TASK.dataset.evaluator == "ROCCurve") {
-         let loss = scorer.SROCAUCScore(y_true, y_pred);
+         let loss = scorer.ROCAUCScore(y_true, y_pred);
         if (isNaN(loss)) { 
             loss = errorResult;
         }

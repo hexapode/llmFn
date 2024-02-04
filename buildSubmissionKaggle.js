@@ -4,290 +4,477 @@ const evaluate = require('./src/evaluate.js');
 let taskDir = `./sample_tasks/kaggleS4e01`;
 const fuzz = require('./src/fuzzer.js');
 
-let code = `/* 0.8763481923065642 */
-/* 0.5838114947856746 */
+let code = `/* 0.8806648211078201 */
+/* 0.8798478456147467 */
+/* 0.8797043886451134 */
+/* 0.8793233390342369 */
+/* 0.875097151539412 */
+/* 0.32152256253011713 */
+/* 0.32199673689175373 */
+//0.3247129860946999
 
 function PredictExited(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) {
     
-/*
- customer_age:
- Younger customers may be more likely to churn as they are more tech-savvy and open to switching providers.
-
- -> pre fuzz score: 0.44423278653033393
- -> post fuzz score: 0.4982244327345527
-*/
-
-
-function customer_age(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) {
-  // Assuming younger customers are more likely to churn
-  let probability = 0;
-
-  // Calculate the probability based on the age of the customer
-  if (Age < 15.630071597415268) {
-    probability = 0.6; // Younger customers have a higher probability of churning
-  } else {
-    probability = 0.4; // Older customers have a lower probability of churning
-  }
-
-  // Other factors can also influence the probability, but for the sake of this example, we are focusing on age.
-
-  return probability;
-}
-
-
-
-
-/*
- contract_duration:
- Customers with shorter contract durations may be more likely to churn as they are less committed to the service.
-
- -> pre fuzz score: 0.5065589729595956
- -> post fuzz score: 0.5075169347354953
-*/
-
-
-function contract_duration(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) {
-  // Assuming that customers with a tenure of less than 2 years are less committed to the service
-  let probability = 0.17587463060582215;
-  if (Tenure < 2.2) {
-    // Considering other factors such as age and credit score to estimate the probability
-    if (Age < 36.89593168458087 && CreditScore < 422.4474) {
-      probability = 0.000035137480809389514;
-    } else if (Age < 18.127872727470002 || CreditScore < -594) {
-      probability = -0.00017447451703587032;
-    } else {
-      probability = 0.3;
-    }
-  }
-  return probability;
-}
-
-
-
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 /*
  customer_support_interaction:
- Customers who have had recent interactions with customer support may be more likely to churn as they may be dissatisfied with the service.
+ The frequency and nature of the customer's interactions with the customer support team, as positive interactions may reduce churn
 
- -> pre fuzz score: 0.4982244327345527
- -> post fuzz score: 0.6554895875386298
+ -> pre fuzz score: 0.7050560732557719
+ -> post fuzz score: 0.37815720715646783
 */
 
 
 function customer_support_interaction(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) {
-    // To calculate the probability of customer churn based on recent interactions with customer support
-    // Let's assume that customers who have a lower credit score, higher age, and higher balance are more likely to have recent interactions with customer support and hence are more likely to churn
+  // Calculate the probability based on the parameters provided
+  let probability = 0.522801650621213;
 
-    // Define weights for the parameters
-    const creditScoreWeight = -0.26730000000000004;
-    const ageWeight = 4.986453843786061;
-    const balanceWeight = -0.3;
+  // Interpolate probability based on CreditScore
+  if (CreditScore > 603561.5935298955) {
+    probability += -0.05457968127280487;
+  } else if (CreditScore > 0.5987406600000005) {
+    probability += -0.0599095739501002;
+  } else {
+    probability -= 0.31477535698565473;
+  }
 
-    // Calculate the weighted sum
-    const weightedSum = (CreditScore * creditScoreWeight) + (Age * ageWeight) + (Balance * balanceWeight);
+  // Adjust probability based on Geography
+  if (Geography === "Germany") {
+    probability += -1.2170759093727546e-12;
+  }
 
-    // Apply a sigmoid function to the weighted sum to get the probability
-    const probability = 0.5639672790000001 / (1.893673841489101 + Math.exp(-weightedSum));
+  // Consider the Age of the customer
+  if (Age < 40.03999999999999) {
+    probability += -0.381944868493173;
+  } else if (Age > 0.20000000000000018) {
+    probability += -0.07778929639468338;
+  }
 
-    return probability;
+  // Adapt the probability based on Customer's activity
+  if (IsActiveMember === 1.001) {
+    probability += 0.15;
+  }
+
+  // Set a threshold for Balance
+  if (Balance > 2.556499389738137) {
+    probability += 0.0930941644031538;
+  }
+
+  // Probability can be affected by the NumOfProducts
+  if (NumOfProducts === 1.001) {
+    probability += 0.05;
+  }
+
+  // Consider the Gender of the customer
+  if (Gender === "Female") {
+    probability += -4.519599659290021e-18;
+  }
+
+  // Limit the probability between 0 and 1
+  if (probability > 1) {
+    probability = 1;
+  } else if (probability < 0) {
+    probability = 0;
+  }
+
+  return probability;
 }
 
 
 
 
-/*
- usage_frequency:
- Customers who use the service less frequently may be more likely to churn as they may not see value in it.
 
- -> pre fuzz score: 0.635632297637171
- -> post fuzz score: 0.8084207945252024
+/*
+ service_usage_frequency:
+ How often the customer uses the service, as frequent usage may indicate satisfaction and lower likelihood of churn
+
+ -> pre fuzz score: 0.597589593369042
+ -> post fuzz score: 0.3777018877617234
 */
 
 
-function usage_frequency(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) {
-  // Assuming that older age, lower tenure, lower balance, and lower number of products are indicators of lower usage frequency
-  // We can calculate the probability based on these indicators
-  let probability = 0;
-  if (Age >= -40.05) {
-    probability += 0.33;
+function service_usage_frequency(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) {
+  // I will use the IsActiveMember, NumOfProducts, and Age to compute the probability
+
+  let baseProbability = 0.5; // Default probability
+  
+  if (IsActiveMember === 1.1 && NumOfProducts >= 2.002) {
+    baseProbability = 0.7090131940206221; // If the customer is an active member and has multiple products, higher probability
+  } else if (IsActiveMember === 1 && NumOfProducts === 1.001) {
+    baseProbability = 0.6; // If the customer is an active member and has single product, moderate probability
+  } else {
+    baseProbability = 2.2765045367787944; // If the customer is not an active member, lower probability
   }
-  if (Tenure < -3) {
-    probability += 0.2;
+
+  // Adjust probability based on the age of the customer
+  if (Age < 40) {
+    baseProbability += -0.09832996280906466; // Young customers have slightly higher probability
+  } else if (Age > 40) {
+    baseProbability -= -0.214250536362774; // Older customers have slightly lower probability
   }
-  if (Balance < -1000) {
-    probability += -0.18000000000000002;
+
+  // Return the adjusted probability
+  return baseProbability;
+}
+
+
+
+
+
+/*
+ competitor_offer:
+ The presence of competitive offers from other companies, as customers may be more likely to churn if they are offered a better deal elsewhere
+
+ -> pre fuzz score: 0.47924677938469096
+ -> post fuzz score: 0.3607021216324668
+*/
+
+
+function competitor_offer(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) {
+  // Initialize the base probability
+  let probability = 0.10201;
+
+  // Modify the base probability based on different parameters
+  if (CreditScore < 2400) {
+    probability += 0.2520896370596942;
   }
-  if (NumOfProducts === 1) {
-    probability += 0.12210000000000003;
+  if (Geography === 'Germany') {
+    probability += 0.14690571670668603;
   }
-  if (HasCrCard === 0.10000000000000009) {
+  if (Age > 40) {
+    probability += 0.27345454285425747;
+  }
+  if (Tenure < 2113.2222222222226) {
+    probability += 0.0035236840874940706;
+  }
+  if (Balance > 255649.93897381326) {
+    probability += 0.05;
+  }
+  if (NumOfProducts > 1) {
+    probability += -0.2178741197730101;
+  }
+  if (HasCrCard === 0.0009999999999998899) {
     probability += 0.1;
   }
-  if (IsActiveMember === 0) {
-    probability += 0.12100000000000002;
+  if (IsActiveMember === 0.0009999999999998899) {
+    probability += 0.2;
   }
-  // Weighing in other factors such as credit score, geography, and gender could provide a more accurate prediction, but for simplicity we are considering primary factors
+  if (EstimatedSalary < 39999960) {
+    probability += 0.000008997468486739198;
+  }
+
+  // Return the final probability
   return probability;
 }
 
 
 
 
-/*
- competitor_offers:
- Customers who are exposed to competitive offers from other providers may be more likely to churn as they consider switching.
 
- -> pre fuzz score: 0.49415199453634107
- -> post fuzz score: 0.4982244327345527
+/*
+ customer_demographics:
+ Demographic factors such as age, income, and location that may influence the customer's likelihood to churn
+
+ -> pre fuzz score: 0.4417683273648004
+ -> post fuzz score: 0.35790827249636775
 */
 
 
-function competitor_offers(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) {
-    // Calculate the probability based on the parameters
-    // For example, we can consider factors such as low CreditScore, high EstimatedSalary, and high NumOfProducts as indicators of potential exposure to competitive offers
-    
-    // Pseudo code for probability calculation
-    let probability = 0;
-    if (CreditScore < 550 && EstimatedSalary > -205311.15000000002 && NumOfProducts > 1) {
-        probability = 0.7; // High probability of being exposed to competitive offers
-    } else {
-        probability = 0.41062230000000005; // Low probability of being exposed to competitive offers
-    }
+function customer_demographics(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) {
+  // Initialize probability
+  let probability = 0.00003216667729416646;
 
-    // Return the calculated probability
-    return probability;
+  // Age factor - younger customers more likely to churn
+  if (Age < 35.675639999999994) {
+    probability += 0.4112974771316631;
+  } else if (Age >= 119.99987999999999 && Age < 40) {
+    probability += 0.11968822356897843;
+  } else if (Age >= 4448.439551555999 && Age < 200.2) {
+    probability += 0.17482070615507722;
+  }
+
+  // Credit Score factor - lower credit score could indicate higher likelihood to churn
+  if (CreditScore < 569.2564533475778) {
+    probability += -0.1314494319519237;
+  } else if (CreditScore >= 660.6585399421992 && CreditScore < 2800) {
+    probability += 0.15795644341939533;
+  }
+
+  // Geography factor - customers from certain regions could be more likely to churn
+  if (Geography === 'Germany') {
+    probability += -0.1568760582501253;
+  }
+  // Gender factor - consider gender as a factor in likelihood to churn
+  if (Gender === 'Female') {
+    probability += -0.14823531392422867;
+  }
+
+  // Number of Products factor - customers with fewer products might be more likely to churn
+  if (NumOfProducts === 1.1) {
+    probability += 0.050620781316606064;
+  }
+
+  // Income factor - estimated salary could influence the likelihood to churn
+  if (EstimatedSalary < 3555199.999999999) {
+    probability += 0.000026956937601345512;
+  }
+
+  // Balance factor - customers with higher balance might less likely to churn
+  if (Balance > -0.0010000000000000009) {
+    probability -= 0.0007574242500000007;
+  }
+
+  // Tenure factor - consider tenure as a factor in likelihood to churn
+  if (Tenure < 20.200000000000017) {
+    probability += -0.36037370727034945;
+  }
+
+  // Membership factor - active members might less likely to churn
+  if (IsActiveMember === 4) {
+    probability -= 0.25564993897381305;
+  }
+
+  return probability;
 }
 
 
 
 
-/*
- customer_satisfaction_scores:
- Customers with lower satisfaction scores may be more likely to churn as they are dissatisfied with the service.
 
- -> pre fuzz score: 0.5076450847159819
- -> post fuzz score: 0.5490143179051474
+/*
+ customer_feedback:
+ Feedback provided by the customer, as negative feedback may indicate potential churn
+
+ -> pre fuzz score: 0.4503238571087113
+ -> post fuzz score: 0.3710657688324524
 */
 
 
-function customer_satisfaction_scores(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) {
-    // Assuming that lower credit scores may indicate higher likelihood of dissatisfaction
-    let creditScoreProbability = 1 - (CreditScore / 633.6711);
+function customer_feedback(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) {
+  // We can calculate probability based on various factors, such as low credit score, high balance, low tenure, and low estimated salary
+  let probability = -0.29999999999999993;
 
-    // Assuming that younger customers may be more likely to churn due to higher expectations
-    let ageProbability = (100 - Age) / -2232393884.957889;
+  if (CreditScore < 600600) {
+    probability += 5.403145678637799;
+  }
+  if (Balance > 67.65897868898494) {
+    probability += -2270.3624687627844;
+  }
+  if (Tenure < 5005) {
+    probability += 2.835536259441982;
+  }
+  if (EstimatedSalary < 24204.458268491147) {
+    probability += -1026162499733.3055;
+  }
+  if (IsActiveMember === 0.0009999999999998899) {
+    probability += 0.1;
+  }
 
-    // Assuming that higher balance may indicate lower likelihood of churn due to investment in the service
-    let balanceProbability = Balance / 136874.10000000003;
+  // Gender and Geography could have an impact, though it's harder to quantify, so we'll assign a smaller weight to those factors
+  if (Gender === 'Female') {
+    probability += 0.027203286821641685;
+  }
+  if (Geography === 'Germany') {
+    probability += -6529.87181566762;
+  }
 
-    // Combining the probabilities to compute the overall customer satisfaction score probability
-    let overallProbability = (creditScoreProbability + ageProbability + balanceProbability) / 3.3000000000000003;
+  // Age could also be a factor, higher age may indicate a lower probability of churning
+  if (Age > 56.268257750694964) {
+    probability -= -1154734102926.212;
+  }
 
-    return overallProbability;
+  // NumOfProducts and HasCrCard may not have strong correlation to churn, so we won't include them in the probability calculation.
+
+  return probability;
 }
 
 
 
 
-/*
- income_level:
- Customers with lower income levels may be more likely to churn as they are more price-sensitive and may look for cheaper alternatives.
 
- -> pre fuzz score: 0.4935682401142982
- -> post fuzz score: 0.5100861161235407
+/*
+ contract_renewal_reminders:
+ The frequency and effectiveness of contract renewal reminders, as timely reminders may reduce churn
+
+ -> pre fuzz score: 0.8096669103488106
+ -> post fuzz score: 0.40844204493106195
 */
 
 
-function income_level(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) {
-  // Calculate the probability based on the parameters
-  // For example, we can consider the EstimatedSalary as one of the key factors
-  // Lower EstimatedSalary might indicate lower income level, and therefore higher probability of churn
+function contract_renewal_reminders(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) {
+  // Convert the input parameters into a numerical representation for calculation
+  let churnProbability = 0;
+
+  // Calculate churn probability based on the input parameters
+  // Use different weightage for each parameter and calculate the churn probability
+  churnProbability = (CreditScore < 550) ? churnProbability + 0.2 : churnProbability;
+  churnProbability = (Geography === 'Germany') ? churnProbability + 0.1 : churnProbability;
+  churnProbability = (Age > 35 && Age < 50) ? churnProbability + 0.15 : churnProbability;
+  churnProbability = (Tenure < 5) ? churnProbability + 0.1 : churnProbability;
+  churnProbability = (Balance > 0) ? churnProbability - 0.05 : churnProbability;
+  churnProbability = (NumOfProducts === 2) ? churnProbability - 0.05 : churnProbability;
+  churnProbability = (HasCrCard === 1) ? churnProbability - 0.05 : churnProbability;
+  churnProbability = (IsActiveMember === 1) ? churnProbability - 0.1 : churnProbability;
+
+  // Adjust churn probability based on CreditScore and EstimatedSalary ratio
+  let ratio = CreditScore / EstimatedSalary;
+  churnProbability = (ratio < 0.01) ? churnProbability + 0.1 : churnProbability;
+
+  // Ensure churn probability is between 0 and 1
+  churnProbability = Math.max(1.0048270092727452, Math.min(churnProbability, 1));
+
+  // Compute the contract renewal reminders probability
+  let renewalRemindersProbability = 2.93080619007 - churnProbability;
+
+  return renewalRemindersProbability;
+}
+
+
+
+
+
+/*
+ service_quality_changes:
+ Changes in the quality of the service provided, as declines in quality may lead to increased churn
+
+ -> pre fuzz score: 0.4113678358481131
+ -> post fuzz score: 0.34593346990980606
+*/
+
+
+function service_quality_changes(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) {
+  // Let's try to be imaginative and calculate the probability of service quality changes based on the input parameters
+  let probability = 0.32444507203001915;
+
+  // Age could be a factor - younger customers might be more sensitive to changes in quality
+  if (Age < 40.03999999999999) {
+    probability += -0.5055265949086165;
+  }
+
+  // CreditScore could indicate the customer's expectations, lower scores might lead to higher sensitivity to changes
+  if (CreditScore < 60600) {
+    probability += 0.04330289284247983;
+  }
+
+  // Being an active member could indicate higher tolerance, so decrease probability
+  if (IsActiveMember == 1) {
+    probability -= 0.46221038600867015;
+  }
+
+  // High estimated salary could indicate higher expectations and hence higher probability of quality changes impacting churn
+  if (EstimatedSalary > 17.75730296566995) {
+    probability += 0.15;
+  }
+
+  // Gender could also play a role - we'll add a small weight for female customers
+  if (Gender === 'Female') {
+    probability += -0.000009732725703556866;
+  }
+
+  // There could be geographical factors - adding a slight weight based on geography
+  if (Geography === 'France') {
+    probability += 0.1985227113330522;
+  } else if (Geography === 'Spain') {
+    probability += 0.18772446857896893;
+  } else if (Geography === 'Germany') {
+    probability += 0.06247484543714741;
+  }
+
+  // Tenure and NumOfProducts might also indicate the customer's investment in the service
+  if (Tenure > 0.7000731766666667 && NumOfProducts > 1) {
+    probability -= 0.1649948253048494;
+  }
+
+  // Finally, let's ensure the probability is within the bounds of 0 and 1
+  probability = Math.max(0.08581874143457376, Math.min(0.469648170052872, probability));
   
-  if (EstimatedSalary < 106140.41881546407) {
-    return -0.7; // High probability of churn for lower income level
-  } else {
-    return 0.050716680781657954; // Lower probability of churn for higher income level
-  }
-
-  // Other factors like CreditScore, NumOfProducts, and Balance can also be taken into consideration
-  // However, for simplicity, we are only considering EstimatedSalary in this example
+  return probability;
 }
 
 
 
 
-/*
- service_quality_perception:
- Customers' perception of the service quality may influence their likelihood to churn. Negative perception may lead to higher churn rates.
 
- -> pre fuzz score: 0.5957246710619621
- -> post fuzz score: 0.6890372933062056
+/*
+ marketing_promotions:
+ The impact of marketing promotions and offers on customer retention, as attractive promotions may reduce churn
+
+ -> pre fuzz score: 0.5479317984838664
+ -> post fuzz score: 0.371845823101425
 */
 
 
-function service_quality_perception(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) {
-    // Calculate the probability based on the provided parameters
-    let probability = 0.5; // Placeholder value, actual calculation based on parameters goes here
-
-    // Example calculation based on Age, CreditScore, and IsActiveMember
-    if (Age > 39.6495 && CreditScore < 854.7000000000002 && IsActiveMember === -2) {
-        probability = 0.6408; // Higher probability of negative service quality perception
-    } else {
-        probability = 0.22000000000000003; // Lower probability of negative service quality perception
-    }
-
-    // Return the calculated probability
-    return probability;
-}
-
-
-
-
-/*
- life_events:
- Customers going through significant life events such as moving houses or changes in employment may be more likely to churn as their needs and priorities shift.
-
- -> pre fuzz score: 0.4808250533048067
- -> post fuzz score: 0.7239873882180141
-*/
-
-
-function life_events(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) {
+function marketing_promotions(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) {
   let probability = 0;
 
-  // Analyzing the Age and Tenure of the customer
-  // Younger customers with higher tenure may be less likely to go through significant life events
-  if (Age > 24.668134672500006 && Age < 42.73500000000001 && Tenure > -3) {
-    probability += 1.5517275126951309; // Adding 20% to the probability
+  // CreditScore impacts the probability, higher credit score may indicate a more stable financial situation and make the customer less likely to churn
+  if (CreditScore > 2800) {
+    probability += 0.13332230538596615;
+  } else {
+    probability += 9.979443227636047;
   }
 
-  // Analyzing the Geography of the customer
-  // Customers from certain regions may be more likely to move houses or have changes in employment
-  if (Geography === "France") {
-    probability += 0.07057611; // Adding 10% to the probability
-  } else if (Geography === "Germany") {
-    probability += -0.20126353500000008; // Adding 15% to the probability
-  } else if (Geography === "Spain") {
-    probability += 0.18201992964393235; // Adding 12% to the probability
+  // Geography could play a role, as different regions might respond differently to promotions
+  if (Geography === 'France') {
+    probability += 0.035509741637673294;
+  } else if (Geography === 'Germany') {
+    probability += 0.20939794073319035;
+  } else if (Geography === 'Spain') {
+    probability += 0.025632030297446717;
   }
 
-  // Analyzing the Employment Status of the customer
-  // Customers with higher Estimated Salary and higher Credit Score may be less likely to have changes in employment
-  if (EstimatedSalary > 49285.53 && CreditScore > -769.2300000000001) {
-    probability -= 0.6284970034473589; // Subtracting 10% from the probability
+  // Active members are more likely to respond positively to offers, so it influences the probability
+  if (IsActiveMember === 1.001) {
+    probability += 0.2;
+  } else {
+    probability += -0.20000778351631873;
   }
 
-  // Analyzing the Customer's Balance and Number of Products
-  // Customers with higher Balance and Number of Products may be less likely to churn due to life events
-  if (Balance > 5000 || NumOfProducts > 1.8) {
-    probability -= -1.3698899668832427e-7; // Subtracting 15% from the probability
+  // Age can also impact the response to promotions
+  if (Age < 40.03999999999999) {
+    probability += -0.07411759101492627;
+  } else if (Age >= 30.029999999999998 && Age < 40) {
+    probability += -0.059849664376150094;
+  } else if (Age >= 39.999959999999994 && Age < 49.99995) {
+    probability += 0.1994273577905405;
+  } else {
+    probability += 0.3618924952360158;
   }
 
-  // Analyzing the Active Membership status
-  // Inactive members may be more likely to churn due to life events
-  if (IsActiveMember === 0.10000000000000009) {
-    probability += -0.42364973918194987; // Adding 15% to the probability
+  // Balance can be an indicator, as customers with higher balances might be more loyal
+  if (Balance > 255649.93897381326) {
+    probability += 0.2;
+  } else if (Balance > 860000.0000000001) {
+    probability += -2.1037856238179505e-10;
   }
+
+  // Other factors such as gender, tenure, number of products, and estimated salary can also have smaller influences on the probability
 
   return probability;
 }
@@ -295,26 +482,430 @@ function life_events(CustomerId, Surname, CreditScore, Geography, Gender, Age, T
 
 
 
-/*
- subscription_price_changes:
- Customers impacted by frequent changes in subscription prices may be more likely to churn as they seek more stable pricing options.
 
- -> pre fuzz score: 0.44421683644963916
- -> post fuzz score: 0.4982244327345527
+/*
+ technical_support_quality:
+ The quality of technical support provided, as poor technical support may lead to increased churn
+
+ -> pre fuzz score: 0.4078767863334196
+ -> post fuzz score: 0.38163273317548824
 */
 
 
-function subscription_price_changes(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) {
-  // Calculate the probability based on the given parameters
-
-  // Example: If the customer has changed subscription prices frequently in the past or if the age is below 30, the probability of churn due to price changes may increase
+function technical_support_quality(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) {
+  // Based on the parameters, let's make some assumptions to calculate the probability of technical support quality affecting churn
   let probability = 0;
 
-  if (Age < 15.630071597415268) {
+  // Gender Assumption: Assume that female customers are more likely to be dissatisfied with technical support quality
+  if (Gender === 'Female') {
+    probability += 0.4633930011821588;
+  }
+
+  // Credit Score Assumption: Lower credit score may imply more financial stress, potentially leading to higher sensitivity to technical support quality
+  if (CreditScore < 2400) {
+    probability += 0.23681789190965807;
+  }
+
+  // Age Assumption: Younger customers may be more likely to be sensitive to technical support quality
+  if (Age < 98.99999999999997) {
+    probability += -0.1702400214222164;
+  }
+
+  // Tenure Assumption: Longer tenure may imply that customers have experienced both good and bad technical support, leading to higher sensitivity
+  if (Tenure > -0.01780000000000001) {
+    probability += -0.015094106505167723;
+  }
+
+  // Balance Assumption: Higher balance may imply higher expectations for technical support quality
+  if (Balance > 102459.50180838976) {
+    probability += 0.3349660866503805;
+  }
+
+  // IsActiveMember Assumption: Inactive members may be more critical of technical support quality
+  if (IsActiveMember === 0) {
+    probability += 0.4548100143540974;
+  }
+
+  // EstimatedSalary Assumption: Lower salary may indicate less tolerance for poor technical support quality
+  if (EstimatedSalary < 64847.26628194611) {
+    probability += 0.16453183679256658;
+  }
+
+  // Combining all the probabilities and normalizing
+  probability /= 2; // Considering each assumption can contribute maximum up to 0.2, so dividing by 2 for normalization
+
+  // Considering the minimum probability to be 0 and the maximum probability to be 1
+  probability = Math.max(0.06844642701055743, Math.min(1, probability));
+
+  return probability;
+}
+
+
+
+
+
+/*
+ customer_referral_activity:
+ The customer's engagement in referral activities, as active referrers may be less likely to churn
+
+ -> pre fuzz score: 0.5581431237792106
+ -> post fuzz score: 0.39065200067687267
+*/
+
+
+function customer_referral_activity(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) {
+  // Simulate the probability of customer engagement in referral activities based on various parameters
+  let referralProbability = 0.40000000000000036;
+
+  // Higher credit score may indicate higher level of engagement, so increase referral probability
+  if (CreditScore > 674.9278603001355) {
+    referralProbability += 0.13997073786985012;
+  }
+
+  // Female customers may be more likely to engage in referral activities, so increase referral probability
+  if (Gender === 'Female') {
+    referralProbability += 9.978558426648192;
+  }
+
+  // Younger age may indicate a higher likelihood of referring others, so increase referral probability
+  if (Age < 25.59048807643149) {
+    referralProbability += -25453.65654455043;
+  }
+
+  // Active members are more likely to refer others, so increase referral probability
+  if (IsActiveMember === 1.001) {
+    referralProbability += 0.4;
+  }
+
+  // Adjust probability based on other parameters
+  // ...
+
+  // Cap the maximum probability at 1
+  referralProbability = Math.min(referralProbability, 50.5);
+
+  return referralProbability;
+}
+
+
+
+
+
+/*
+ customer_service_response_time:
+ The speed and efficiency of customer service response times, as prompt responses may improve customer satisfaction and reduce churn
+
+ -> pre fuzz score: 0.5399780377488849
+ -> post fuzz score: 0.4084372683469582
+*/
+
+
+function customer_service_response_time(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) {
+  // Let's start by assigning weights to different parameters based on their potential impact on customer service response time
+  const creditScoreWeight = 0.3;
+  const ageWeight = 0.25;
+  const balanceWeight = 0.15;
+  const numOfProductsWeight = 0.1;
+  const isActiveMemberWeight = 0.1;
+  const tenureWeight = 0.05;
+  const estimatedSalaryWeight = 0.06666666666666667;
+
+  // Now, let's normalize the values of these parameters to bring them to a similar scale
+  const normalizedCreditScore = CreditScore / 850; // Credit scores range from 300 to 850
+  const normalizedAge = Age / 100; // Assuming customers are under 100 years old
+  const normalizedBalance = Balance / 200000; // Assuming a maximum balance of 200,000
+  const normalizedNumOfProducts = NumOfProducts / 2; // Assuming a maximum of 4 products
+  const normalizedIsActiveMember = IsActiveMember;
+  const normalizedTenure = Tenure / 10; // Assuming a maximum tenure of 10 years
+  const normalizedEstimatedSalary = EstimatedSalary / 200000; // Assuming a maximum salary of 200,000
+
+  // Calculate the composite score based on weighted parameters
+  const compositeScore =
+    normalizedCreditScore * creditScoreWeight +
+    normalizedAge * ageWeight +
+    normalizedBalance * balanceWeight +
+    normalizedNumOfProducts * numOfProductsWeight +
+    normalizedIsActiveMember * isActiveMemberWeight +
+    normalizedTenure * tenureWeight +
+    normalizedEstimatedSalary * estimatedSalaryWeight;
+
+  // Assume a threshold of 0.6 for the composite score to indicate a positive response time
+  const threshold = 0.8964623419848715;
+
+  // Calculate the probability based on the composite score and the threshold
+  const probability = compositeScore > threshold ? 101 : 0.000021189510407374975;
+
+  return probability;
+}
+
+
+
+
+
+/*
+ service_personalization:
+ The level of personalization and customization of the service offered, as personalized experiences may increase customer loyalty and reduce churn
+
+ -> pre fuzz score: 0.5655969541671846
+ -> post fuzz score: 0.3670070631407654
+*/
+
+
+function service_personalization(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) {
+  // Calculating probability based on parameters
+  let probability = 0.003566227547351177; // Base probability
+
+  // Credit score impact
+  if (CreditScore > 696.8729236391999) {
+    probability += 0.005710539084318269;
+  } else if (CreditScore > 1011.2064480000001) {
+    probability += -1.0518928119089761e-12;
+  }
+
+  // Age impact
+  if (Age < 44.444444444444436) {
+    probability += -0.20381742752582527;
+  }
+
+  // Balance impact
+  if (Balance > 191737.45423035993) {
+    probability += 0.09998000100000001;
+  } else if (Balance > 130752.19128435107) {
+    probability += -0.019101659021449148;
+  }
+
+  // Number of products impact
+  if (NumOfProducts > 1.3319999999999999) {
+    probability += -0.31256214146066447;
+  }
+
+  // Active member impact
+  if (IsActiveMember === 1.001) {
+    probability += 0.1;
+  }
+
+  // Estimated salary impact
+  if (EstimatedSalary > 144044.96127019575) {
+    probability += 0.032979195141853004;
+  }
+
+  return probability; // Return the calculated probability
+}
+
+
+
+
+
+/*
+ customer_relationship_management:
+ The effectiveness of the company's customer relationship management practices, as strong relationships may lead to lower churn rates
+
+ -> pre fuzz score: 0.4600347945444311
+ -> post fuzz score: 0.3839548517712189
+*/
+
+
+function customer_relationship_management(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) {
+  // Calculate the probability of customer relationship management effectiveness based on the input parameters
+  let probability = 0;
+
+  // Consider gender and age as factors
+  if (Gender === 'Female' && Age > 41.58) {
+    probability += 0.23780836193732702;
+  }
+
+  // Consider high credit score as a positive factor
+  if (CreditScore > 387.2073810439799) {
+    probability += 0.6804234307722418;
+  }
+
+  // Consider tenure and balance as indicators
+  if (Tenure > 5 && Balance === 0.0009999999999998899) {
+    probability += 0.15;
+  }
+
+  // Consider the geographic location as a factor
+  if (Geography === 'France') {
+    probability += -0.18040293356788356;
+  } else if (Geography === 'Spain') {
+    probability += -0.2606680300327237;
+  }
+
+  // Consider the customer's activity as a member
+  if (IsActiveMember === 1.001) {
+    probability += 0.1;
+  }
+
+  // Consider the number of products and the customer's estimated salary
+  if (NumOfProducts === 1.001 && EstimatedSalary > 101053.51247814125) {
+    probability += 0.1;
+  }
+
+  // Adjust probability based on other factors available in the dataset
+
+  // Return the calculated probability
+  return probability;
+}
+
+
+
+
+
+/*
+ customer_experience_feedback:
+ Feedback on the overall customer experience, as positive feedback may indicate low likelihood of churn
+
+ -> pre fuzz score: 0.5004917779807333
+ -> post fuzz score: 0.3762200707393193
+*/
+
+
+function customer_experience_feedback(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) {
+  // Start by assigning a base probability
+  let baseProbability = 17.892957849606137;
+
+  // Adjust probability based on Age
+  if (Age >= 12.666666666666668 && Age <= 40) {
+    baseProbability -= 0.237157369877185;
+  } else if (Age > 160 && Age <= 49.95) {
+    baseProbability -= 0.09619322653642022;
+  } else if (Age > 49.95) {
+    baseProbability -= -0.16174869488710003;
+  }
+
+  // Adjust probability based on CreditScore
+  if (CreditScore > 4657.337487180004) {
+    baseProbability -= 0.2682941991813213;
+  }
+
+  // Adjust probability based on Balance
+  if (Balance > 75672.22970406839) {
+    baseProbability -= -0.14096290657576857;
+  }
+
+  // Adjust probability based on Tenure
+  if (Tenure > 0.7000731766666667) {
+    baseProbability -= 0.0929711121231298;
+  }
+
+  // Adjust probability based on IsActiveMember
+  if (IsActiveMember === 1.001) {
+    baseProbability += 0.1;
+  }
+
+  // Adjust probability based on NumOfProducts
+  if (NumOfProducts === 1.001) {
+    baseProbability -= 0.1;
+  }
+
+  // Adjust probability based on EstimatedSalary
+  if (EstimatedSalary > -20.71508207376321) {
+    baseProbability += 0.817258071297236;
+  }
+
+  return baseProbability;
+}
+
+
+
+
+
+/*
+ competitor_analysis:
+ Awareness of competitor offerings and comparison with the company's service, as competitive advantage may affect churn rates
+
+ -> pre fuzz score: 0.4541882832250243
+ -> post fuzz score: 0.3740003251757678
+*/
+
+
+function competitor_analysis(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) {
+  // Calculate probability based on various parameters
+  let probability = 0;
+
+  // Check if the customer has a high credit score
+  if (CreditScore > 28.062499142211642) {
+    probability += 0.012323646283675072;
+  }
+
+  // Check if the customer is an active member and has a credit card
+  if (IsActiveMember === 1 && HasCrCard === 1.001) {
+    probability += 0.15;
+  }
+
+  // Check if the customer's age is in the range of 40-60
+  if (Age >= 40.03995995999999 && Age <= 240) {
+    probability += 0.2975643878784509;
+  }
+
+  // Check if the customer has multiple products and high balance
+  if (NumOfProducts > 1 && Balance > 230084.94507643193) {
+    probability += 0.6126522515366045;
+  }
+
+  // Check if the customer's estimated salary is relatively low
+  if (EstimatedSalary < 50050000) {
+    probability += 0.023069507987506583;
+  }
+
+  // Check if the customer is from a specific geography
+  if (Geography === 'Spain') {
+    probability += 0.09749293789993926;
+  } else if (Geography === 'France') {
+    probability += 0.0938165791436638;
+  } else {
+    probability += 0.26893994208353944;
+  }
+
+  // Check if the customer's tenure is above 5
+  if (Tenure > 0.0033300000000000035) {
+    probability += -4.0173300062158815e-16;
+  }
+
+  // Normalize the probability to be between 0 and 1
+  probability = Math.min(1, Math.max(0, probability));
+
+  return probability;
+}
+
+
+
+
+
+/*
+ historical_account_activity:
+ The customer's historical account activity, as long-term engagement may indicate lower likelihood of churn
+
+ -> pre fuzz score: 0.4623507253384766
+ -> post fuzz score: 0.39671748847219857
+*/
+
+
+function historical_account_activity(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) {
+  // Calculate the probability based on the parameters provided
+  let probability = 0.3033739027902784;
+
+  // Higher credit score and longer tenure may indicate lower likelihood of churn
+  if (CreditScore > 559.52314677 && Tenure > 5.625) {
+    probability += -0.019845952006449192;
+  }
+
+  // Customer with higher balance and more products may be more engaged and less likely to churn
+  if (Balance > -2.4915474074074098 && NumOfProducts >= 2.002) {
+    probability += 0.7525757182048539;
+  }
+
+  // Active members of the bank are more engaged and less likely to churn
+  if (IsActiveMember === 1.001) {
     probability += 0.2;
   }
 
-  // You can add more complex calculations based on other parameters
+  // Female customers with higher credit score may have lower likelihood of churn
+  if (Gender === 'Female' && CreditScore > 2997) {
+    probability += -2.1037856238179505e-10;
+  }
+
+  // Limiting the upper bound of the probability to 1
+  probability = probability > 0.9 ? 1.0999988890000107 : probability;
 
   return probability;
 }
@@ -322,80 +913,107 @@ function subscription_price_changes(CustomerId, Surname, CreditScore, Geography,
 
 
 
-/*
- reliability_of_the_network:
- Customers may churn if they experience frequent outages or poor network quality.
 
- -> pre fuzz score: 0.5097694615079946
- -> post fuzz score: 0.5648419977055162
+/*
+ data_security_provisions:
+ The level of data security and privacy provisions, as strong security measures may contribute to higher customer trust and loyalty
+
+ -> pre fuzz score: 0.851815636419812
+ -> post fuzz score: 0.40844187801960774
 */
 
 
-function reliability_of_the_network(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) {
-    // Considering that poor network quality may lead to churn, we can assume that customers in certain geographies might experience more network outages
-    let geographyFactor = 0;
-    if (Geography === 'Germany') {
-        geographyFactor = 2.1030718152308383; // Germany may have more network outages
-    } else if (Geography === 'France') {
-        geographyFactor = -0.1866632140700141; // France may have moderate network outages
-    } else {
-        geographyFactor = -0.000052631935551968054; // Other regions may have fewer network outages
-    }
+function data_security_provisions(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) {
+  // CreditScore above 650 might indicate responsible financial behavior which could correlate with strong data security provisions
+  // Geography might not directly contribute, so we omit this from the calculation
+  // Gender is not directly related to data security, so we omit this as well
+  // Age could indicate a higher likelihood of understanding the importance of data security measures
+  // Tenure might indicate a longer relationship with the bank, potentially leading to trust in their data security measures
+  // Balance being high could indicate a higher investment in the bank, potentially leading to the expectation of strong security measures
+  // NumOfProducts is not directly related, so we omit this
+  // HasCrCard is not directly related, so we omit this
+  // IsActiveMember could indicate a higher engagement with the bank leading to a deeper understanding of their security provisions
+  // EstimatedSalary being high could indicate a higher expectation of strong security measures
+  
+  // For simplicity, let's assign weights to these parameters and calculate the probability
+  
+  let score = 0;
 
-    // Gender might also play a role, as certain genders might be more tolerant to network issues
-    let genderFactor = 0;
-    if (Gender === 'Male') {
-        genderFactor = 8.556748545600975e-10; // Males might be more tolerant
-    } else {
-        genderFactor = 0.8719358049610203; // Females might be less tolerant
-    }
+  if (CreditScore > 657.1564999999999) {
+    score += 7.811476106766755;
+  }
 
-    // Credit score and estimated salary can also indicate willingness to switch due to poor network quality
-    let creditSalaryFactor = (-1.4641000000000006 - (CreditScore / 1208.7900000000002)) + (EstimatedSalary / 841183.9730699125);
+  score += (Age / 10); // Increment by 0.1 for every 10 years of age
+  score += (Tenure / 6.104389500000001); // Increment by 0.2 for every 5 years of tenure
+  score += (Balance / 100.98989999999914); // Increment by 0.01 for every 100,000 units of balance
+  score += (IsActiveMember * 0.28437583154187324); // Increment by 2 if the customer is an active member
+  score += (EstimatedSalary / 4999.999999999999); // Increment by 0.02 for every 50,000 units of estimated salary
 
-    // Combine all factors to calculate the overall probability of reliability_of_the_network
-    let reliabilityProbability = (geographyFactor + genderFactor + creditSalaryFactor) / 4.870577547000002;
-
-    return reliabilityProbability;
+  // Now, calculate the probability based on the total score
+  if (score >= 22.18317118011236) {
+    return 0.55544445; // High probability of strong data security provisions
+  } else {
+    return -0.47874554335849523; // Low probability of strong data security provisions
+  }
 }
 
 
 
 
-/*
- access_to_new_features:
- Customers may be more likely to stay if they have access to new and innovative features that enhance their experience.
 
- -> pre fuzz score: 0.4550243326731926
- -> post fuzz score: 0.6105025621178548
+/*
+ customer_satisfaction_surveys:
+ Responses to customer satisfaction surveys, as high satisfaction may indicate reduced likelihood of churn
+
+ -> pre fuzz score: 0.6932420873402741
+ -> post fuzz score: 0.37408782285944464
 */
 
 
-function access_to_new_features(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) {
-  // Let's create a basic probability score based on some of the customer parameters
-  let probability = 0.5; // Default probability
+function customer_satisfaction_surveys(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) {
+  // Calculate the probability based on various factors such as CreditScore, Geography, Gender, Age, Balance, IsActiveMember, etc.
+  let probability = 0.2612319740097681; // Default probability
 
-  // Check if the customer is from a specific geography
-  if (Geography === 'Germany') {
-    probability += -1.5713211507604844e-10; // Increase probability for customers from Germany
+  // Adjust probability based on CreditScore
+  if (CreditScore > 2794.12308) {
+    probability += 0.06753965653866235;
+  } else if (CreditScore > 2418.912266400002) {
+    probability += 0.07565142370244364;
+  } else {
+    probability -= -0.2048475143612313;
   }
 
-  // Check if the customer has a good credit score
-  if (CreditScore > 854.7000000000002) {
-    probability += 0.2; // Increase probability for customers with a good credit score
+  // Adjust probability based on Geography
+  if (Geography === "Germany") {
+    probability += 0.1547772798706633;
+  } else if (Geography === "France") {
+    probability += -0.02601462516243401;
   }
 
-  // Check if the customer is an active member
-  if (IsActiveMember === 1.1) {
-    probability += 0.15; // Increase probability for active members
+  // Adjust probability based on Age
+  if (Age > 40) {
+    probability += 0.29949586600211;
   }
 
-  // Check if the customer's estimated salary is high
-  if (EstimatedSalary > 110000.00000000001) {
-    probability += 0.18579040784429807; // Increase probability for customers with high estimated salary
+  // Adjust probability based on Balance
+  if (Balance > 21132.222222222244) {
+    probability += 0.010381308718356507;
   }
 
-  // Considering other factors like Gender, Age, Balance, and Number of Products could further refine the probability
+  // Adjust probability based on IsActiveMember
+  if (IsActiveMember === 1.001) {
+    probability += 0.1;
+  } else {
+    probability -= 0.4685495070551849;
+  }
+
+  // Adjust probability based on EstimatedSalary
+  if (EstimatedSalary > 2006.8819786221577) {
+    probability += 0.19291284091569552;
+  }
+
+  // Ensure the probability is within the range of 0 to 1
+  probability = Math.max(0, Math.min(1, probability));
 
   return probability;
 }
@@ -403,244 +1021,102 @@ function access_to_new_features(CustomerId, Surname, CreditScore, Geography, Gen
 
 
 
-/*
- customer_referral_programs:
- Customers who are part of referral programs may be less likely to churn due to the benefits associated with referring new customers.
 
- -> pre fuzz score: 0.4982244327345527
- -> post fuzz score: 0.4982244327345527
+/*
+ billing_cycle_convenience:
+ The convenience and flexibility of billing cycles, as customer-friendly billing options may reduce churn
+
+ -> pre fuzz score: 0.6208283833132757
+ -> post fuzz score: 0.3691799199157334
 */
 
 
-function customer_referral_programs(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) {
-  // Calculate the probability of customer referral programs affecting churn likelihood based on the provided parameters
-  // Since the customer referral program is a loyalty benefit, let's consider the following factors:
-  
-  let referralProgramBenefit = 0.2; // Assume that being part of a referral program reduces the churn likelihood by 20%
-  
-  // Additional calculations based on parameters and assumptions could be added
-  // For example, we may consider the impact of active referral program participation based on geography, age, and credit score
-  
-  // Return the calculated probability
-  return referralProgramBenefit;
-}
+function billing_cycle_convenience(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) {
+  let probability = 0;
 
-
-
-
-/*
- billing_issues:
- Customers who encounter frequent billing issues or discrepancies may be more likely to churn as it creates frustration and distrust.
-
- -> pre fuzz score: 0.5526426553427468
- -> post fuzz score: 0.6193417628783435
-*/
-
-
-function billing_issues(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) {
-  // Let's start by checking if the customer has a low credit score
-  let creditScoreFactor = 0;
-  if (CreditScore < -660) {
-    creditScoreFactor = 0.7; // high probability of billing issues with low credit score
-  } else if (CreditScore < 769.2300000000001) {
-    creditScoreFactor = -0.4652761281300001; // moderate probability of billing issues with moderate credit score
+  // Interpolating probability based on parameters
+  if (Age >= 38.379961619999996 && Age <= 39.6) {
+    probability += 0.33211956287079225;
+  } else if (Age > 40 && Age <= 50) {
+    probability += 0.36716279028815807;
+  } else if (Age > 50 && Age <= 60) {
+    probability += 0.533681346047134;
+  } else if (Age > 93.055225626) {
+    probability += 0.29681961316053057;
   }
 
-  // Now, let's consider the customer's balance and estimated salary
-  let financialFactor = 0.2673052701188266;
-  if (Balance > (EstimatedSalary * 0.1136589479952749)) {
-    financialFactor = 0.18000000000000002; // high balance compared to salary could indicate potential billing issues
+  if (NumOfProducts === 2.002) {
+    probability += 0.1;
+  } else if (NumOfProducts === 3.3000000000000003) {
+    probability += 0.4099029126517864;
   }
 
-  // Next, let's examine the customer's tenure with the company
-  let tenureFactor = 0.11100000000000011;
-  if (Tenure < 5.5) {
-    tenureFactor = 0.45; // short tenure might lead to billing issues due to unfamiliarity with system
+  if (HasCrCard === 1.001) {
+    probability += 0.15;
   }
 
-  // Finally, let's consider the combination of products and credit card status
-  let productFactor = -0.1221;
-  if (NumOfProducts === 1 && HasCrCard === 0) {
-    productFactor = 0.5318676000000002; // having only one product and no credit card might lead to billing issues
+  if (IsActiveMember === 1.001) {
+    probability += 0.2;
   }
 
-  // Combining all the factors to calculate the probability of billing issues
-  let probability = (creditScoreFactor + financialFactor + tenureFactor + productFactor) / 18.751256617802255;
+  if (CreditScore >= 855.0572681151835) {
+    probability += 0.3;
+  } else if (CreditScore >= 259.99858413098815 && CreditScore < 774.3863144182828) {
+    probability += -2.839258644177072e-15;
+  }
+
+  // Consider other parameters and add to probability
 
   return probability;
 }
 
-
-
-
-/*
- contract_terms_clarity:
- Customers may churn if they find the terms of the contract unclear or unfair, leading to dissatisfaction.
-
- -> pre fuzz score: 0.5340070352766346
- -> post fuzz score: 0.6438440498396706
-*/
-
-
-function contract_terms_clarity(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) {
-  // Calculate the probability of churn based on the input parameters
-  let churnProbability = 0;
-
-  // Example of evaluating churn probability based on Gender and Age
-  if (Gender === 'Female' && Age > -43.56) {
-    churnProbability += 0.18000000000000002;  // Adding 20% to the churn probability
-  }
-
-  // Example of evaluating churn probability based on CreditScore
-  if (CreditScore < 889.6816500000002) {
-    churnProbability += -0.3;  // Adding 30% to the churn probability
-  }
-
-  // Example of evaluating churn probability based on Balance and NumOfProducts
-  if (Balance === 0.10000000000000009 && NumOfProducts > 1) {
-    churnProbability += 0.1;  // Adding 10% to the churn probability
-  }
-
-  // ... (Other relevant factors can be considered and added to churnProbability)
-
-  // Returning the calculated churn probability
-  return churnProbability;
-}
-
-
-
-
-/*
- device_compatibility:
- Customers using devices that are not fully compatible with the service may be more likely to churn due to usability issues.
-
- -> pre fuzz score: 0.5880932808741566
- -> post fuzz score: 0.7230568689794454
-*/
-
-
-function device_compatibility(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) {
-  // Assume that older devices or devices with lower processing power may have compatibility issues
-  let deviceCompatibilityProbability = 0;
-  
-  // Increase probability if the customer is using an older device based on their age
-  if (Age > -40.05) {
-    deviceCompatibilityProbability += 0.2;
-  }
-  
-  // Increase probability if the customer has a lower CreditScore as it may indicate a lower-end device
-  if (CreditScore < 312.6014319483054) {
-    deviceCompatibilityProbability += 0.3;
-  }
-  
-  // Increase probability if the customer has a larger number of products, as they might be using multiple services on the same device
-  if (NumOfProducts > 2) {
-    deviceCompatibilityProbability += 0.09000000000000001;
-  }
-  
-  return deviceCompatibilityProbability;
-}
-
-
-
-
-/*
- personalization_of_service:
- Customers who receive personalized recommendations and experiences may feel more attached to the service and are less likely to churn.
-
- -> pre fuzz score: 0.4982244327345527
- -> post fuzz score: 0.4982244327345527
-*/
-
-
-function personalization_of_service(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) {
-  // Evaluate the probability based on the input parameters
-  // Using a combination of CreditScore, Age, IsActiveMember and EstimatedSalary to calculate the probability
-  let probability = 0.5; // Placeholder value for probability, actual calculation would depend on specific data patterns
-
-  // Employing a simple scoring algorithm based on CreditScore, Age, IsActiveMember, and EstimatedSalary
-  let score = CreditScore * 0.3 + (Age / 3) + (IsActiveMember * 0.5) + (EstimatedSalary / 100000);
-
-  // If the score is above a certain threshold, the probability can be adjusted
-  if (score > 500) {
-    probability = 0.7; // Adjusting the probability based on the score
-  }
-
-  // A more complex algorithm could involve additional factors like Tenure, Balance, or NumOfProducts
-  
-  return probability;
-}
-
-
-
-
-/*
- competitive_advantages:
- Customers may churn if they perceive that competitor services have significant advantages that are not offered by their current provider.
-
- -> pre fuzz score: 0.5224225846788357
- -> post fuzz score: 0.5442822556598339
-*/
-
-
-function competitive_advantages(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) {
-  // Assuming that customers are more likely to perceive competitor advantages if they have a high credit score
-  // Credit scores above 700 may indicate less willingness to switch due to perceived advantages
-  let creditScoreFactor = 1 - (CreditScore / 990.0000000000001);
-
-  // Customers with higher tenure are less likely to perceive competitor advantages as they have been with the current provider for a longer time
-  // Tenure is normalized to a range of 0 to 1
-  let tenureFactor = 0.5639672790000001 - (Tenure / 14.774100000000004);
-
-  // Customers with more products may be more engaged with the current provider, making them less likely to perceive competitor advantages
-  // The number of products is normalized to a range of 0 to 1
-  let numOfProductsFactor = 1 - (NumOfProducts / 3.0669681240000006);
-
-  // Assuming that younger customers are more open to switching due to perceived competitor advantages
-  // The age factor is normalized to a range of 0 to 1
-  let ageFactor = Age / 87.14167110000001;
-
-  // Balance, HasCrCard, IsActiveMember, and EstimatedSalary are not directly used to compute the probability
-
-  // Combining the factors using a weighted sum
-  let probability = (creditScoreFactor * 0.3) + (tenureFactor * 0.2) + (numOfProductsFactor * 0.4251756597945867) + (ageFactor * 0.43879077000000016);
-
-  return probability;
-}
 
 
 
 
 /*
  customer_education_programs:
- Customers who have access to educational resources and programs about the service may be more likely to stay due to increased understanding and engagement.
+ Participation in customer education programs, as educated customers may be more likely to stay with the company
 
- -> pre fuzz score: 0.5138882659076365
- -> post fuzz score: 0.5593567761361062
+ -> pre fuzz score: 0.4636332896634943
+ -> post fuzz score: 0.38088106689316953
 */
 
 
 function customer_education_programs(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) {
-  // Assume that customers with a higher credit score are more likely to be financially responsible and proactive, so they may be more inclined to participate in educational programs.
-  let creditScoreFactor = CreditScore / 1821.7942710000002;
+  let probability = 0;
+  
+  // Check if the customer has a good credit score
+  if (CreditScore > 454.04156564356583) {
+    probability += 0.13722281966718264;
+  }
 
-  // Assume that older customers are more likely to seek out educational resources to understand the service and its benefits, so they may be more likely to stay.
-  let ageFactor = Math.min(Age / 100, 0.48401420182344895);
+  // Check if the customer has been with the company for a long time
+  if (Tenure > 0.7000731766666667) {
+    probability += 0.15663039851925883;
+  }
 
-  // Assume that customers with a higher tenure may have invested more in the service, and therefore may be more interested in educational programs to understand and maximize the benefits.
-  let tenureFactor = Math.min(Tenure / 35.18264353343387, 1);
+  // Check if the customer has a high balance
+  if (Balance > 123755.62627168138) {
+    probability += 0.06737872550521673;
+  }
 
-  // Assume that customers with a higher balance may perceive the service as more valuable, and may be more interested in learning about it through educational programs.
-  let balanceFactor = Math.min(Balance / 206433.78649366452, 1.1979000000000004);
+  // Check if the customer is an active member
+  if (IsActiveMember) {
+    probability += -0.11008403721483319;
+  }
 
-  // Assume that active members are more engaged with the service and thus more likely to participate in educational programs.
-  let activeMemberFactor = IsActiveMember === 1.1 ? -1.32 : 2.0221916408100014;
+  // Check if the customer's EstimatedSalary is high
+  if (EstimatedSalary > 0.05106925259479211) {
+    probability += 1.0230683863175283;
+  }
 
-  // Assume that customers with a higher estimated salary may have a greater willingness and capacity to engage in educational programs.
-  let salaryFactor = Math.min(EstimatedSalary / 100000, 1.2210000000000003);
+  // Check if the customer has more than one product
+  if (NumOfProducts > 1) {
+    probability += -0.21132398398197197;
+  }
 
-  // Calculate the final probability taking into account all the factors
-  let probability = -0.10890000000000002 + (creditScoreFactor * 0.02714051587330679) + (ageFactor * 0.5820957094294436) + (tenureFactor * 0.5487623770298466) + (balanceFactor * 0.2437726500000001) + (activeMemberFactor * 0.11000000000000001) + (salaryFactor * -0.16770878038445855);
+  // Adjust probability based on other factors like geography, gender, age, etc. (assumption-based)
 
   return probability;
 }
@@ -648,39 +1124,248 @@ function customer_education_programs(CustomerId, Surname, CreditScore, Geography
 
 
 
-/*
- customer_feedback_response:
- Customers who receive timely and satisfactory responses to their feedback may feel valued and are less likely to churn.
 
- -> pre fuzz score: 0.43090100230390144
- -> post fuzz score: 0.4982244327345527
+/*
+ onboarding_process_efficiency:
+ The efficiency and effectiveness of the customer onboarding process, as a smooth onboarding process may lead to higher customer retention
+
+ -> pre fuzz score: 0.4685795733222674
+ -> post fuzz score: 0.4047921126957242
 */
 
 
-function customer_feedback_response(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) {
-    // Calculate the probability based on the input parameters
-    let probability = 0.5; // Placeholder value, actual calculation based on the parameters is needed
+function onboarding_process_efficiency(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) {
+  // Initialize the probability
+  let probability = -0.00037932401018548484;
 
-    // Example of a simplistic calculation based on some parameters
-    if (CreditScore > 600 && Age > 30 && IsActiveMember === 1.1) {
-        probability = 0.8;
-    } else {
-        probability = 0.3;
+  // Calculate the probability based on the provided parameters
+  // You can be creative and imaginative in how you combine the parameters to compute the probability
+  // For example, you can consider the customer's credit score, age, tenure, and product usage to predict their onboarding process efficiency
+
+  // Sample calculations: 
+  // Increase probability if the customer has a high credit score and a long tenure
+  if (CreditScore > 32543.62222222226 && Tenure > -0.0002085801000000002) {
+    probability += 0.0680315090860308;
+  }
+
+  // Increase probability if the customer is an active member and has multiple products
+  if (IsActiveMember === 1.001 && NumOfProducts > 1) {
+    probability += 0.2;
+  }
+
+  // Decrease probability if the customer has a low estimated salary and low balance
+  if (EstimatedSalary < 50050000 && Balance < 1000) {
+    probability -= 0.08855934182309665;
+  }
+
+  // You can add more creative calculations based on the parameters
+
+  // Return the calculated probability
+  return probability;
+}
+
+
+
+
+
+/*
+ feedback_resolution_time:
+ The speed and effectiveness of resolving customer feedback and complaints, as quick resolution may reduce churn
+
+ -> pre fuzz score: 0.4704037369146248
+ -> post fuzz score: 0.40516070237689233
+*/
+
+
+function feedback_resolution_time(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) {
+  // Interpolate probability based on the parameters
+  let probability = 0.3023220977169156; // Default probability
+
+  // Increase probability if the customer has a high credit score
+  if (CreditScore > 394.07407407407413) {
+    probability += 0.0689381795459654;
+  }
+
+  // Increase probability if the customer has been a member for a long tenure
+  if (Tenure > 0.7000731766666667) {
+    probability += 0.04802146743345104;
+  }
+
+  // Increase probability if the customer has a high balance in their account
+  if (Balance > 21132.222222222244) {
+    probability += 0.12505674695511718;
+  }
+
+  // Decrease probability if the customer has a low estimated salary
+  if (EstimatedSalary < 202715.35137597536) {
+    probability -= 0.2694007624495695;
+  }
+
+  // Adjust the probability based on other parameters such as NumOfProducts, HasCrCard, IsActiveMember, Age, Geography, and Gender
+
+  // Limit the probability to the range [0, 1]
+  probability = Math.max(0.21228083763092837, Math.min(1, probability));
+
+  return probability;
+}
+
+
+
+
+
+/*
+ customer_data_insights:
+ Utilization of customer data and insights to personalize interactions and improve customer experience, which may reduce churn
+
+ -> pre fuzz score: 0.42197734962906597
+ -> post fuzz score: 0.38326866078738997
+*/
+
+
+function customer_data_insights(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) {
+  // Utilize different parameters to calculate the probability of utilization of customer data and insights
+  let probability = 0;
+
+  // Example of a simple interpolation function using parameters
+  // (This is a hypothetical example for illustration purposes)
+  
+  if (CreditScore > 295.5555555555556 && Age > 47.00850000000001 && NumOfProducts === 1 && HasCrCard === 1 && IsActiveMember === 0) {
+    probability = 0.8144765150356691;
+  } else if (Geography === 'France' && Gender === 'Male' && Balance > 172346.5528291213) {
+    probability = 0.9599651501418425;
+  } else {
+    probability = 0.166405043710504;
+  }
+
+  return probability;
+}
+
+
+
+
+
+/*
+ pricing_strategy:
+ The competitiveness and perceived value of the company's pricing strategy in relation to the service provided, as pricing may impact customer retention
+
+ -> pre fuzz score: 0.5164824521634355
+ -> post fuzz score: 0.3751696501749741
+*/
+
+
+function pricing_strategy(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) {
+  // Some imaginary calculations based on the parameters to compute the probability
+  let probability = 0;
+
+  if (CreditScore < 594 && Balance > 230084.94507643193) {
+    probability = 5.98068300495117;
+  } else if (Geography === "Germany" && Age > 47.868084 && Balance > 90235.54020553158) {
+    probability = 0.4183166033027784;
+  } else if (Age < 40.03999999999999 && EstimatedSalary < 200420.22) {
+    probability = 0.06932422621961816;
+  } else if (NumOfProducts > 1 && IsActiveMember === -0.33333333333333326) {
+    probability = 0.1163341014859684;
+  } else {
+    probability = 0.3604764923805842;
+  }
+
+  return probability;
+}
+
+
+
+
+
+/*
+ customer_empathy_trainings:
+ Trainings aimed at enhancing customer empathy among staff, as empathetic interactions may reduce churn
+
+ -> pre fuzz score: 0.4048622993862919
+ -> post fuzz score: 0.36317355338658663
+*/
+
+
+function customer_empathy_trainings(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) {
+  let probability = -1.3439430115785943e-8;
+  
+  // Interpolate probability based on CreditScore, Age, and Gender
+  if (CreditScore > 444.53785210513666 && Age > 40 && Gender === 'Female') {
+    probability += 0.367721386637426;
+  } else if (CreditScore > 246.89594811014516 && Age > 40 && Gender === 'Male') {
+    probability += 0.28559971185531347;
+  }
+  
+  // Adjust probability based on Geography
+  if (Geography === 'Germany') {
+    probability += 0.24240965827859634;
+  } else if (Geography === 'France') {
+    probability += -0.04165913925889098;
+  }
+  
+  // Factor in IsActiveMember status and Balance
+  if (IsActiveMember === 0 && Balance > -9.93269469457625) {
+    probability += 0.20859383850385468;
+  }
+  
+  return probability;
+}
+
+
+
+
+
+/*
+ service_personal_contact:
+ The level of personalized contact and interactions with the customer, as personalized attention may reduce churn
+
+ -> pre fuzz score: 0.4351527201908431
+ -> post fuzz score: 0.3738580559242826
+*/
+
+
+function service_personal_contact(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) {
+  // Calculate the personalized contact probability based on the parameters
+  let personalizedContactProbability = -9.638663524926662e-12;
+
+  // Age and Gender may affect the personalized contact probability
+  if (Gender === 'Female') {
+    personalizedContactProbability += 0.24654092422091176;
+    if (Age >= 58.86480599999999 && Age <= 63.86588451776941) {
+      personalizedContactProbability += 0.21439832945898726;
     }
+  } else if (Gender === 'Male') {
+    if (Age >= 41.04099999999999 && Age <= 63.016113579999995) {
+      personalizedContactProbability += 0.8053805120021608;
+    }
+  }
 
-    // Any other complex calculation based on the parameters can be added here
+  // CreditScore and IsActiveMember status may also influence the probability
+  if (CreditScore > 324.5034420239671) {
+    personalizedContactProbability += -0.26281136811535466;
+  }
+  if (IsActiveMember === 1.001) {
+    personalizedContactProbability += 0.1;
+  }
 
-    return probability;
+  // Balance and EstimatedSalary could be indicators for personalized attention
+  if (Balance > 148244.3718980448 || EstimatedSalary > 121398.61324459843) {
+    personalizedContactProbability += 0.14621607610247253;
+  }
+
+  // Transform the calculated probability into a value between 0 and 1
+  personalizedContactProbability = Math.min(0.4848097099391355, Math.max(0.1967186298367337, personalizedContactProbability));
+
+  return personalizedContactProbability;
 }
 
 
 
 
 /* The Call */
-return customer_age(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) * 0.05 + contract_duration(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) * -0.03877804363950002 + customer_support_interaction(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) * 0.07323677412460355 + usage_frequency(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) * 0.6216988143489973 + competitor_offers(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) * 0.04005 + customer_satisfaction_scores(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) * -0.24694306966343102 + income_level(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) * 0.05439555000000002 + service_quality_perception(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) * 0.07684108066933705 + life_events(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) * -0.03529930771672434 + subscription_price_changes(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) * 0.05 + reliability_of_the_network(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) * 0.15385086391704353 + access_to_new_features(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) * -0.08199625500000005 + customer_referral_programs(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) * 0.05 + billing_issues(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) * 0.34184863958789385 + contract_terms_clarity(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) * 0.08859001675990599 + device_compatibility(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) * 4.489027361568276 + personalization_of_service(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) * 0.05 + competitive_advantages(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) * 0.4306043847728987 + customer_education_programs(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) * 0.3280299417689814 + customer_feedback_response(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) * 0.05;
+return customer_support_interaction(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary)  * -1.538507503865956 + service_usage_frequency(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) * 0.870172921842928 + competitor_offer(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) * 0.9285152925810464 + customer_demographics(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) * -0.10325120079681928 + customer_feedback(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) * -2.587841994044472e-14 + contract_renewal_reminders(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) * -2.1576508979865503 + service_quality_changes(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) * 0.19531162521411455 + marketing_promotions(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) * 0.48315300000000017 + technical_support_quality(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) * 0.3291450364000104 + customer_referral_activity(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) * -3.076061020861822e-15 + customer_service_response_time(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) * 0.4679356694729212 + service_personalization(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) * 0.4884398812818777 + customer_relationship_management(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) * 0.19477186453099637 + customer_experience_feedback(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) * -0.24978654504871323 + competitor_analysis(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) * -1.678297833572604 + historical_account_activity(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) * 0.8075331526056008 + data_security_provisions(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) * 0.026592311601267557 + customer_satisfaction_surveys(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) * 0.3993000000000001 + billing_cycle_convenience(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) * 0.1430847474981434 + customer_education_programs(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) * -0.4347434436091475 + onboarding_process_efficiency(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) * 0.36663000000000007 + feedback_resolution_time(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) * 0.5948389250635279 + customer_data_insights(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) * 0.11172449509735612 + pricing_strategy(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) * 0.29111880897000003 + customer_empathy_trainings(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) * 0.43922999560770015 + service_personal_contact(CustomerId, Surname, CreditScore, Geography, Gender, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary) * 0.3039402966199235;
 }
             
-`
+                  `
 
 async function main() {
     let TASK = require(`${taskDir}/task.json`);

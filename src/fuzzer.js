@@ -34,11 +34,12 @@ async function fuzz(result, TASK, depth=20, roundTo=2, datasetpc=1,
     mutationsFactors=[-1, .1, 10, 2, .5, 1.10, .90, 1.05, 0.95, 1.01, .99, 1.005, .995, 1.001, .999, 1.0005, .9995, 1.0001, .9999],
     mutationsAdd=[1, -1, 0.1, -0.1, 0.01, -0.01, 0.001, -0.001, 0.0001, -0.0001],
     outDir=undefined,
-    onlyLast=0
+    onlyLast=0,
+    onlyfineTune=false
     ) {
     console.log("fuzz outDir", outDir);
     console.log("fuzz",depth, roundTo, datasetpc);
-    console.log(result.code);
+    //console.log(result.code);
     ROUND_FACTOR = Math.pow(10, roundTo);
     let newCode = replaceNumbersPreservingComments(result.code, ROUND_FACTOR);
     let numbers = newCode.numbers;
@@ -47,19 +48,37 @@ async function fuzz(result, TASK, depth=20, roundTo=2, datasetpc=1,
     console.log('fuzzin from', originalScore);
     let mm = 0;
     let start = [ ];
-    for (let r = roundTo - 1; r > 0; r--) {
-        start.push(1/ Math.pow(10, r));
-        start.push(-1/ Math.pow(10, r));
+  
+    start.push(1/ Math.pow(10, roundTo));
+    start.push(-1/ Math.pow(10, roundTo));
+    if (!onlyfineTune) {
+        if (roundTo != 1) {
+            start.push(roundTo);
+            start.push(1/  roundTo);
+            start.push(-1/roundTo);
+        }
+        // x r
+        start.push(Math.pow(10, roundTo));
+        // / r
+        start.push(1/ Math.pow(10, roundTo) - 1);
     }
 
-    start.push( -2);
     let hasChange = false;
+    let mutable = [];
+     for (let i = 0; i < numbers.length; i++) {
+        mutable[i] = numbers[i];
+
+     }
+    // set all to true
      for (let k = 0; k < start.length; k++) {
         let end = 0;
         if (onlyLast > 0) { 
             end = numbers.length - onlyLast;
         }
         for (let i = numbers.length - 1; i >= end; i--) {
+            if (!mutable[i]) { 
+                continue;
+            }
             console.log('fuzzing', i, '/', numbers.length, 'v:', numbers[i]);
             let factor = 1 + start[k];
             let lump = start[k];
@@ -126,6 +145,19 @@ async function fuzz(result, TASK, depth=20, roundTo=2, datasetpc=1,
         if (k == start.length -1 && hasChange) {
             console.log("RERUN")
             hasChange = false;
+            
+            for (let i = 0; i < numbers.length; i++) {
+                if (numbers[i] == mutable[i]) {
+                    mutable[i] = false;
+                }
+                else {
+                    mutable[i] = numbers[i];
+                }
+            }
+
+
+
+
             k = -1;
         }
     }
